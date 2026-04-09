@@ -1,95 +1,135 @@
 # Implementation
 
+## Current Goal
+
+The project starts with a static prototype using only HTML and CSS.
+
+This means:
+
+- no JavaScript yet
+- no real data storage yet
+- no PWA features yet
+
+The current purpose is to build and explain:
+
+- page structure
+- layout
+- visual hierarchy
+- user flow
+
 ## Architecture
 
 | Area | Decision |
 |---|---|
-| App type | PWA |
-| Storage | `IndexedDB` |
-| Backend | none in V1 |
-| Offline | first-class |
-| Import baseline | manual link paste |
-| Enhanced import | Web Share Target where supported |
+| Current stage | static prototype |
+| Markup | HTML |
+| Styling | CSS |
+| JavaScript | later |
+| Storage | later |
+| Backend | none |
+| Goal | understand and present the app visually first |
 
-## Data Storage Notes
+## What We Build First
 
-Recommended local stores:
+The first version should visually show:
 
-| Store | Purpose |
+- a page header
+- a search area
+- a filter area
+- recipe cards
+- a button for adding recipes
+- a static recipe form or recipe detail area
+
+These elements do not work yet, but they show how the app will be used later.
+
+## Initial File Structure
+
+```text
+/
+  index.html
+  style.css
+  assets/
+  docs/
+```
+
+## Initial Page Plan
+
+| File | Purpose |
 |---|---|
-| `recipes` | recipe documents |
-| `meta` | settings, migration version, seed values if needed |
+| `index.html` | main page with recipe overview |
+| `style.css` | full visual styling |
 
-Recommended recipe indexes if supported by chosen wrapper:
+Optional later:
 
-- `updatedAt`
-- `favorite`
-- `difficulty`
+- `recipe.html` for a detail view
+- `create.html` for a create form
 
-Search across title / ingredients / notes will likely be implemented in app logic, not as advanced database search.
+## Current Delivery Plan
 
-## PWA Notes
+### Step 1: HTML structure
 
-### V1 baseline
+Create the main sections in `index.html`:
 
-- installable manifest
-- service worker for shell/offline caching
-- app usable without network after first load
+- header
+- introduction text
+- search field
+- filter section
+- recipe card section
 
-### Share target
+### Step 2: CSS styling
 
-Possible if platform/browser supports installed PWAs receiving shared URLs.
+Style the page with `style.css`:
 
-Implementation note:
+- colors
+- spacing
+- typography
+- card layout
+- mobile-friendly design
 
-- treat share target as progressive enhancement
-- keep standard create flow fully functional without it
+### Step 3: Additional static screens
 
-## Suggested Technical Strategy
+After the homepage works visually:
 
-### Data model first
+- static recipe detail layout
+- static create recipe form layout
 
-Build:
+## Later Technical Stages
 
-1. recipe schema
-2. local storage adapter
-3. create/edit form
-4. list + detail views
-5. search/filter
-6. PWA install/offline
-7. optional share target
+After the static prototype is clear and documented:
 
-### Migration friendliness
+1. add JavaScript interactions
+2. add local storage with `IndexedDB`
+3. add favorites behavior
+4. add real search and filter logic
+5. convert the app into a PWA
 
-Even though V1 is local-only, keep the schema future-friendly:
+## Recommended Screen Decisions
 
-- stable `id`
-- clear timestamps
-- explicit `platform`
-- avoid UI-only field names in storage
-
-This will help later if backend sync is added.
+| Question | Recommendation | Why |
+|---|---|---|
+| Create flow | full page or clear section | easy to explain in HTML |
+| Ingredient input | stacked rows | better for mobile layouts |
+| Filters | visible section in V1 prototype | easier to understand in a static version |
 
 ## Risk Register
 
 | Risk | Impact | Response |
 |---|---|---|
-| Instagram extraction is blocked or brittle | high | keep manual entry as core |
-| Share target unsupported on some devices | medium | keep paste flow as fallback |
-| Large uploaded images bloat local storage | medium | consider client-side resize/compression |
-| Ingredient filtering becomes ambiguous | medium | start with string matching, refine later |
+| Project feels too complex too early | high | start with HTML/CSS only |
+| Too many features at once | high | focus on one page first |
+| Layout breaks on mobile | medium | design mobile-first |
+| Static UI is mistaken for finished logic | medium | document clearly what is only visual |
 
 ## Deferred Technical Work
 
-- Instagram metadata extraction
-- authentication
-- sync / cloud backup
-- recipe sharing
-- import from more platforms
+- JavaScript logic
+- `IndexedDB`
+- PWA setup
+- Instagram import logic
+- multi-user accounts
+- backend
 
-## Open Technical Decisions
+## Open Decisions
 
-- frontend framework choice
-- `IndexedDB` wrapper/library choice
-- image compression strategy
-- exact search matching strategy
+- whether detail and create should be separate HTML files or sections on one page
+- whether the first prototype should already contain placeholder images

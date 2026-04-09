@@ -90,6 +90,8 @@ Free-text search should cover:
 
 ## Open Design Questions
 
-- Should recipe creation be a full page or a modal/sheet on mobile?
-- Should ingredient input use table rows or stacked mobile cards?
-- Should filter chips be always visible or hidden behind a drawer?
+Resolved for implementation start:
+
+- recipe creation should be a full page
+- ingredient input should use stacked mobile-friendly rows
+- filters should live in a drawer/sheet in V1
