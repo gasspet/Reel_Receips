@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Reel Receips - Rezept hinzufügen</title>
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <nav class="top-nav" aria-label="Hauptnavigation">
+      <div class="top-nav__inner">
+        <a class="top-nav__brand" href="index.html">Reel Receips</a>
+        <div class="top-nav__links">
+          <a class="top-nav__link" href="index.html">Startseite</a>
+          <a class="top-nav__link" href="rezept.html">Rezeptdetail</a>
+          <a class="top-nav__link top-nav__link--active" href="hinzufuegen.html">Rezept hinzufügen</a>
+          <a class="top-nav__link" href="imprint.html">Impressum</a>
+        </div>
+      </div>
+    </nav>
+
+    <header class="hero hero--compact">
+      <div class="hero__content">
+        <div class="brand">
+          <img
+            class="brand__logo"
+            src="data/Logo_Reel_Receips_transparent.png"
+            alt="Logo von Reel Receips"
+          />
+        </div>
+        <p class="eyebrow">Neue Eingabe</p>
+        <h1>Neues Rezept anlegen</h1>
+        <p class="hero__text">
+          Diese statische Seite zeigt die künftige Eingabemaske für neue
+          Rezepte.
+        </p>
+        <div class="hero__actions">
+          <a class="button button--secondary" href="index.html">Zurück zur Startseite</a>
+        </div>
+      </div>
+    </header>
+
+    <main class="page-content">
+      <section class="panel form-panel" aria-labelledby="form-title">
+        <div class="section-heading">
+          <p class="section-label">Formular-Vorschau</p>
+          <h2 id="form-title">Rezeptdaten erfassen</h2>
+        </div>
+
+        <form class="recipe-form">
+          <label class="field field--full">
+            <span>Instagram-Link</span>
+            <input
+              type="url"
+              placeholder="https://www.instagram.com/..."
+            />
+          </label>
+
+          <div class="form-grid">
+            <label class="field">
+              <span>Rezepttitel</span>
+              <input type="text" placeholder="z. B. Cremige Tomatenpasta" />
+            </label>
+
+            <label class="field">
+              <span>Erstellerprofil</span>
+              <input type="text" placeholder="@profilname" />
+            </label>
+
+            <label class="field">
+              <span>Kategorie</span>
+              <select>
+                <option>Bitte wählen</option>
+                <option>Frühstück</option>
+                <option>Mittagessen</option>
+                <option>Abendessen</option>
+                <option>Dessert</option>
+                <option>Snack</option>
+                <option>Getränke</option>
+              </select>
+            </label>
+
+            <label class="field">
+              <span>Schwierigkeit</span>
+              <select>
+                <option>Bitte wählen</option>
+                <option>Einfach</option>
+                <option>Mittel</option>
+                <option>Anspruchsvoll</option>
+              </select>
+            </label>
+          </div>
+
+          <label class="field field--full">
+            <span>Zutaten</span>
+            <textarea
+              rows="5"
+              placeholder="200 g Pasta&#10;1 EL Olivenöl&#10;2 Tomaten"
+            ></textarea>
+          </label>
+
+          <label class="field field--full">
+            <span>Zubereitung</span>
+            <textarea
+              rows="6"
+              placeholder="Hier wird später die Zubereitung als Freitext eingetragen."
+            ></textarea>
+          </label>
+
+          <label class="field field--full">
+            <span>Notizen</span>
+            <textarea
+              rows="4"
+              placeholder="Zum Beispiel: Beim nächsten Mal mehr Knoblauch verwenden."
+            ></textarea>
+          </label>
+
+          <div class="form-actions">
+            <button class="button button--primary" type="button">Rezept speichern</button>
+            <a class="button button--secondary" href="index.html">Abbrechen</a>
+          </div>
+        </form>
+      </section>
+    </main>
+  </body>
+</html>

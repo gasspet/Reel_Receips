@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Reel Receips - Rezeptsammlung</title>
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <nav class="top-nav" aria-label="Hauptnavigation">
+      <div class="top-nav__inner">
+        <a class="top-nav__brand" href="index.html">Reel Receips</a>
+        <div class="top-nav__links">
+          <a class="top-nav__link top-nav__link--active" href="index.html">Startseite</a>
+          <a class="top-nav__link" href="rezept.html">Rezeptdetail</a>
+          <a class="top-nav__link" href="hinzufuegen.html">Rezept hinzufügen</a>
+          <a class="top-nav__link" href="imprint.html">Impressum</a>
+        </div>
+      </div>
+    </nav>
+
+    <header class="hero">
+      <div class="hero__content">
+        <div class="brand">
+          <img
+            class="brand__logo"
+            src="data/Logo_Reel_Receips_transparent.png"
+            alt="Logo von Reel Receips"
+          />
+        </div>
+        <p class="eyebrow">Rezept-Web-App</p>
+        <h1>Reel Receips sammelt deine Social-Media-Rezepte an einem Ort.</h1>
+        <p class="hero__text">
+          Diese statische Startseite zeigt, wie eine App aussehen kann, mit der
+          Rezepte aus Instagram später gesucht, organisiert und als Favorit
+          markiert werden.
+        </p>
+        <div class="hero__actions">
+          <a class="button button--primary" href="hinzufuegen.html">Rezept hinzufügen</a>
+          <a class="button button--secondary" href="#recipe-list">Rezepte ansehen</a>
+        </div>
+      </div>
+    </header>
+
+    <main class="page-content">
+      <section class="panel search-panel" aria-labelledby="search-title">
+        <div class="section-heading">
+          <p class="section-label">Suche und Filter</p>
+          <h2 id="search-title">Rezepte schneller wiederfinden</h2>
+        </div>
+
+        <form class="search-form">
+          <label class="field">
+            <span>Freie Suche</span>
+            <input
+              type="text"
+              placeholder="Suche nach Titel, Zutaten oder Notizen"
+            />
+          </label>
+
+          <div class="filter-grid">
+            <label class="field">
+              <span>Kategorie</span>
+              <select>
+                <option>Alle Kategorien</option>
+                <option>Frühstück</option>
+                <option>Mittagessen</option>
+                <option>Abendessen</option>
+                <option>Dessert</option>
+                <option>Snack</option>
+                <option>Getränke</option>
+              </select>
+            </label>
+
+            <label class="field">
+              <span>Schwierigkeit</span>
+              <select>
+                <option>Alle</option>
+                <option>Einfach</option>
+                <option>Mittel</option>
+                <option>Anspruchsvoll</option>
+              </select>
+            </label>
+
+            <label class="field field--checkbox">
+              <input type="checkbox" />
+              <span>Nur Favoriten</span>
+            </label>
+          </div>
+        </form>
+      </section>
+
+      <section class="panel" aria-labelledby="recipe-list-title" id="recipe-list">
+        <div class="section-heading">
+          <p class="section-label">Rezeptübersicht</p>
+          <h2 id="recipe-list-title">Gespeicherte Rezepte</h2>
+        </div>
+
+        <div class="card-grid">
+          <article class="recipe-card">
+            <div class="recipe-card__image recipe-card__image--pasta"></div>
+            <div class="recipe-card__content">
+              <div class="recipe-card__topline">
+                <p class="recipe-card__creator">@pasta_daily</p>
+                <span class="favorite-badge">Favorit</span>
+              </div>
+              <h3>Cremige Tomatenpasta</h3>
+              <p class="recipe-card__meta">Abendessen &middot; Einfach</p>
+              <p class="recipe-card__text">
+                Schnelles Pasta-Rezept mit Tomaten, Knoblauch und Frischkäse.
+              </p>
+              <div class="tag-row">
+                <span class="tag">vegetarisch</span>
+                <span class="tag">schnell</span>
+              </div>
+              <a class="text-link" href="rezept.html">Rezept ansehen</a>
+            </div>
+          </article>
+
+          <article class="recipe-card">
+            <div class="recipe-card__image recipe-card__image--bowl"></div>
+            <div class="recipe-card__content">
+              <div class="recipe-card__topline">
+                <p class="recipe-card__creator">@green.kitchen</p>
+              </div>
+              <h3>Hafer-Bowl mit Beeren</h3>
+              <p class="recipe-card__meta">Frühstück &middot; Einfach</p>
+              <p class="recipe-card__text">
+                Frische Bowl mit Haferflocken, Joghurt, Banane und Beeren.
+              </p>
+              <div class="tag-row">
+                <span class="tag">gesund</span>
+                <span class="tag">Essensvorbereitung</span>
+              </div>
+              <a class="text-link" href="rezept.html">Rezept ansehen</a>
+            </div>
+          </article>
+
+          <article class="recipe-card">
+            <div class="recipe-card__image recipe-card__image--cake"></div>
+            <div class="recipe-card__content">
+              <div class="recipe-card__topline">
+                <p class="recipe-card__creator">@sweet.weekend</p>
+              </div>
+              <h3>Schoko-Bananen-Kuchen</h3>
+              <p class="recipe-card__meta">Dessert &middot; Mittel</p>
+              <p class="recipe-card__text">
+                Saftiger Kuchen mit Banane, Kakao und einer einfachen Glasur.
+              </p>
+              <div class="tag-row">
+                <span class="tag">backen</span>
+                <span class="tag">wochenende</span>
+              </div>
+              <a class="text-link" href="rezept.html">Rezept ansehen</a>
+            </div>
+          </article>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>
