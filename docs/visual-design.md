@@ -1,4 +1,4 @@
-# Visual Design
+﻿# Visual Design
 
 ## Gestaltungsziel
 
@@ -8,7 +8,7 @@ werden.
 
 ## Visuelle Idee
 
-Reel Receips verbindet Social Media und Kochen. Deshalb soll die Gestaltung:
+Reel Recipes verbindet Social Media und Kochen. Deshalb soll die Gestaltung:
 
 - warm und einladend wirken
 - klare Bereiche fuer Navigation und Inhalte zeigen
@@ -67,3 +67,4 @@ Reel Receips verbindet Social Media und Kochen. Deshalb soll die Gestaltung:
 - echte Bilder fuer Rezepte statt Farbverlaeufe
 - eventuell Icons fuer Kategorien oder Aktionen
 - Feinschliff bei Abstaenden und Schriftgroessen
+

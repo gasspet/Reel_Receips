@@ -1,9 +1,9 @@
-# HTML/CSS-Tutorial zu Reel Receips
+﻿# HTML/CSS-Tutorial zu Reel Recipes
 
 ## Zweck dieses Tutorials
 
 Dieses Tutorial erklaert den aktuellen HTML- und CSS-Code des Projekts
-Reel Receips anhand der vorhandenen Dateien. Ziel ist, dass der Code fuer die
+Reel Recipes anhand der vorhandenen Dateien. Ziel ist, dass der Code fuer die
 Praesentation erklaerbar wird.
 
 Zusaetzlich wurden die wichtigsten Erklaerungen direkt als Kommentare in die
@@ -171,3 +171,4 @@ Spaeter kommen mit JavaScript dazu:
 - Favoritenverhalten
 
 Diese Teile werden spaeter im Semester erklaert.
+

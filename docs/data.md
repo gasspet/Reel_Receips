@@ -1,4 +1,4 @@
-# Data
+﻿# Data
 
 ## Projektmaterialien
 
@@ -10,8 +10,8 @@ Prototyp und spaeter fuer die Web-App wichtig sind.
 
 | Material | Format | Zweck |
 |---|---|---|
-| App-Logo `Logo_Reel_Receips.png` | PNG | Markenauftritt der Website |
-| Freigestelltes Logo `Logo_Reel_Receips_transparent.png` | PNG | Einbindung ohne weissen Rand im Header |
+| App-Logo `Logo_Reel_Recipes.png` | PNG | Markenauftritt der Website |
+| Freigestelltes Logo `Logo_Reel_Recipes_transparent.png` | PNG | Einbindung ohne weissen Rand im Header |
 | Beispiel-Rezepttexte in HTML | HTML-Inhalt | Platzhalter fuer Titel, Zutaten, Notizen und Metadaten |
 | Kategorien und Schwierigkeitsgrade | Textwerte | Inhalt fuer Filter, Formular und Karten |
 
@@ -66,3 +66,4 @@ Die statischen Projektmaterialien liegen derzeit in:
 
 - `data/` fuer Materialhinweise und Assets
 - den HTML-Dateien fuer Textinhalte des Prototyps
+
