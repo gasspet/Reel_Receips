@@ -20,22 +20,22 @@ schneller wiedergefunden und organisiert werden koennen.
 
 ```text
 .
-â”œâ”€â”€ index.html
-â”œâ”€â”€ rezept.html
-â”œâ”€â”€ hinzufuegen.html
-â”œâ”€â”€ imprint.html
-â”œâ”€â”€ css/
-â”‚   â””â”€â”€ style.css
-â”œâ”€â”€ data/
-â”‚   â”œâ”€â”€ assets.md
-â”‚   â””â”€â”€ Logo_Reel_Recipes_transparent.png
-â”œâ”€â”€ docs/
-â”‚   â”œâ”€â”€ requirements.md
-â”‚   â”œâ”€â”€ data.md
-â”‚   â”œâ”€â”€ visual-design.md
-â”‚   â””â”€â”€ journal.md
-â””â”€â”€ tutorial/
-    â””â”€â”€ html-css-tutorial.md
+├── index.html
+├── rezept.html
+├── hinzufuegen.html
+├── imprint.html
+├── css/
+│   └── style.css
+├── data/
+│   ├── assets.md
+│   └── Logo_Reel_Recipes_transparent.png
+├── docs/
+│   ├── requirements.md
+│   ├── data.md
+│   ├── visual-design.md
+│   └── journal.md
+└── tutorial/
+    └── html-css-tutorial.md
 ```
 
 ## Lokal oeffnen

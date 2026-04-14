@@ -175,15 +175,15 @@ Im Projekt gibt es jetzt nicht mehr nur eine einzelne Startseite.
 
 Stattdessen wird die Struktur in mehrere HTML-Seiten aufgeteilt:
 
-- `index.html` fÃ¼r die Startseite
+- `index.html` für die Startseite
 - `rezept.html` fuer die Detailansicht
-- `hinzufuegen.html` fÃ¼r das Formular
+- `hinzufuegen.html` für das Formular
 
-Das ist fÃ¼r den aktuellen Projektstand sehr sinnvoll, weil man damit die Navigation einer Web-App schon frÃ¼h zeigen kann, ohne JavaScript zu brauchen.
+Das ist für den aktuellen Projektstand sehr sinnvoll, weil man damit die Navigation einer Web-App schon früh zeigen kann, ohne JavaScript zu brauchen.
 
 ## Warum mehrere Seiten hilfreich sind
 
-Mehrere Seiten helfen dabei, den Aufbau einer App klarer zu erklÃ¤ren.
+Mehrere Seiten helfen dabei, den Aufbau einer App klarer zu erklären.
 
 Jede Seite hat dann eine eindeutige Aufgabe:
 
@@ -191,17 +191,17 @@ Jede Seite hat dann eine eindeutige Aufgabe:
 - Details anzeigen
 - neue Inhalte erfassen
 
-So ist die Struktur leichter verstÃ¤ndlich als eine einzige sehr lange Startseite.
+So ist die Struktur leichter verständlich als eine einzige sehr lange Startseite.
 
 ## Wie die Seiten verbunden sind
 
-Die Verbindung zwischen den Seiten geschieht im Moment Ã¼ber normale HTML-Links.
+Die Verbindung zwischen den Seiten geschieht im Moment über normale HTML-Links.
 
 Das bedeutet:
 
 - Ein Klick auf ein Rezept kann zur Detailseite fuehren
-- Ein Klick auf "Rezept hinzufÃ¼gen" kann zur Formularseite fÃ¼hren
-- Ein Klick auf "ZurÃ¼ck" fÃ¼hrt wieder zur Startseite
+- Ein Klick auf "Rezept hinzufügen" kann zur Formularseite führen
+- Ein Klick auf "Zurück" führt wieder zur Startseite
 
 ## Was die neue Detailseite zeigt
 
@@ -220,7 +220,7 @@ Dort werden alle Informationen zu genau einem Rezept gesammelt angezeigt:
 
 ## Was die Formularseite zeigt
 
-Die Datei `hinzufuegen.html` zeigt die Eingabeseite fÃ¼r neue Rezepte.
+Die Datei `hinzufuegen.html` zeigt die Eingabeseite für neue Rezepte.
 
 Auch diese Seite ist im Moment noch statisch.
 
@@ -234,7 +234,7 @@ Diese Navigation enthaelt Links zu:
 
 - der Startseite
 - der Rezeptdetailseite
-- der Seite zum HinzufÃ¼gen eines Rezepts
+- der Seite zum Hinzufügen eines Rezepts
 
 ## Warum die Navigation wichtig ist
 
@@ -244,7 +244,7 @@ Eine Navigation hilft Nutzerinnen und Nutzern dabei:
 - zwischen Bereichen zu wechseln
 - die Struktur der Anwendung zu verstehen
 
-Auch fÃ¼r die Uni ist das wichtig, weil man daran gut erklÃ¤ren kann, wie mehrere HTML-Seiten logisch verbunden werden.
+Auch für die Uni ist das wichtig, weil man daran gut erklären kann, wie mehrere HTML-Seiten logisch verbunden werden.
 
 ## Technisch einfach erklaert
 
