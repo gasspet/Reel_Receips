@@ -7,6 +7,11 @@
     <link rel="stylesheet" href="css/style.css" />
   </head>
   <body>
+    <!--
+      Die Navigation ist auf allen Seiten gleich aufgebaut.
+      Sie verbindet die einzelnen HTML-Dateien miteinander.
+      Dadurch wirkt der statische Prototyp schon wie eine kleine Website.
+    -->
     <nav class="top-nav" aria-label="Hauptnavigation">
       <div class="top-nav__inner">
         <a class="top-nav__brand" href="index.html">Reel Receips</a>
@@ -19,6 +24,10 @@
       </div>
     </nav>
 
+    <!--
+      Der Header ist der erste große sichtbare Bereich.
+      Er zeigt Logo, Projektidee und wichtige Einstiegsaktionen.
+    -->
     <header class="hero">
       <div class="hero__content">
         <div class="brand">
@@ -42,7 +51,15 @@
       </div>
     </header>
 
+    <!--
+      main enthält den eigentlichen Inhalt der Startseite.
+      Hier liegen Suche, Filter und Rezeptübersicht.
+    -->
     <main class="page-content">
+      <!--
+        Dieser Bereich zeigt die spätere Such- und Filterfunktion.
+        Aktuell ist sie noch statisch, weil JavaScript erst später ergänzt wird.
+      -->
       <section class="panel search-panel" aria-labelledby="search-title">
         <div class="section-heading">
           <p class="section-label">Suche und Filter</p>
@@ -90,6 +107,10 @@
         </form>
       </section>
 
+      <!--
+        Die Rezeptübersicht besteht aus mehreren Karten.
+        Jede Karte zeigt eine kurze Zusammenfassung eines Rezepts.
+      -->
       <section class="panel" aria-labelledby="recipe-list-title" id="recipe-list">
         <div class="section-heading">
           <p class="section-label">Rezeptübersicht</p>
@@ -97,6 +118,10 @@
         </div>
 
         <div class="card-grid">
+          <!--
+            article wird verwendet, weil jede Rezeptkarte ein eigenständiger
+            Inhaltsblock ist.
+          -->
           <article class="recipe-card">
             <div class="recipe-card__image recipe-card__image--pasta"></div>
             <div class="recipe-card__content">
@@ -117,6 +142,7 @@
             </div>
           </article>
 
+          <!-- Weitere Rezeptkarten folgen demselben Aufbau wie die erste Karte. -->
           <article class="recipe-card">
             <div class="recipe-card__image recipe-card__image--bowl"></div>
             <div class="recipe-card__content">

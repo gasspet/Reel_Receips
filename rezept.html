@@ -7,6 +7,10 @@
     <link rel="stylesheet" href="css/style.css" />
   </head>
   <body>
+    <!--
+      Diese Navigation ist identisch mit den anderen Seiten.
+      Die aktive Seite bekommt die Zusatzklasse top-nav__link--active.
+    -->
     <nav class="top-nav" aria-label="Hauptnavigation">
       <div class="top-nav__inner">
         <a class="top-nav__brand" href="index.html">Reel Receips</a>
@@ -19,6 +23,10 @@
       </div>
     </nav>
 
+    <!--
+      Der kompakte Header zeigt, dass diese Seite eine Detailseite ist.
+      hero--compact reduziert den Abstand im Vergleich zur Startseite.
+    -->
     <header class="hero hero--compact">
       <div class="hero__content">
         <div class="brand">
@@ -41,7 +49,13 @@
       </div>
     </header>
 
+    <!--
+      Der Hauptbereich der Detailseite zeigt alle Informationen zu einem Rezept.
+    -->
     <main class="page-content page-content--detail">
+      <!--
+        Der obere Detailbereich kombiniert eine große Bildfläche mit Metadaten.
+      -->
       <section class="panel detail-hero">
         <div class="detail-hero__image detail-hero__image--pasta"></div>
         <div class="detail-hero__content">
@@ -79,6 +93,10 @@
         </div>
       </section>
 
+      <!--
+        detail-grid ordnet mehrere Inhaltsboxen an:
+        Zutaten, Zubereitung, Notizen und Erklärung.
+      -->
       <section class="detail-grid">
         <section class="panel detail-section" id="zutaten">
           <div class="section-heading">
@@ -96,6 +114,7 @@
           </ul>
         </section>
 
+        <!-- Die Zubereitung steht als Fließtext, weil sie später frei eingegeben werden soll. -->
         <section class="panel detail-section">
           <div class="section-heading">
             <p class="section-label">Zubereitung</p>

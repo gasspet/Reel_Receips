@@ -1,3 +1,8 @@
+/*
+  Zentrale Designwerte:
+  :root speichert wiederverwendbare Werte als CSS-Variablen.
+  Dadurch müssen Farben, Rundungen und Schatten nicht überall neu geschrieben werden.
+*/
 :root {
   --bg: #f4f7f5;
   --surface: #f9fcfb;
@@ -18,14 +23,23 @@
   --radius-sm: 12px;
 }
 
+/*
+  box-sizing: border-box sorgt dafür, dass Breiten leichter berechenbar sind.
+  Padding und Border werden in die Gesamtbreite eines Elements eingerechnet.
+*/
 * {
   box-sizing: border-box;
 }
 
+/* Smooth scrolling macht Sprunglinks wie #zutaten angenehmer. */
 html {
   scroll-behavior: smooth;
 }
 
+/*
+  Grundgestaltung der ganzen Seite:
+  Hier werden Standardschrift, Hintergrund und Textfarbe festgelegt.
+*/
 body {
   margin: 0;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
@@ -35,15 +49,24 @@ body {
   color: var(--text);
 }
 
+/* Bilder sollen nie breiter als ihr Container werden. */
 img {
   max-width: 100%;
   display: block;
 }
 
+/*
+  Hauptnavigation:
+  Die Navigation liegt oben auf jeder Seite und verbindet die HTML-Dateien.
+*/
 .top-nav {
   padding: 1rem 1.5rem 0;
 }
 
+/*
+  Der innere Navigationscontainer begrenzt die Breite
+  und ordnet Logo/Name und Links nebeneinander an.
+*/
 .top-nav__inner {
   width: min(1100px, calc(100% - 2rem));
   margin: 0 auto;
@@ -59,6 +82,7 @@ img {
   box-shadow: 0 12px 28px rgba(18, 74, 78, 0.08);
 }
 
+/* Markenname in der Navigation. */
 .top-nav__brand {
   color: var(--brand-blue-dark);
   font-size: 1rem;
@@ -67,12 +91,14 @@ img {
   text-decoration: none;
 }
 
+/* Linkgruppe in der Navigation. flex-wrap erlaubt Umbruch auf kleinen Bildschirmen. */
 .top-nav__links {
   display: flex;
   flex-wrap: wrap;
   gap: 0.6rem;
 }
 
+/* Einzelner Navigationslink. */
 .top-nav__link {
   display: inline-flex;
   align-items: center;
@@ -84,25 +110,36 @@ img {
   font-weight: 700;
 }
 
+/* Markiert die Seite, auf der man sich gerade befindet. */
 .top-nav__link--active {
   background: rgba(13, 107, 127, 0.1);
   color: var(--brand-blue-dark);
 }
 
+/* Hero ist der große Einstiegsbereich oben auf den Seiten. */
 .hero {
   padding: 4rem 1.5rem 2rem;
 }
 
+/* Kompaktere Hero-Variante für Unterseiten. */
 .hero--compact {
   padding-top: 2.5rem;
 }
 
+/*
+  Gemeinsame maximale Breite:
+  Header-Inhalt und Seiteninhalt sollen gleich breit ausgerichtet sein.
+*/
 .hero__content,
 .page-content {
   width: min(1100px, calc(100% - 2rem));
   margin: 0 auto;
 }
 
+/*
+  Gestaltete Hero-Box:
+  Farbverläufe, Rahmen, Rundung und Schatten erzeugen den Markenlook.
+*/
 .hero__content {
   position: relative;
   overflow: hidden;
@@ -116,6 +153,7 @@ img {
   box-shadow: var(--shadow);
 }
 
+/* Dekorativer Hintergrundkreis im Hero-Bereich. */
 .hero__content::after {
   content: "";
   position: absolute;
@@ -127,6 +165,7 @@ img {
   pointer-events: none;
 }
 
+/* Container für das Logo. */
 .brand {
   display: inline-flex;
   align-items: center;
@@ -135,12 +174,14 @@ img {
   margin-bottom: 1rem;
 }
 
+/* Das Logo wird begrenzt, damit es nicht zu groß wird. */
 .brand__logo {
   width: min(100%, 420px);
   height: auto;
   object-fit: contain;
 }
 
+/* Kleine Oberzeilen über Überschriften. */
 .eyebrow,
 .section-label {
   margin: 0 0 0.5rem;
@@ -151,6 +192,7 @@ img {
   text-transform: uppercase;
 }
 
+/* Gemeinsame Grundregeln für Überschriften. */
 h1,
 h2,
 h3 {
@@ -158,6 +200,7 @@ h3 {
   line-height: 1.1;
 }
 
+/* Hauptüberschrift im Hero-Bereich. clamp macht die Größe responsiv. */
 h1 {
   max-width: 12ch;
   font-size: clamp(1.6rem, 3vw, 2.7rem);
@@ -165,15 +208,18 @@ h1 {
   line-height: 1.15;
 }
 
+/* Abschnittsüberschriften im Hauptinhalt. */
 h2 {
   font-size: clamp(1.2rem, 2.2vw, 1.75rem);
   margin-top: 0.2rem;
 }
 
+/* Überschriften auf Karten oder kleineren Inhaltsblöcken. */
 h3 {
   font-size: 1.15rem;
 }
 
+/* Einleitungstext im Hero-Bereich. */
 .hero__text {
   max-width: 55ch;
   margin: 1.2rem 0 0;
@@ -182,6 +228,7 @@ h3 {
   line-height: 1.6;
 }
 
+/* Wiederverwendete Flex-Anordnung für Buttons, Tags und Metazeilen. */
 .hero__actions,
 .form-actions,
 .tag-row,
@@ -191,10 +238,12 @@ h3 {
   gap: 0.8rem;
 }
 
+/* Abstand zwischen Hero-Text und Buttons. */
 .hero__actions {
   margin-top: 1.8rem;
 }
 
+/* Gemeinsamer Button-Stil. */
 .button {
   display: inline-flex;
   align-items: center;
@@ -208,24 +257,28 @@ h3 {
   cursor: pointer;
 }
 
+/* Wichtige Aktion, z. B. Rezept hinzufügen. */
 .button--primary {
   background: linear-gradient(135deg, var(--accent), var(--accent-dark));
   color: #fff;
   box-shadow: 0 10px 24px rgba(241, 122, 22, 0.28);
 }
 
+/* Nebenaktion, z. B. zurück zur Startseite. */
 .button--secondary {
   background: rgba(255, 255, 255, 0.82);
   border-color: rgba(13, 107, 127, 0.16);
   color: var(--brand-blue-dark);
 }
 
+/* Hauptinhalt jeder Seite als vertikales Raster mit Abstand. */
 .page-content {
   display: grid;
   gap: 1.5rem;
   padding-bottom: 3rem;
 }
 
+/* Wiederverwendbare Inhaltsbox für Suche, Kartenbereiche, Formulare und Details. */
 .panel {
   background: rgba(255, 255, 255, 0.92);
   border: 1px solid rgba(13, 107, 127, 0.1);
@@ -234,22 +287,26 @@ h3 {
   box-shadow: var(--shadow);
 }
 
+/* Abstand unter Überschriftenblöcken. */
 .section-heading {
   margin-bottom: 1.25rem;
 }
 
+/* Formulare werden als Grid aufgebaut, damit Abstände einheitlich sind. */
 .search-form,
 .recipe-form {
   display: grid;
   gap: 1rem;
 }
 
+/* Diese Grids werden auf größeren Bildschirmen zweispaltig. */
 .filter-grid,
 .form-grid {
   display: grid;
   gap: 1rem;
 }
 
+/* Formularfeld mit Beschriftung und Eingabe. */
 .field {
   display: grid;
   gap: 0.45rem;
@@ -257,6 +314,7 @@ h3 {
   font-weight: 600;
 }
 
+/* Einheitliches Aussehen für Inputs, Selects und Textareas. */
 .field input,
 .field select,
 .field textarea {
@@ -269,6 +327,7 @@ h3 {
   font: inherit;
 }
 
+/* Sichtbarer Fokuszustand für Tastaturbedienung und bessere Orientierung. */
 .field input:focus,
 .field select:focus,
 .field textarea:focus {
@@ -276,10 +335,12 @@ h3 {
   border-color: rgba(13, 107, 127, 0.35);
 }
 
+/* Textareas dürfen nur vertikal größer gezogen werden. */
 .field textarea {
   resize: vertical;
 }
 
+/* Spezielles Layout für Checkbox mit Text daneben. */
 .field--checkbox {
   grid-template-columns: auto 1fr;
   align-items: center;
@@ -287,16 +348,19 @@ h3 {
   padding-top: 1.9rem;
 }
 
+/* Größe der Checkbox. */
 .field--checkbox input {
   width: 18px;
   height: 18px;
 }
 
+/* Raster für Rezeptkarten. */
 .card-grid {
   display: grid;
   gap: 1rem;
 }
 
+/* Einzelne Rezeptkarte. */
 .recipe-card {
   overflow: hidden;
   background: var(--surface-strong);
@@ -305,55 +369,65 @@ h3 {
   box-shadow: 0 14px 30px rgba(18, 74, 78, 0.08);
 }
 
+/* Bildbereich der Karte. Aktuell noch als Farbfläche statt echtes Foto. */
 .recipe-card__image {
   min-height: 180px;
   background-size: cover;
   background-position: center;
 }
 
+/* Farbvariante für Pasta-Karte. */
 .recipe-card__image--pasta {
   background:
     linear-gradient(135deg, rgba(241, 122, 22, 0.42), rgba(255, 229, 184, 0.34)),
     linear-gradient(45deg, #e06718, #ffd083);
 }
 
+/* Farbvariante für Frühstücks-Bowl. */
 .recipe-card__image--bowl {
   background:
     linear-gradient(135deg, rgba(127, 190, 44, 0.38), rgba(221, 247, 205, 0.34)),
     linear-gradient(45deg, #77b62a, #d3f2a3);
 }
 
+/* Farbvariante für Dessert-Karte. */
 .recipe-card__image--cake {
   background:
     linear-gradient(135deg, rgba(13, 107, 127, 0.32), rgba(199, 238, 242, 0.3)),
     linear-gradient(45deg, #0b7187, #8fd2d8);
 }
 
+/* Innenabstand der Karteninhalte. */
 .recipe-card__content {
   padding: 1.25rem;
 }
 
+/* Entfernt Standardabstände bei Kartentexten. */
 .recipe-card__creator,
 .recipe-card__meta,
 .recipe-card__text {
   margin: 0;
 }
 
+/* Dezente Textfarbe für Nebeninformationen. */
 .recipe-card__creator,
 .recipe-card__meta {
   color: var(--muted);
 }
 
+/* Metazeile unter dem Rezepttitel. */
 .recipe-card__meta {
   margin-top: 0.45rem;
   font-weight: 700;
 }
 
+/* Beschreibungstext in der Karte. */
 .recipe-card__text {
   margin-top: 0.9rem;
   line-height: 1.55;
 }
 
+/* Link von der Karte zur Detailseite. */
 .text-link {
   display: inline-flex;
   margin-top: 1rem;
@@ -362,10 +436,12 @@ h3 {
   text-decoration: none;
 }
 
+/* Hover-Zustand für Textlinks. */
 .text-link:hover {
   color: var(--brand-blue-dark);
 }
 
+/* Badges und Tags haben eine pillenförmige Gestaltung. */
 .favorite-badge,
 .tag {
   display: inline-flex;
@@ -376,52 +452,62 @@ h3 {
   font-size: 0.9rem;
 }
 
+/* Favorit-Badge hebt ein Rezept hervor. */
 .favorite-badge {
   background: var(--accent-soft);
   color: var(--accent-dark);
   font-weight: 700;
 }
 
+/* Tags zeigen Kategorien oder Eigenschaften eines Rezepts. */
 .tag {
   background: var(--tag);
   color: var(--brand-blue-dark);
   border: 1px solid rgba(13, 107, 127, 0.08);
 }
 
+/* Abstand der Tag-Zeile. */
 .tag-row {
   margin-top: 1rem;
 }
 
+/* Abstand über den Formularbuttons. */
 .form-actions {
   margin-top: 0.5rem;
 }
 
+/* Detailseite: etwas kompaktere Abstände im Hauptbereich. */
 .page-content--detail {
   gap: 1.25rem;
 }
 
+/* Detailbereiche werden mit Grid angeordnet. */
 .detail-hero,
 .detail-grid {
   display: grid;
   gap: 1rem;
 }
 
+/* Große Bildfläche auf der Detailseite. */
 .detail-hero__image {
   min-height: 240px;
   border-radius: var(--radius-md);
 }
 
+/* Farbfläche für das Beispielrezept auf der Detailseite. */
 .detail-hero__image--pasta {
   background:
     linear-gradient(135deg, rgba(241, 122, 22, 0.42), rgba(255, 229, 184, 0.34)),
     linear-gradient(45deg, #e06718, #ffd083);
 }
 
+/* Inhaltsbereich rechts neben dem Bild auf großen Bildschirmen. */
 .detail-hero__content {
   display: grid;
   gap: 1rem;
 }
 
+/* Lesbarer Fließtext für Detailseite. */
 .detail-intro,
 .detail-text {
   margin: 0;
@@ -429,18 +515,21 @@ h3 {
   color: var(--muted);
 }
 
+/* Container für Tags und Favoriten-Badge auf der Detailseite. */
 .info-chips {
   display: flex;
   flex-wrap: wrap;
   gap: 0.7rem;
 }
 
+/* Metadatenliste auf der Detailseite. */
 .detail-meta {
   display: grid;
   gap: 0.9rem;
   margin: 0;
 }
 
+/* Einzelne Metadatenbox. */
 .detail-meta div {
   padding: 0.9rem 1rem;
   background: rgba(228, 240, 238, 0.45);
@@ -448,26 +537,31 @@ h3 {
   border-radius: var(--radius-sm);
 }
 
+/* Begriff innerhalb der Metadatenliste. */
 .detail-meta dt {
   margin: 0 0 0.3rem;
   color: var(--brand-blue);
   font-weight: 700;
 }
 
+/* Wert innerhalb der Metadatenliste. */
 .detail-meta dd {
   margin: 0;
 }
 
+/* Link zum Originalbeitrag. */
 .detail-meta a {
   color: var(--brand-blue-dark);
   font-weight: 700;
   text-decoration: none;
 }
 
+/* Detailboxen sollen oben beginnen und nicht unnötig gestreckt wirken. */
 .detail-section {
   align-content: start;
 }
 
+/* Zutatenliste mit angenehmer Zeilenhöhe. */
 .ingredient-list {
   margin: 0;
   padding-left: 1.2rem;
@@ -475,6 +569,10 @@ h3 {
   color: var(--muted);
 }
 
+/*
+  Ab 700px Breite werden Formulare und Karten zweispaltig.
+  Dadurch nutzt die Seite mehr Platz auf Tablets und kleinen Laptops.
+*/
 @media (min-width: 700px) {
   .filter-grid,
   .form-grid {
@@ -494,6 +592,10 @@ h3 {
   }
 }
 
+/*
+  Ab 980px Breite wird das Layout noch großzügiger:
+  Karten werden dreispaltig und die Detailansicht bekommt Bild und Text nebeneinander.
+*/
 @media (min-width: 980px) {
   .hero {
     padding-top: 5rem;

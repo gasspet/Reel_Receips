@@ -7,6 +7,10 @@
     <link rel="stylesheet" href="css/style.css" />
   </head>
   <body>
+    <!--
+      Die Navigation verbindet diese Formularseite mit Startseite,
+      Rezeptdetail und Impressum.
+    -->
     <nav class="top-nav" aria-label="Hauptnavigation">
       <div class="top-nav__inner">
         <a class="top-nav__brand" href="index.html">Reel Receips</a>
@@ -19,6 +23,9 @@
       </div>
     </nav>
 
+    <!--
+      Der Header erklärt, dass diese Seite für neue Rezepte gedacht ist.
+    -->
     <header class="hero hero--compact">
       <div class="hero__content">
         <div class="brand">
@@ -40,6 +47,10 @@
       </div>
     </header>
 
+    <!--
+      Das Formular ist aktuell nur ein statischer Prototyp.
+      Es zeigt, welche Eingabefelder später mit JavaScript verarbeitet werden.
+    -->
     <main class="page-content">
       <section class="panel form-panel" aria-labelledby="form-title">
         <div class="section-heading">
@@ -48,6 +59,10 @@
         </div>
 
         <form class="recipe-form">
+          <!--
+            label verbindet die Beschriftung mit dem Eingabefeld.
+            Das verbessert Verständlichkeit und Barrierefreiheit.
+          -->
           <label class="field field--full">
             <span>Instagram-Link</span>
             <input
@@ -56,6 +71,10 @@
             />
           </label>
 
+          <!--
+            form-grid ordnet mehrere Formularfelder nebeneinander an,
+            wenn genug Platz vorhanden ist.
+          -->
           <div class="form-grid">
             <label class="field">
               <span>Rezepttitel</span>
@@ -91,6 +110,7 @@
             </label>
           </div>
 
+          <!-- Textareas werden für längere Inhalte verwendet. -->
           <label class="field field--full">
             <span>Zutaten</span>
             <textarea

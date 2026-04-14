@@ -6,6 +6,10 @@ Dieses Tutorial erklaert den aktuellen HTML- und CSS-Code des Projekts
 Reel Receips anhand der vorhandenen Dateien. Ziel ist, dass der Code fuer die
 Praesentation erklaerbar wird.
 
+Zusaetzlich wurden die wichtigsten Erklaerungen direkt als Kommentare in die
+HTML- und CSS-Dateien geschrieben. Dadurch kann der Code auch direkt beim
+Durchgehen in VS Code erklaert werden.
+
 ## Welche Dateien das Tutorial behandelt
 
 - `index.html`
