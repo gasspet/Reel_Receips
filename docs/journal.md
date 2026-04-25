@@ -71,3 +71,19 @@ Next likely step:
 **Done:** Repository structure aligned more closely with the assignment requirements. Required docs were prepared, a README and imprint page were added, and a separate tutorial file was created.
 **Decisions:** Keep the project static with HTML and CSS for Milestone 2; add required file names (`data.md`, `visual-design.md`) alongside the existing project docs; separate tutorial material into its own folder.
 **Dead ends:** None in this work unit.
+
+## 2026-04-25 00:00 - distill
+
+Prepared the concept for the next implementation step with JavaScript.
+
+Established:
+
+- JavaScript should activate the existing prototype, not replace it
+- the first JS scope should cover recipe input, local storage, search, filters, and detail rendering
+- the extension fits directly into the existing three-page structure
+
+Next likely step:
+
+- add a `js/` folder
+- define the recipe data model
+- implement the first interactive features step by step

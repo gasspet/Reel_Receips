@@ -1,174 +1,400 @@
-﻿# HTML/CSS-Tutorial zu Reel Recipes
+# HTML/CSS-Tutorial zu Reel Recipes
 
-## Zweck dieses Tutorials
+## Ziel dieses Tutorials
 
-Dieses Tutorial erklaert den aktuellen HTML- und CSS-Code des Projekts
-Reel Recipes anhand der vorhandenen Dateien. Ziel ist, dass der Code fuer die
-Praesentation erklaerbar wird.
+Dieses Tutorial erklaert den aktuellen Code von `Reel Recipes` direkt an echten
+Codeausschnitten aus dem Projekt.
 
-Zusaetzlich wurden die wichtigsten Erklaerungen direkt als Kommentare in die
-HTML- und CSS-Dateien geschrieben. Dadurch kann der Code auch direkt beim
-Durchgehen in VS Code erklaert werden.
-
-## Welche Dateien das Tutorial behandelt
+Der Fokus liegt auf:
 
 - `index.html`
 - `rezept.html`
 - `hinzufuegen.html`
 - `css/style.css`
 
-## HTML-Grundidee im Projekt
+Die Erklaerungen sind absichtlich konkret auf dein Projekt bezogen und nicht
+allgemein gehalten.
 
-Das HTML bestimmt, welche Inhalte auf den Seiten vorhanden sind.
+## 1. Grundaufbau von `index.html`
 
-Im Projekt gibt es drei Hauptseiten:
+### Code
 
-- Startseite
-- Rezeptdetailseite
-- Seite zum Hinzufuegen eines Rezepts
+```html
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Reel Recipes - Rezeptsammlung</title>
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+```
 
-Jede Seite hat denselben Grundaufbau:
+### Erklaerung
 
-1. `head` fuer Metadaten und CSS-Einbindung
-2. `nav` fuer die Hauptnavigation
-3. `header` fuer den oberen Einfuehrungsbereich
-4. `main` fuer den eigentlichen Seiteninhalt
+- `<!DOCTYPE html>` sagt dem Browser, dass die Datei als modernes HTML5 gelesen werden soll.
+- `<html lang="de">` legt fest, dass die Sprache der Seite Deutsch ist.
+- `<meta charset="UTF-8">` sorgt dafuer, dass Umlaute richtig dargestellt werden.
+- `<meta name="viewport"...>` ist wichtig fuer Mobilgeraete.
+- `<title>` bestimmt den Text im Browser-Tab.
+- `<link rel="stylesheet"...>` verbindet das HTML mit deiner CSS-Datei.
 
-## Was der `head` macht
+## 2. Navigation im Header
 
-Im `head` stehen:
+### Code
 
-- `meta charset="UTF-8"` fuer die richtige Zeichendarstellung
-- `meta name="viewport"` fuer mobile Geraete
-- `title` fuer den Browser-Tab
-- `link rel="stylesheet"` fuer das Laden von `css/style.css`
+```html
+<nav class="top-nav" aria-label="Hauptnavigation">
+  <div class="top-nav__inner">
+    <a class="top-nav__brand" href="index.html">Reel Recipes</a>
+    <div class="top-nav__links">
+      <a class="top-nav__link top-nav__link--active" href="index.html">Startseite</a>
+      <a class="top-nav__link" href="rezept.html">Rezeptdetail</a>
+      <a class="top-nav__link" href="hinzufuegen.html">Rezept hinzufügen</a>
+      <a class="top-nav__link" href="imprint.html">Impressum</a>
+    </div>
+  </div>
+</nav>
+```
 
-## Was die Navigation macht
+### Erklaerung
 
-Die Navigation ist mit `<nav>` aufgebaut.
+- `<nav>` wird fuer Navigationsbereiche verwendet.
+- `aria-label="Hauptnavigation"` macht den Bereich fuer Screenreader besser verstaendlich.
+- Der erste Link mit `top-nav__brand` ist der Markenname der Website.
+- Die weiteren Links fuehren zu den einzelnen HTML-Seiten.
+- `top-nav__link--active` markiert die Seite, auf der man sich gerade befindet.
 
-Sie enthaelt Links zu:
+## 3. Hero-Bereich auf der Startseite
 
-- `index.html`
-- `rezept.html`
-- `hinzufuegen.html`
+### Code
 
-Die Navigation zeigt also, wie mehrere HTML-Seiten ueber normale Links
-verbunden werden.
+```html
+<header class="hero">
+  <div class="hero__content">
+    <div class="brand">
+      <img
+        class="brand__logo"
+        src="data/Logo_Reel_Recipes_transparent.png"
+        alt="Logo von Reel Recipes"
+      />
+    </div>
+    <p class="eyebrow">Rezept-Web-App</p>
+    <h1>Reel Recipes sammelt deine Social-Media-Rezepte an einem Ort.</h1>
+    <p class="hero__text">
+      Diese statische Startseite zeigt, wie eine App aussehen kann, mit der
+      Rezepte aus Instagram später gesucht, organisiert und als Favorit
+      markiert werden.
+    </p>
+  </div>
+</header>
+```
 
-## Was der Hero-Bereich macht
+### Erklaerung
 
-Der Hero-Bereich ist der grosse obere Teil jeder Seite.
+- `<header>` ist der obere Einfuehrungsbereich der Seite.
+- Das Logo wird ueber `<img>` eingebunden.
+- `<p class="eyebrow">` ist eine kleine Oberzeile ueber der Hauptueberschrift.
+- `<h1>` ist die wichtigste Ueberschrift der ganzen Seite.
+- `<p class="hero__text">` erklaert kurz die Idee des Projekts.
 
-Er enthaelt:
+## 4. Such- und Filterbereich
 
-- das Logo
-- eine kurze Einordnung der Seite
-- die Hauptueberschrift
-- Aktionsbuttons
+### Code
 
-Der Hero-Bereich hilft, sofort zu erkennen, auf welcher Seite man sich befindet.
+```html
+<section class="panel search-panel" aria-labelledby="search-title">
+  <div class="section-heading">
+    <p class="section-label">Suche und Filter</p>
+    <h2 id="search-title">Rezepte schneller wiederfinden</h2>
+  </div>
 
-## Was auf der Startseite gezeigt wird
+  <form class="search-form">
+    <label class="field">
+      <span>Freie Suche</span>
+      <input
+        type="text"
+        placeholder="Suche nach Titel, Zutaten oder Notizen"
+      />
+    </label>
+  </form>
+</section>
+```
 
-Die Startseite besitzt:
+### Erklaerung
 
-- einen Suchbereich
-- einen Filterbereich
-- mehrere Rezeptkarten
+- `<section>` gruppiert einen thematischen Inhaltsbereich.
+- `panel` ist die allgemeine Klasse fuer die weissen Inhaltsboxen.
+- `<h2>` ist die Ueberschrift dieses Abschnitts.
+- `<form>` wird verwendet, obwohl noch kein JavaScript aktiv ist, damit die Struktur fuer spaeter schon vorhanden ist.
+- `<label>` verbindet die Beschriftung direkt mit dem Eingabefeld.
+- `<input type="text">` ist das Suchfeld.
 
-Die Rezeptkarten bestehen aus:
+## 5. Rezeptkarten auf der Startseite
 
-- einer Bildflaeche
-- dem Erstellerprofil
-- Titel und Metadaten
-- Tags
-- einem Link zur Detailseite
+### Code
 
-## Was auf der Detailseite gezeigt wird
+```html
+<article class="recipe-card">
+  <div class="recipe-card__image recipe-card__image--pasta"></div>
+  <div class="recipe-card__content">
+    <div class="recipe-card__topline">
+      <p class="recipe-card__creator">@pasta_daily</p>
+      <span class="favorite-badge">Favorit</span>
+    </div>
+    <h3>Cremige Tomatenpasta</h3>
+    <p class="recipe-card__meta">Abendessen &middot; Einfach</p>
+    <p class="recipe-card__text">
+      Schnelles Pasta-Rezept mit Tomaten, Knoblauch und Frischkäse.
+    </p>
+    <div class="tag-row">
+      <span class="tag">vegetarisch</span>
+      <span class="tag">schnell</span>
+    </div>
+    <a class="text-link" href="rezept.html">Rezept ansehen</a>
+  </div>
+</article>
+```
 
-Die Detailseite zeigt ein einzelnes Rezept ausfuehrlicher.
+### Erklaerung
 
-Dort erscheinen:
+- `<article>` passt gut, weil jede Rezeptkarte ein eigenstaendiger Inhaltsblock ist.
+- `recipe-card__image` ist aktuell noch keine echte Bilddatei, sondern eine farbige Flaeche aus CSS.
+- `<h3>` ist der Titel des einzelnen Rezepts.
+- `favorite-badge` hebt ein Lieblingsrezept visuell hervor.
+- `tag-row` zeigt Eigenschaften wie `vegetarisch` oder `schnell`.
+- Der Link fuehrt zur Detailseite.
 
-- Titel
-- Bildbereich
-- Metadaten
-- Zutaten
-- Zubereitung
-- Notizen
+## 6. Detailseite `rezept.html`
 
-## Was auf der Seite zum Hinzufuegen gezeigt wird
+### Code
 
-Diese Seite enthaelt ein Formular mit typischen Feldern fuer ein Rezept:
+```html
+<section class="panel detail-section" id="zutaten">
+  <div class="section-heading">
+    <p class="section-label">Inhalt</p>
+    <h2>Zutaten</h2>
+  </div>
 
-- Link
-- Titel
-- Profilname
-- Kategorie
-- Schwierigkeit
-- Zutaten
-- Zubereitung
-- Notizen
+  <ul class="ingredient-list">
+    <li>200 g Pasta</li>
+    <li>1 EL Olivenoel</li>
+    <li>2 Tomaten</li>
+    <li>1 Knoblauchzehe</li>
+    <li>100 g Frischkaese</li>
+    <li>Salz und Pfeffer</li>
+  </ul>
+</section>
+```
 
-## CSS-Grundidee im Projekt
+### Erklaerung
 
-Die CSS-Datei gestaltet die HTML-Struktur.
+- Diese `section` ist ein einzelner Block auf der Detailseite.
+- `id="zutaten"` ermoeglicht Sprunglinks innerhalb der Seite.
+- `<ul>` ist eine ungeordnete Liste.
+- `<li>` ist jeweils ein einzelner Listenpunkt.
+- Fuer Zutaten ist eine Liste sinnvoller als ein Fliesstext, weil sie besser lesbar ist.
 
-Sie regelt unter anderem:
+## 7. Formularseite `hinzufuegen.html`
 
-- Farben
-- Abstaende
-- Rundungen
-- Schriftgroessen
-- Layout auf mobilen und groesseren Bildschirmen
+### Code
 
-## Wichtige CSS-Bereiche
+```html
+<form class="recipe-form">
+  <label class="field field--full">
+    <span>Instagram-Link</span>
+    <input
+      type="url"
+      placeholder="https://www.instagram.com/..."
+    />
+  </label>
 
-### `:root`
+  <div class="form-grid">
+    <label class="field">
+      <span>Rezepttitel</span>
+      <input type="text" placeholder="z. B. Cremige Tomatenpasta" />
+    </label>
+  </div>
+</form>
+```
 
-Hier stehen CSS-Variablen fuer Farben, Rundungen und Schatten.
+### Erklaerung
 
-Das ist praktisch, weil dieselben Werte mehrfach genutzt werden koennen.
+- `<form>` gruppiert alle Eingabefelder.
+- `type="url"` ist passend fuer einen Link.
+- `field--full` bedeutet, dass das Feld ueber die ganze Breite gehen darf.
+- `form-grid` ordnet mehrere Felder in einem Raster an.
+- Der Formularaufbau ist bereits fuer die spaetere JavaScript-Erweiterung vorbereitet.
 
-### `.top-nav`
+## 8. Wichtige CSS-Stelle: Farben und Variablen
 
-Dieser Bereich gestaltet die Navigation oben auf jeder Seite.
+### Code
 
-### `.hero` und `.hero__content`
+```css
+:root {
+  --bg: #f4f7f5;
+  --surface: #f9fcfb;
+  --surface-strong: #fff;
+  --line: #cfe1dc;
+  --text: #1f2e33;
+  --muted: #4f6b6a;
+  --accent: #f17a16;
+  --accent-dark: #d76000;
+  --brand-blue: #0d6b7f;
+}
+```
 
-Diese Klassen gestalten den grossen Einstiegsbereich mit Logo, Titel und Text.
+### Erklaerung
 
-### `.panel`
+- `:root` ist der Ort fuer globale CSS-Variablen.
+- Die Werte koennen spaeter im ganzen Stylesheet wiederverwendet werden.
+- So bleibt das Design konsistent.
+- Wenn du z. B. eine Markenfarbe aendern willst, musst du sie nur hier anpassen.
 
-Diese Klasse wird fuer weisse Inhaltsboxen verwendet.
+## 9. Wichtige CSS-Stelle: Navigation
 
-Dadurch sehen Suchbereich, Kartenbereiche und Formularbereiche einheitlich aus.
+### Code
 
-### `.card-grid` und `.recipe-card`
+```css
+.top-nav__inner {
+  width: min(1100px, calc(100% - 2rem));
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.85rem 1rem;
+}
+```
 
-Diese Klassen gestalten die Rezeptkarten auf der Startseite.
+### Erklaerung
 
-### `.field`
+- `width: min(...)` begrenzt die Breite der Navigation.
+- `margin: 0 auto` zentriert sie.
+- `display: flex` ordnet die Inhalte nebeneinander an.
+- `justify-content: space-between` schiebt Markenname und Links auseinander.
+- `flex-wrap: wrap` sorgt dafuer, dass die Navigation auf kleinen Bildschirmen umbrechen darf.
 
-Diese Klasse sorgt fuer einheitliche Darstellung von Formularfeldern.
+## 10. Wichtige CSS-Stelle: Hero-Bereich
 
-### Media Queries
+### Code
 
-Die `@media`-Bereiche passen das Layout an breitere Bildschirme an.
+```css
+.hero__content {
+  position: relative;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at top right, rgba(127, 190, 44, 0.18), transparent 26%),
+    radial-gradient(circle at left center, rgba(241, 122, 22, 0.14), transparent 30%),
+    linear-gradient(135deg, rgba(255, 255, 255, 0.98), rgba(240, 249, 247, 0.96));
+  border-radius: var(--radius-lg);
+  padding: 2rem;
+}
+```
 
-Dadurch wird die Seite responsiv.
+### Erklaerung
 
-## Was spaeter mit JavaScript kommt
+- `position: relative` ist wichtig, damit dekorative Elemente korrekt darin positioniert werden koennen.
+- `overflow: hidden` verhindert, dass Hintergrundeffekte ueber die Box hinausragen.
+- Die `background`-Eigenschaft verwendet mehrere Farbverlaeufe.
+- `border-radius` sorgt fuer abgerundete Ecken.
+- `padding` schafft Innenabstand.
 
-Die aktuelle Version ist absichtlich noch statisch.
+## 11. Wichtige CSS-Stelle: Rezeptkarten
 
-Spaeter kommen mit JavaScript dazu:
+### Code
 
-- echtes Speichern
-- echte Suche
-- echte Filterung
-- Favoritenverhalten
+```css
+.card-grid {
+  display: grid;
+  gap: 1rem;
+}
 
-Diese Teile werden spaeter im Semester erklaert.
+.recipe-card {
+  overflow: hidden;
+  background: var(--surface-strong);
+  border-radius: var(--radius-md);
+  box-shadow: 0 14px 30px rgba(18, 74, 78, 0.08);
+}
+```
 
+### Erklaerung
+
+- `display: grid` wird verwendet, um mehrere Karten ordentlich anzuordnen.
+- `gap` legt den Abstand zwischen den Karten fest.
+- `overflow: hidden` sorgt dafuer, dass Ecken und Bildbereiche sauber abgeschnitten werden.
+- `box-shadow` gibt den Karten visuelle Tiefe.
+
+## 12. Wichtige CSS-Stelle: Formulare
+
+### Code
+
+```css
+.field input,
+.field select,
+.field textarea {
+  width: 100%;
+  padding: 0.9rem 1rem;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  background: var(--surface-strong);
+  color: var(--text);
+  font: inherit;
+}
+```
+
+### Erklaerung
+
+- Diese Regel sorgt dafuer, dass alle Formularelemente gleich aussehen.
+- `width: 100%` laesst das Feld die volle Breite des Containers nutzen.
+- `padding` verbessert die Lesbarkeit.
+- `border-radius` macht die Eingabefelder weicher und moderner.
+- `font: inherit` uebernimmt die Schrift der Seite.
+
+## 13. Wichtige CSS-Stelle: Responsive Design
+
+### Code
+
+```css
+@media (min-width: 700px) {
+  .card-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 980px) {
+  .card-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+```
+
+### Erklaerung
+
+- `@media` bedeutet: Diese Regeln gelten nur ab einer bestimmten Bildschirmbreite.
+- Ab `700px` werden die Karten zweispaltig.
+- Ab `980px` werden sie dreispaltig.
+- Dadurch passt sich die Website an Handy, Tablet und Desktop an.
+
+## 14. Was du dir fuer die Praesentation merken kannst
+
+Wenn du den Code erklaeren sollst, kannst du dich an diesen Fragen orientieren:
+
+- Was ist die Aufgabe dieses HTML-Bereichs?
+- Warum habe ich hier dieses HTML-Element verwendet?
+- Welche Klasse steuert das Aussehen?
+- Welche CSS-Regel macht den sichtbaren Effekt?
+- Ist diese Stelle schon statisch oder spaeter interaktiv?
+
+## 15. Was spaeter mit JavaScript dazukommt
+
+Die aktuelle Version ist noch statisch.
+
+Spaeter sollen mit JavaScript vor allem diese Punkte aktiviert werden:
+
+- Rezepte speichern
+- Suchfunktion aktiv machen
+- Filter aktiv machen
+- Rezeptdaten dynamisch anzeigen
+
+Das HTML und CSS bilden dafuer bereits die sichtbare Grundlage.
