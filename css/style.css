@@ -476,6 +476,16 @@ h3 {
   margin-top: 0.5rem;
 }
 
+.no-results-message {
+  margin: 0 0 1rem;
+  padding: 1rem 1.2rem;
+  border: 1px dashed rgba(13, 107, 127, 0.24);
+  border-radius: var(--radius-sm);
+  background: rgba(228, 240, 238, 0.45);
+  color: var(--brand-blue-dark);
+  font-weight: 700;
+}
+
 /* Detailseite: etwas kompaktere Abstände im Hauptbereich. */
 .page-content--detail {
   gap: 1.25rem;
