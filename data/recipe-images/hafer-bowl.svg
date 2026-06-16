@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" role="img" aria-labelledby="title desc">
+  <title id="title">Hafer-Bowl mit Beeren</title>
+  <desc id="desc">Illustratives Beispielbild mit Frühstücksbowl und Beeren.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0%" stop-color="#cfead1"/>
+      <stop offset="100%" stop-color="#7fbf6d"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="900" fill="url(#bg)"/>
+  <ellipse cx="600" cy="470" rx="320" ry="245" fill="#fffdf8"/>
+  <ellipse cx="600" cy="470" rx="270" ry="200" fill="#e8dfc5"/>
+  <g fill="#7a2e5d">
+    <circle cx="500" cy="410" r="32"/>
+    <circle cx="575" cy="375" r="29"/>
+    <circle cx="660" cy="425" r="31"/>
+    <circle cx="720" cy="500" r="27"/>
+  </g>
+  <g fill="#f2d66a">
+    <ellipse cx="540" cy="520" rx="60" ry="28"/>
+    <ellipse cx="620" cy="560" rx="68" ry="30"/>
+  </g>
+  <g fill="#f6f0de">
+    <circle cx="685" cy="375" r="52"/>
+  </g>
+</svg>

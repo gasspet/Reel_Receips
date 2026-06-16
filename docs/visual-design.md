@@ -46,8 +46,24 @@ Rezeptübersicht übersetzen. Wichtige Qualitäten sind:
 
 - obere Navigation
 - Hero-Bereich mit Logo und Einführung
-- Such- und Filterbereich
-- Rezeptkarten
+- kleines Suchfeld im Header als direkter Einstieg
+- kompaktere Rezeptvorschau
+- nach Kategorien gegliederte Rezeptbereiche
+
+### Rezepte-Seite
+
+- obere Navigation
+- vollständige Übersicht aller Rezepte
+- Fokus auf Sammlung statt auf Suche
+- Einstieg in einzelne Rezeptdetails über Karten
+
+### Suchseite
+
+- obere Navigation
+- eigenes Suchfeld im Kopfbereich
+- Filter für Kategorie, Schwierigkeit und Favoriten
+- Ergebnisliste mit Rezeptkarten
+- klarer Fokus auf Suche statt auf Einstieg
 
 ### Rezeptdetailseiten
 
@@ -71,13 +87,18 @@ Rezeptübersicht übersetzen. Wichtige Qualitäten sind:
 | Logo im Header | stärkere Wiedererkennbarkeit |
 | abgerundete Karten und Panels | freundlicher, moderner Eindruck |
 | Farbverlauf im Hintergrund | mehr Tiefe ohne Überladung |
-| Such- und Filterbereich direkt auf der Startseite | unterstützt die spätere JavaScript-Funktion sichtbar im Layout |
+| Suche auf eigener Seite statt großer Suchsektion auf der Startseite | entlastet die Startseite und gibt der Suche einen klaren eigenen Ort |
+| kleines Suchfeld direkt im Header | schneller Einstieg zur Suchseite |
+| kompaktere Rezeptvorschau auf der Startseite | wirkt ruhiger und weniger überladen |
+| Kategorien schon auf der Startseite sichtbar machen | verbessert Orientierung und Einstieg in die Sammlung |
 
 ## Zentrale Ansichten und ihre Aufgabe
 
 | Ansicht | Zweck |
 |---|---|
-| Startseite | Rezepte überblicken, suchen und filtern |
+| Startseite | Einstieg, Orientierung und kompakter Überblick |
+| Rezepte-Seite | vollständige Übersicht über alle Rezepte |
+| Suchseite | gezielt suchen und filtern |
 | Detailansicht | ein Rezept vollständig lesen |
 | Hinzufügen-Seite | neue Inhalte strukturiert eingeben |
 

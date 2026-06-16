@@ -3,29 +3,30 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Auf der Hinzufügen-Seite von Reel Recipes können neue Rezepte mit Kategorien, Zutaten, Tags und Bild lokal gespeichert werden."
+    />
     <title>Reel Recipes - Rezept hinzufügen</title>
     <link rel="stylesheet" href="css/style.css" />
   </head>
   <body>
-    <!--
-      Die Navigation verbindet diese Formularseite mit Startseite,
-      Rezeptdetail und Impressum.
-    -->
     <nav class="top-nav" aria-label="Hauptnavigation">
       <div class="top-nav__inner">
         <a class="top-nav__brand" href="index.html">Reel Recipes</a>
         <div class="top-nav__links">
           <a class="top-nav__link" href="index.html">Startseite</a>
-          <a class="top-nav__link" href="rezept.html">Rezeptdetail</a>
+          <a class="top-nav__link" href="rezepte.html">Rezepte</a>
           <a class="top-nav__link top-nav__link--active" href="hinzufuegen.html">Rezept hinzufügen</a>
-          <a class="top-nav__link" href="imprint.html">Impressum</a>
+          <a class="top-nav__link" href="suche.html">Suchen</a>
         </div>
+        <form class="top-nav__search" action="suche.html" method="get">
+          <label class="sr-only" for="nav-search-add">Suchen</label>
+          <input id="nav-search-add" name="q" type="search" placeholder="Rezepte suchen" />
+        </form>
       </div>
     </nav>
 
-    <!--
-      Der Header erklärt, dass diese Seite für neue Rezepte gedacht ist.
-    -->
     <header class="hero hero--compact">
       <div class="hero__content">
         <div class="brand">
@@ -38,8 +39,8 @@
         <p class="eyebrow">Neue Eingabe</p>
         <h1>Neues Rezept anlegen</h1>
         <p class="hero__text">
-          Diese statische Seite zeigt die künftige Eingabemaske für neue
-          Rezepte.
+          Auf dieser Seite können neue Rezepte jetzt lokal im Browser erfasst
+          und in IndexedDB gespeichert werden.
         </p>
         <div class="hero__actions">
           <a class="button button--secondary" href="index.html">Zurück zur Startseite</a>
@@ -47,101 +48,137 @@
       </div>
     </header>
 
-    <!--
-      Das Formular ist aktuell nur ein statischer Prototyp.
-      Es zeigt, welche Eingabefelder später mit JavaScript verarbeitet werden.
-    -->
     <main class="page-content">
       <section class="panel form-panel" aria-labelledby="form-title">
         <div class="section-heading">
-          <p class="section-label">Formular-Vorschau</p>
+          <p class="section-label">Rezeptformular</p>
           <h2 id="form-title">Rezeptdaten erfassen</h2>
         </div>
 
-        <form class="recipe-form">
-          <!--
-            label verbindet die Beschriftung mit dem Eingabefeld.
-            Das verbessert Verständlichkeit und Barrierefreiheit.
-          -->
-          <label class="field field--full">
+        <form class="recipe-form" id="recipe-form">
+          <label class="field field--full" for="source-url">
             <span>Instagram-Link</span>
             <input
+              id="source-url"
               type="url"
               placeholder="https://www.instagram.com/..."
+              required
             />
           </label>
 
-          <!--
-            form-grid ordnet mehrere Formularfelder nebeneinander an,
-            wenn genug Platz vorhanden ist.
-          -->
           <div class="form-grid">
-            <label class="field">
+            <label class="field" for="title">
               <span>Rezepttitel</span>
-              <input type="text" placeholder="z. B. Cremige Tomatenpasta" />
+              <input
+                id="title"
+                type="text"
+                placeholder="z. B. Cremige Tomatenpasta"
+                required
+              />
             </label>
 
-            <label class="field">
+            <label class="field" for="creator">
               <span>Erstellerprofil</span>
-              <input type="text" placeholder="@profilname" />
+              <input id="creator" type="text" placeholder="@profilname" />
             </label>
 
-            <label class="field">
+            <label class="field" for="category">
               <span>Kategorie</span>
-              <select>
-                <option>Bitte wählen</option>
-                <option>Frühstück</option>
-                <option>Mittagessen</option>
-                <option>Abendessen</option>
-                <option>Dessert</option>
-                <option>Snack</option>
-                <option>Getränke</option>
+              <select id="category" required>
+                <option value="">Bitte wählen</option>
+                <option value="Frühstück">Frühstück</option>
+                <option value="Mittagessen">Mittagessen</option>
+                <option value="Abendessen">Abendessen</option>
+                <option value="Dessert">Dessert</option>
+                <option value="Snack">Snack</option>
+                <option value="Getränke">Getränke</option>
               </select>
             </label>
 
-            <label class="field">
+            <label class="field" for="difficulty">
               <span>Schwierigkeit</span>
-              <select>
-                <option>Bitte wählen</option>
-                <option>Einfach</option>
-                <option>Mittel</option>
-                <option>Anspruchsvoll</option>
+              <select id="difficulty" required>
+                <option value="">Bitte wählen</option>
+                <option value="Einfach">Einfach</option>
+                <option value="Mittel">Mittel</option>
+                <option value="Anspruchsvoll">Anspruchsvoll</option>
               </select>
             </label>
           </div>
 
-          <!-- Textareas werden für längere Inhalte verwendet. -->
-          <label class="field field--full">
+          <div class="form-grid">
+            <label class="field" for="tags">
+              <span>Tags</span>
+              <input
+                id="tags"
+                type="text"
+                placeholder="z. B. vegetarisch, schnell, Feierabend"
+              />
+            </label>
+
+            <label class="field" for="image">
+              <span>Rezeptbild</span>
+              <input id="image" type="file" accept="image/*" />
+            </label>
+          </div>
+
+          <label class="field field--checkbox" for="favorite">
+            <input id="favorite" type="checkbox" />
+            <span>Als Favorit speichern</span>
+          </label>
+
+          <label class="field field--full" for="ingredients">
             <span>Zutaten</span>
             <textarea
+              id="ingredients"
               rows="5"
               placeholder="200 g Pasta&#10;1 EL Olivenöl&#10;2 Tomaten"
+              required
             ></textarea>
           </label>
 
-          <label class="field field--full">
+          <label class="field field--full" for="steps-text">
             <span>Zubereitung</span>
             <textarea
+              id="steps-text"
               rows="6"
               placeholder="Hier wird später die Zubereitung als Freitext eingetragen."
+              required
             ></textarea>
           </label>
 
-          <label class="field field--full">
+          <label class="field field--full" for="notes">
             <span>Notizen</span>
             <textarea
+              id="notes"
               rows="4"
               placeholder="Zum Beispiel: Beim nächsten Mal mehr Knoblauch verwenden."
             ></textarea>
           </label>
 
+          <p id="form-status" class="form-status" hidden aria-live="polite"></p>
+
           <div class="form-actions">
-            <button class="button button--primary" type="button">Rezept speichern</button>
+            <button class="button button--primary" type="submit">Rezept speichern</button>
             <a class="button button--secondary" href="index.html">Abbrechen</a>
           </div>
         </form>
       </section>
     </main>
+
+    <footer class="site-footer">
+      <div class="site-footer__inner">
+        <p>Reel Recipes, Studienprojekt zur Verwaltung von Social-Media-Rezepten.</p>
+        <nav aria-label="Footer-Navigation">
+          <a href="index.html">Startseite</a>
+          <a href="rezepte.html">Rezepte</a>
+          <a href="suche.html">Suchen</a>
+          <a href="imprint.html">Impressum</a>
+        </nav>
+      </div>
+    </footer>
+
+    <script src="js/db.js"></script>
+    <script src="js/add-recipe.js"></script>
   </body>
 </html>
-

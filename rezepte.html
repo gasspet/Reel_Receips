@@ -5,9 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta
       name="description"
-      content="Das Impressum von Reel Recipes enthält rechtliche Hinweise und Platzhalter für eine spätere öffentliche Veröffentlichung."
+      content="Die Rezepte-Seite von Reel Recipes zeigt die vollständige Übersicht aller gespeicherten und beispielhaften Rezepte."
     />
-    <title>Reel Recipes - Impressum</title>
+    <title>Reel Recipes - Rezepte</title>
     <link rel="stylesheet" href="css/style.css" />
   </head>
   <body>
@@ -16,45 +16,38 @@
         <a class="top-nav__brand" href="index.html">Reel Recipes</a>
         <div class="top-nav__links">
           <a class="top-nav__link" href="index.html">Startseite</a>
-          <a class="top-nav__link" href="rezepte.html">Rezepte</a>
+          <a class="top-nav__link top-nav__link--active" href="rezepte.html">Rezepte</a>
           <a class="top-nav__link" href="hinzufuegen.html">Rezept hinzufügen</a>
           <a class="top-nav__link" href="suche.html">Suchen</a>
         </div>
         <form class="top-nav__search" action="suche.html" method="get">
-          <label class="sr-only" for="nav-search-imprint">Suchen</label>
-          <input id="nav-search-imprint" name="q" type="search" placeholder="Rezepte suchen" />
+          <label class="sr-only" for="nav-search-recipes">Suchen</label>
+          <input id="nav-search-recipes" name="q" type="search" placeholder="Rezepte suchen" />
         </form>
       </div>
     </nav>
 
     <header class="hero hero--compact">
       <div class="hero__content">
-        <div class="brand">
-          <img
-            class="brand__logo"
-            src="data/Logo_Reel_Recipes_transparent.png"
-            alt="Logo von Reel Recipes"
-          />
-        </div>
-        <p class="eyebrow">Rechtliche Angaben</p>
-        <h1>Impressum</h1>
+        <p class="eyebrow">Gesamtübersicht</p>
+        <h1>Alle Rezepte auf einen Blick</h1>
         <p class="hero__text">
-          Diese Seite ist aktuell ein Platzhalter für die spätere öffentliche
-          Version der Website.
+          Diese Seite sammelt die komplette Rezeptübersicht und führt von jeder
+          Karte weiter zur passenden Detailansicht.
         </p>
       </div>
     </header>
 
     <main class="page-content">
-      <section class="panel" aria-labelledby="imprint-title">
-        <div class="section-heading">
-          <p class="section-label">Hinweis</p>
-          <h2 id="imprint-title">Platzhalter für die Abgabe</h2>
+      <section class="panel" aria-labelledby="all-recipes-title">
+        <div class="section-heading section-heading--inline">
+          <div>
+            <p class="section-label">Sammlung</p>
+            <h2 id="all-recipes-title">Rezeptübersicht</h2>
+          </div>
+          <a class="text-link" href="suche.html">Zur Detailsuche</a>
         </div>
-        <p class="detail-text">
-          Wenn die Website später öffentlich veröffentlicht wird, müssen hier
-          die korrekten rechtlichen Angaben eingetragen werden.
-        </p>
+        <div class="card-grid" id="all-recipes-grid"></div>
       </section>
     </main>
 
@@ -63,11 +56,16 @@
         <p>Reel Recipes, Studienprojekt zur Verwaltung von Social-Media-Rezepten.</p>
         <nav aria-label="Footer-Navigation">
           <a href="index.html">Startseite</a>
-          <a href="rezepte.html">Rezepte</a>
           <a href="suche.html">Suchen</a>
           <a href="hinzufuegen.html">Rezept hinzufügen</a>
+          <a href="imprint.html">Impressum</a>
         </nav>
       </div>
     </footer>
+
+    <script src="js/db.js"></script>
+    <script src="js/sample-recipes.js"></script>
+    <script src="js/recipe-render.js"></script>
+    <script src="js/recipes-page.js"></script>
   </body>
 </html>

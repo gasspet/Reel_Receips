@@ -1,4 +1,4 @@
-# Reel Recipes
+﻿# Reel Recipes
 
 Reel Recipes ist ein Webprojekt für eine Rezept-App, in der Social-Media-Rezepte
 gesammelt und später leichter wiedergefunden werden sollen.
@@ -50,37 +50,37 @@ Sie ist in `index.html` eingebunden und aktiviert:
 
 ```text
 .
-├── index.html
-├── rezept.html
-├── hafer-bowl.html
-├── schoko-bananen-kuchen.html
-├── avocado-sandwich.html
-├── gemuesepfanne-mit-reis.html
-├── iced-matcha-latte.html
-├── zimtschnecken.html
-├── hinzufuegen.html
-├── imprint.html
-├── css/
-│   └── style.css
-├── js/
-│   └── app.js
-├── data/
-│   ├── assets.md
-│   ├── Logo_Reel_Recipes.png
-│   └── Logo_Reel_Recipes_transparent.png
-├── docs/
-│   ├── app-concept.md
-│   ├── app-concept-kurz.md
-│   ├── app-mini-plan.md
-│   ├── data.md
-│   ├── javascript-vorbereitung.md
-│   ├── requirements.md
-│   ├── visual-design.md
-│   └── journal.md
-└── tutorial/
-    ├── html-css-tutorial.md
-    ├── javascript-tutorial-vorbereitung.md
-    └── javascript-tutorial-app.md
+â”œâ”€â”€ index.html
+â”œâ”€â”€ rezept.html
+â”œâ”€â”€ hafer-bowl.html
+â”œâ”€â”€ schoko-bananen-kuchen.html
+â”œâ”€â”€ avocado-sandwich.html
+â”œâ”€â”€ gemuesepfanne-mit-reis.html
+â”œâ”€â”€ iced-matcha-latte.html
+â”œâ”€â”€ zimtschnecken.html
+â”œâ”€â”€ hinzufuegen.html
+â”œâ”€â”€ imprint.html
+â”œâ”€â”€ css/
+â”‚   â””â”€â”€ style.css
+â”œâ”€â”€ js/
+â”‚   â””â”€â”€ app.js
+â”œâ”€â”€ data/
+â”‚   â”œâ”€â”€ assets.md
+â”‚   â”œâ”€â”€ Logo_Reel_Recipes.png
+â”‚   â””â”€â”€ Logo_Reel_Recipes_transparent.png
+â”œâ”€â”€ docs/
+â”‚   â”œâ”€â”€ app-concept.md
+â”‚   â”œâ”€â”€ app-concept-kurz.md
+â”‚   â”œâ”€â”€ app-mini-plan.md
+â”‚   â”œâ”€â”€ data.md
+â”‚   â”œâ”€â”€ javascript-vorbereitung.md
+â”‚   â”œâ”€â”€ requirements.md
+â”‚   â”œâ”€â”€ visual-design.md
+â”‚   â””â”€â”€ journal.md
+â””â”€â”€ tutorial/
+    â”œâ”€â”€ html-css-tutorial.md
+    â”œâ”€â”€ javascript-tutorial-vorbereitung.md
+    â””â”€â”€ javascript-tutorial-app.md
 ```
 
 ## Lokal öffnen

@@ -34,16 +34,33 @@ wiedergefunden werden können.
 
 Der geplante Ablauf ist bewusst einfach:
 
-1. Die Person öffnet die Startseite und sieht vorhandene Rezeptkarten.
-2. Über Suchfeld und Filter kann die Liste eingeschränkt werden.
-3. Über die Navigation gelangt man zur Seite `hinzufuegen.html`.
-4. Dort kann später ein neues Rezept eingegeben werden.
-5. Nach dem Speichern erscheint das Rezept in der Übersicht.
-6. Über einen Klick auf eine Rezeptkarte gelangt man zur Detailansicht.
+1. Die Person öffnet die Startseite und sieht einen kompakten Überblick.
+2. Über `Rezepte` im Header gelangt sie auf eine eigene Übersichtsseite.
+3. Über das Suchfeld im Header gelangt sie auf eine eigene Suchseite.
+4. Dort kann die Liste über Suchbegriff und Filter eingeschränkt werden.
+5. Über die Navigation gelangt man zur Seite `hinzufuegen.html`.
+6. Dort kann ein neues Rezept eingegeben und gespeichert werden.
+7. Nach dem Speichern erscheint das Rezept in der Übersicht und in der Suche.
+8. Über einen Klick auf eine Rezeptkarte gelangt man zur Detailansicht.
 
 ## Wie fügt sich JavaScript in die bestehende Website ein?
 
 ### Startseite (`index.html`)
+
+Hier soll JavaScript:
+
+- eine kompakte Rezeptvorschau laden
+- Kategorien auf der Startseite gruppiert darstellen
+- das Suchfeld im Header mit der Suchseite verbinden
+
+### Rezepte-Seite (`rezepte.html`)
+
+Hier soll JavaScript:
+
+- alle gespeicherten Rezepte als vollständige Übersicht anzeigen
+- den Einstieg in einzelne Detailseiten ermöglichen
+
+### Suchseite (`suche.html`)
 
 Hier soll JavaScript:
 
@@ -66,6 +83,94 @@ Hier soll JavaScript später:
 
 - passende Rezeptdaten laden
 - statische Platzhalter schrittweise durch echte Inhalte ersetzen
+
+## Geplante endgültige Seitenstruktur
+
+Für die fertige dynamische Version soll die Website nicht mehr für jedes
+Rezept eine eigene HTML-Datei benötigen. Stattdessen ist diese Struktur
+vorgesehen:
+
+- `index.html` als dynamische Startseite mit allen Rezeptkarten
+- `rezepte.html` als Seite mit vollständiger Rezeptübersicht
+- `suche.html` als eigene Seite für Suche und Filter
+- `rezept.html` als eine allgemeine Detailseite für alle Rezepte
+- `hinzufuegen.html` als Seite für neue Rezepte
+- `imprint.html` als statische Impressumsseite
+
+## Was sich dadurch ändert
+
+### Startseite
+
+Die Startseite soll nicht mehr den kompletten Suchbereich tragen. Stattdessen
+soll sie:
+
+- ein Suchfeld im Header zeigen
+- eine kleinere Rezeptvorschau enthalten
+- Rezepte nach Kategorien gruppiert zeigen
+
+Die Karten sollen aus den in `IndexedDB` gespeicherten Rezeptdaten erzeugt
+werden.
+
+### Rezepte-Seite
+
+`rezepte.html` soll eine vollständige Übersicht aller Rezepte zeigen. Diese
+Seite ersetzt den bisherigen Gedanken, `Rezeptdetail` direkt im Header zu
+verlinken.
+
+Von dort aus gelangt man über einzelne Karten auf `rezept.html`.
+
+### Suchseite
+
+`suche.html` soll der zentrale Ort für Suche und Filterung werden.
+
+Dort stehen:
+
+- freies Suchfeld
+- Kategorie-Filter
+- Schwierigkeits-Filter
+- Favoriten-Filter
+- Ergebnisliste
+
+### Detailseite
+
+`rezept.html` soll nur noch eine einzige allgemeine Detailseite sein. Welche
+Rezeptdaten angezeigt werden, entscheidet JavaScript über eine Rezept-ID in
+der URL, zum Beispiel:
+
+`rezept.html?id=abc123`
+
+### Hinzufügen-Seite
+
+`hinzufuegen.html` bleibt als eigene Seite bestehen, bekommt aber echte
+Speicherlogik für neue Rezepte.
+
+## Welche bisherigen Beispielseiten später entfallen können
+
+Sobald die dynamische Detailansicht funktioniert, werden die einzelnen
+statischen Rezeptseiten nicht mehr benötigt. Dazu gehören zum Beispiel:
+
+- `hafer-bowl.html`
+- `schoko-bananen-kuchen.html`
+- `avocado-sandwich.html`
+- `gemuesepfanne-mit-reis.html`
+- `iced-matcha-latte.html`
+- `zimtschnecken.html`
+
+Diese Seiten sollten aber erst entfernt werden, wenn:
+
+- `IndexedDB` stabil funktioniert
+- `index.html` Rezeptkarten dynamisch rendert
+- `rezept.html` Daten zuverlässig über die ID lädt
+
+## Vorteile dieser Struktur
+
+- neue Rezepte funktionieren automatisch ohne neue HTML-Dateien
+- die Pflege der Website wird einfacher
+- die App wird näher an eine echte Datenanwendung herangeführt
+- Suche, Filter und Detailansicht greifen auf dieselbe Datenbasis zu
+- die Startseite wird ruhiger und übersichtlicher
+- die Suche bekommt eine eigene, klar verständliche Aufgabe
+- die Hauptnavigation wird logischer, weil `Rezepte` als Sammlung wichtiger ist als ein einzelnes Rezeptdetail
 
 ## Was wird für die nächste Abgabe konkret als Erstes umgesetzt?
 
@@ -96,6 +201,31 @@ der Startseite klare Bezugspunkte vorbereitet:
 - `favorites-only` für die Favoriten-Checkbox
 - `.recipe-card` für die einzelnen Rezeptkarten
 - `data-favorite` für den Favoritenstatus einer Karte
+
+## Technische Grundlage für den nächsten Ausbauschritt
+
+Als gemeinsame Datenbasis für Startseite, Formular und Detailseite wird
+`IndexedDB` verwendet. Alle drei Seiten sollen später mit derselben
+Rezeptstruktur arbeiten.
+
+Dabei gilt:
+
+- `hinzufuegen.html` erzeugt neue Rezeptobjekte
+- `index.html` liest gespeicherte Rezeptobjekte für Vorschau und Kategorien
+- `rezepte.html` liest alle gespeicherten Rezeptobjekte für die Gesamtübersicht
+- `suche.html` liest alle gespeicherten Rezeptobjekte für Suche und Filter
+- `rezept.html` lädt genau ein Rezept über seine ID
+
+## Geplanter Umbau der Startseite und Suche
+
+Der nächste größere Strukturumbau soll in dieser Reihenfolge passieren:
+
+1. Startseite visuell entschlacken
+2. eigenes `rezepte.html` für die Gesamtübersicht anlegen
+3. eigenes `suche.html` anlegen
+4. Suchfeld im Header auf die Suchseite verlinken
+5. bestehende Suchlogik von `index.html` auf `suche.html` verschieben
+6. Startseite mit kleineren, kategorisierten Rezeptbereichen neu aufbauen
 
 ## Mini-Plan für die erste Logik
 

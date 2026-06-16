@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" role="img" aria-labelledby="title desc">
+  <title id="title">Schoko-Bananen-Kuchen</title>
+  <desc id="desc">Illustratives Beispielbild mit Schokoladenkuchen und Bananenscheiben.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0%" stop-color="#4d2b22"/>
+      <stop offset="100%" stop-color="#9b5b3c"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="900" fill="url(#bg)"/>
+  <rect x="320" y="320" width="560" height="290" rx="36" fill="#5e3527"/>
+  <rect x="355" y="355" width="490" height="220" rx="28" fill="#714334"/>
+  <g fill="#f4e2a2">
+    <ellipse cx="455" cy="415" rx="54" ry="26"/>
+    <ellipse cx="595" cy="470" rx="56" ry="27"/>
+    <ellipse cx="735" cy="420" rx="52" ry="25"/>
+  </g>
+  <path d="M355 392c96 60 167 63 246 19s149-52 244 9v32H355z" fill="#2f1c16" opacity=".72"/>
+</svg>

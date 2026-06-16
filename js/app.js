@@ -1,28 +1,49 @@
-// Elemente auswählen
-const searchInput = document.getElementById("search-input");
+﻿const searchInput = document.getElementById("search-input");
 const categoryFilter = document.getElementById("category-filter");
 const difficultyFilter = document.getElementById("difficulty-filter");
 const favoritesOnly = document.getElementById("favorites-only");
-const recipeCards = document.querySelectorAll(".recipe-card");
+const recipeGrid = document.getElementById("recipe-grid");
 const noResultsMessage = document.getElementById("no-results-message");
+const navSearchInput = document.getElementById("nav-search-page");
+
+function getRecipeCards() {
+  return Array.from(document.querySelectorAll(".recipe-card"));
+}
+
+function applyInitialQuery() {
+  const params = new URLSearchParams(window.location.search);
+  const query = params.get("q") || "";
+
+  if (searchInput) {
+    searchInput.value = query;
+  }
+
+  if (navSearchInput && query) {
+    navSearchInput.value = query;
+  }
+}
+
+async function renderSearchRecipes() {
+  const recipes = await getAllRecipesCombined();
+  recipeGrid.innerHTML = "";
+
+  recipes.forEach((recipe) => {
+    recipeGrid.appendChild(createRecipeCard(recipe));
+  });
+}
 
 function filterRecipes() {
-  // Werte lesen
   const searchTerm = searchInput.value.trim().toLowerCase();
   const selectedCategory = categoryFilter.value.toLowerCase();
   const selectedDifficulty = difficultyFilter.value.toLowerCase();
   const showFavoritesOnly = favoritesOnly.checked;
   let visibleCards = 0;
 
-  recipeCards.forEach((card) => {
-    // Inhalte aus den Karten lesen
-    const title = card.querySelector("h3").textContent.toLowerCase();
-    const meta = card.querySelector(".recipe-card__meta").textContent.toLowerCase();
-    const text = card.querySelector(".recipe-card__text").textContent.toLowerCase();
-    const cardContent = `${title} ${meta} ${text}`;
+  getRecipeCards().forEach((card) => {
+    const meta = card.querySelector(".recipe-card__meta")?.textContent.toLowerCase() || "";
+    const cardContent = card.dataset.searchContent || "";
     const isFavorite = card.dataset.favorite === "true";
 
-    // Bedingungen prüfen
     const matchesSearch = cardContent.includes(searchTerm);
     const matchesCategory =
       selectedCategory === "alle kategorien" || meta.includes(selectedCategory);
@@ -36,7 +57,6 @@ function filterRecipes() {
       matchesDifficulty &&
       matchesFavorite;
 
-    // Karten anzeigen oder ausblenden
     card.style.display = shouldShow ? "" : "none";
 
     if (shouldShow) {
@@ -44,15 +64,28 @@ function filterRecipes() {
     }
   });
 
-  // Meldung steuern, wenn keine Rezepte gefunden wurden
   noResultsMessage.hidden = visibleCards > 0;
 }
 
-// Auf Eingaben reagieren
-searchInput.addEventListener("input", filterRecipes);
-categoryFilter.addEventListener("change", filterRecipes);
-difficultyFilter.addEventListener("change", filterRecipes);
-favoritesOnly.addEventListener("change", filterRecipes);
+async function initializeSearchPage() {
+  if (!searchInput || !recipeGrid) {
+    return;
+  }
 
-// Funktion beim Laden ausführen
-filterRecipes();
+  applyInitialQuery();
+
+  try {
+    await renderSearchRecipes();
+  } catch (error) {
+    console.error(error);
+  }
+
+  filterRecipes();
+
+  searchInput.addEventListener("input", filterRecipes);
+  categoryFilter.addEventListener("change", filterRecipes);
+  difficultyFilter.addEventListener("change", filterRecipes);
+  favoritesOnly.addEventListener("change", filterRecipes);
+}
+
+initializeSearchPage();

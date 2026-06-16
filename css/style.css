@@ -98,6 +98,27 @@ img {
   gap: 0.6rem;
 }
 
+.top-nav__search {
+  flex: 1 1 220px;
+  min-width: 180px;
+}
+
+.top-nav__search input {
+  width: 100%;
+  min-height: 42px;
+  padding: 0.75rem 1rem;
+  border: 1px solid rgba(13, 107, 127, 0.14);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.94);
+  color: var(--text);
+  font: inherit;
+}
+
+.top-nav__search input:focus {
+  outline: 2px solid rgba(13, 107, 127, 0.16);
+  border-color: rgba(13, 107, 127, 0.32);
+}
+
 /* Einzelner Navigationslink. */
 .top-nav__link {
   display: inline-flex;
@@ -243,6 +264,39 @@ h3 {
   margin-top: 1.8rem;
 }
 
+.quick-links__grid {
+  display: grid;
+  gap: 1rem;
+}
+
+.quick-link-card {
+  display: block;
+  padding: 1.25rem;
+  border: 1px solid rgba(13, 107, 127, 0.1);
+  border-radius: var(--radius-md);
+  background: var(--surface-strong);
+  color: var(--text);
+  text-decoration: none;
+  box-shadow: 0 12px 26px rgba(18, 74, 78, 0.06);
+}
+
+.quick-link-card p:last-child {
+  margin: 0.7rem 0 0;
+  color: var(--muted);
+  line-height: 1.55;
+}
+
+.section-heading--inline {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.home-category-group + .home-category-group {
+  margin-top: 1.75rem;
+}
+
 /* Gemeinsamer Button-Stil. */
 .button {
   display: inline-flex;
@@ -369,6 +423,19 @@ h3 {
   box-shadow: 0 14px 30px rgba(18, 74, 78, 0.08);
 }
 
+.recipe-card--compact .recipe-card__image {
+  min-height: 130px;
+}
+
+.recipe-card--compact .recipe-card__content {
+  padding: 1rem;
+}
+
+.recipe-card--compact .recipe-card__text {
+  margin-top: 0.7rem;
+  font-size: 0.95rem;
+}
+
 /* Bildbereich der Karte. Aktuell noch als Farbfläche statt echtes Foto. */
 .recipe-card__image {
   min-height: 180px;
@@ -476,6 +543,22 @@ h3 {
   margin-top: 0.5rem;
 }
 
+.form-status {
+  margin: 0;
+  padding: 1rem 1.2rem;
+  border: 1px solid rgba(127, 190, 44, 0.24);
+  border-radius: var(--radius-sm);
+  background: rgba(127, 190, 44, 0.1);
+  color: var(--brand-blue-dark);
+  font-weight: 700;
+}
+
+.form-status--error {
+  border-color: rgba(214, 96, 0, 0.28);
+  background: rgba(241, 122, 22, 0.12);
+  color: var(--accent-dark);
+}
+
 .no-results-message {
   margin: 0 0 1rem;
   padding: 1rem 1.2rem;
@@ -523,6 +606,10 @@ h3 {
   margin: 0;
   line-height: 1.65;
   color: var(--muted);
+}
+
+.detail-text--formatted {
+  white-space: pre-line;
 }
 
 /* Container für Tags und Favoriten-Badge auf der Detailseite. */
@@ -579,6 +666,53 @@ h3 {
   color: var(--muted);
 }
 
+.site-footer {
+  padding: 0 1.5rem 2rem;
+}
+
+.site-footer__inner {
+  width: min(1100px, calc(100% - 2rem));
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1.2rem 1.4rem;
+  border: 1px solid rgba(13, 107, 127, 0.1);
+  border-radius: var(--radius-md);
+  background: rgba(255, 255, 255, 0.88);
+  color: var(--muted);
+  box-shadow: 0 12px 24px rgba(18, 74, 78, 0.06);
+}
+
+.site-footer__inner p {
+  margin: 0;
+}
+
+.site-footer__inner nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.9rem;
+}
+
+.site-footer__inner a {
+  color: var(--brand-blue-dark);
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
 /*
   Ab 700px Breite werden Formulare und Karten zweispaltig.
   Dadurch nutzt die Seite mehr Platz auf Tablets und kleinen Laptops.
@@ -595,6 +729,10 @@ h3 {
 
   .card-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .quick-links__grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 
   .detail-grid {
@@ -616,6 +754,10 @@ h3 {
   }
 
   .card-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .card-grid--compact {
     grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 
