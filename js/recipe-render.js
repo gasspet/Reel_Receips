@@ -69,6 +69,7 @@ function createTagElements(tags) {
 
 function createRecipeCard(recipe, compact = false) {
   const article = document.createElement("article");
+  const imageLink = document.createElement("a");
   const image = document.createElement("div");
   const content = document.createElement("div");
   const topline = document.createElement("div");
@@ -83,6 +84,8 @@ function createRecipeCard(recipe, compact = false) {
   article.dataset.favorite = String(recipe.favorite === true);
   article.dataset.searchContent = createSearchContent(recipe, previewText);
 
+  imageLink.href = `rezept.html?id=${encodeURIComponent(recipe.id)}`;
+  imageLink.setAttribute("aria-label", `${recipe.title} öffnen`);
   image.className = `recipe-card__image ${chooseImageClass(recipe)}`;
 
   if (recipe.image) {
@@ -105,6 +108,7 @@ function createRecipeCard(recipe, compact = false) {
   link.href = `rezept.html?id=${encodeURIComponent(recipe.id)}`;
   link.textContent = "Rezept ansehen";
 
+  imageLink.appendChild(image);
   topline.appendChild(creator);
 
   if (recipe.favorite) {
@@ -124,7 +128,7 @@ function createRecipeCard(recipe, compact = false) {
   }
 
   content.appendChild(link);
-  article.appendChild(image);
+  article.appendChild(imageLink);
   article.appendChild(content);
 
   return article;

@@ -217,3 +217,63 @@ Nächster sinnvoller Schritt:
 
 - im Browser prüfen, ob die Bilder auf Startseite, Suche, Übersicht und Detailseite überall sichtbar sind
 - danach entscheiden, ob die alten einzelnen Rezept-HTML-Dateien archiviert oder später ganz entfernt werden sollen
+
+## 2026-06-18 00:00 - Umsetzung
+
+Die alten Einzel-HTML-Dateien der Beispielrezepte wurden aus dem Projekt entfernt.
+
+Festgehalten:
+
+- die früheren statischen Detailseiten pro Rezept werden nicht mehr benötigt
+- die Rezeptdaten kommen jetzt vollständig aus den strukturierten JavaScript-Startdaten und aus `IndexedDB`
+- dadurch ist die Projektstruktur klarer und es gibt keine doppelte Pflege von Rezeptinhalten mehr
+
+Nächster sinnvoller Schritt:
+
+- im Browser prüfen, ob alle Rezeptkarten weiterhin auf `rezept.html?id=...` führen
+- danach bei Bedarf die README noch um einen kurzen Hinweis zur dynamischen Detailseite ergänzen
+
+## 2026-06-18 00:00 - Umsetzung
+
+Das visuelle Erscheinungsbild wurde in Richtung eines verspielteren Food-Looks weiterentwickelt.
+
+Festgehalten:
+
+- die Farbwelt wurde wärmer, heller und stärker an Food-Illustrationen orientiert
+- Karten, Buttons und Panels haben weichere Formen und lebendigere Hover-Zustände bekommen
+- dekorative Hintergründe und kleine visuelle Akzente machen die Seite weniger technisch und freundlicher
+
+Nächster sinnvoller Schritt:
+
+- im Browser prüfen, ob der neue Look auf Desktop und mobil gleichermaßen gut funktioniert
+- danach bei Bedarf einzelne Farben oder Hover-Effekte noch feiner abstimmen
+
+## 2026-06-18 00:00 - Umsetzung
+
+Die Detailseite wurde um einen einfachen Portionsrechner erweitert.
+
+Festgehalten:
+
+- alle bisherigen Rezepte werden standardmäßig als Rezepte für 2 Personen behandelt
+- auf der Detailseite kann die Personenanzahl jetzt verändert werden
+- die Zutatenmengen werden dabei direkt neu berechnet, sofern eine numerische Menge vorliegt
+
+Nächster sinnvoller Schritt:
+
+- im Browser prüfen, ob die Umrechnung bei verschiedenen Rezepten sinnvoll aussieht
+- danach kann bei Bedarf später noch ein eigenes Eingabefeld für Portionen im Formular ergänzt werden
+
+## 2026-06-18 00:00 - Umsetzung
+
+HTML, Accessibility und Dokumentation wurden für die Abgabe überarbeitet.
+
+Festgehalten:
+
+- sichtbare Text- und Umlautfehler in zentralen HTML- und JavaScript-Dateien wurden bereinigt
+- die Seiten besitzen jetzt einen Skip-Link, klarere Fokuszustände und `aria-current` in der Navigation
+- README sowie die wichtigsten Dokumentationsdateien wurden auf den aktuellen Projektstand gekürzt und aktualisiert
+
+Nächster sinnvoller Schritt:
+
+- die Seiten einmal mit WAVE und dem W3C Validator prüfen
+- danach die finale Browserkontrolle für die Präsentation machen

@@ -11,13 +11,15 @@
     <link rel="stylesheet" href="css/style.css" />
   </head>
   <body>
+    <a class="skip-link" href="#main-content">Zum Inhalt springen</a>
+    <!-- Die Navigation bleibt identisch, damit auch Unterseiten wie Formulare direkt erreichbar sind. -->
     <nav class="top-nav" aria-label="Hauptnavigation">
       <div class="top-nav__inner">
         <a class="top-nav__brand" href="index.html">Reel Recipes</a>
         <div class="top-nav__links">
           <a class="top-nav__link" href="index.html">Startseite</a>
           <a class="top-nav__link" href="rezepte.html">Rezepte</a>
-          <a class="top-nav__link top-nav__link--active" href="hinzufuegen.html">Rezept hinzufügen</a>
+          <a class="top-nav__link top-nav__link--active" href="hinzufuegen.html" aria-current="page">Rezept hinzufügen</a>
           <a class="top-nav__link" href="suche.html">Suchen</a>
         </div>
         <form class="top-nav__search" action="suche.html" method="get">
@@ -48,21 +50,22 @@
       </div>
     </header>
 
-    <main class="page-content">
+    <!-- Der main-Bereich enthält nur das Formular, weil dies die zentrale Aufgabe dieser Seite ist. -->
+    <main class="page-content" id="main-content">
       <section class="panel form-panel" aria-labelledby="form-title">
         <div class="section-heading">
           <p class="section-label">Rezeptformular</p>
           <h2 id="form-title">Rezeptdaten erfassen</h2>
         </div>
 
+        <!-- Dieses Formular wird später von add-recipe.js ausgelesen und in IndexedDB gespeichert. -->
         <form class="recipe-form" id="recipe-form">
           <label class="field field--full" for="source-url">
-            <span>Instagram-Link</span>
+            <span>Quell-Link (optional)</span>
             <input
               id="source-url"
-              type="url"
-              placeholder="https://www.instagram.com/..."
-              required
+              type="text"
+              placeholder="https://www.instagram.com/... oder leer lassen"
             />
           </label>
 
@@ -120,6 +123,11 @@
               <span>Rezeptbild</span>
               <input id="image" type="file" accept="image/*" />
             </label>
+
+            <label class="field" for="servings">
+              <span>Portionen</span>
+              <input id="servings" type="number" min="1" step="1" value="2" required />
+            </label>
           </div>
 
           <label class="field field--checkbox" for="favorite">
@@ -158,9 +166,10 @@
 
           <p id="form-status" class="form-status" hidden aria-live="polite"></p>
 
+          <!-- Hier liegen die beiden wichtigsten Aktionen: speichern oder ohne Änderung zurückgehen. -->
           <div class="form-actions">
             <button class="button button--primary" type="submit">Rezept speichern</button>
-            <a class="button button--secondary" href="index.html">Abbrechen</a>
+            <a class="button button--secondary" id="form-cancel-link" href="index.html">Abbrechen</a>
           </div>
         </form>
       </section>
@@ -171,8 +180,6 @@
         <p>Reel Recipes, Studienprojekt zur Verwaltung von Social-Media-Rezepten.</p>
         <nav aria-label="Footer-Navigation">
           <a href="index.html">Startseite</a>
-          <a href="rezepte.html">Rezepte</a>
-          <a href="suche.html">Suchen</a>
           <a href="imprint.html">Impressum</a>
         </nav>
       </div>

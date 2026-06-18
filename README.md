@@ -1,114 +1,58 @@
-﻿# Reel Recipes
+# Reel Recipes
 
-Reel Recipes ist ein Webprojekt für eine Rezept-App, in der Social-Media-Rezepte
-gesammelt und später leichter wiedergefunden werden sollen.
+Reel Recipes ist eine lokale Rezept-Web-App für Social-Media-Rezepte. Die Website speichert Rezepte im Browser, zeigt sie in einer Übersicht an und bietet Suche, Filter, Bearbeitung und eine dynamische Detailseite.
 
-Der aktuelle Stand besteht aus:
+## Funktionen
 
-- einem HTML/CSS-Prototyp mit mehreren Seiten
-- einer ersten JavaScript-Erweiterung für Suche und Filter auf der Startseite
-- begleitender Dokumentation und Tutorials für die Lehrveranstaltung
-
-## Projektziel
-
-Das Projekt soll Rezepte aus Social Media an einem Ort sammeln, strukturieren
-und wieder auffindbar machen. Im aktuellen Stand liegt der Fokus auf:
-
-- Startseite mit Rezeptübersicht
-- statischen Detailseiten für einzelne Rezepte
-- Formularseite zum Hinzufügen neuer Rezepte
-- JavaScript-Suche und Filterfunktion
-
-## Enthaltene Seiten
-
-- `index.html` - Startseite mit Suche, Filtern und Rezeptkarten
-- `rezept.html` - Detailseite für Tomatenpasta
-- `hafer-bowl.html` - Detailseite für Hafer-Bowl mit Beeren
-- `schoko-bananen-kuchen.html` - Detailseite für Schoko-Bananen-Kuchen
-- `avocado-sandwich.html` - Detailseite für Avocado-Sandwich
-- `gemuesepfanne-mit-reis.html` - Detailseite für Gemüsepfanne mit Reis
-- `iced-matcha-latte.html` - Detailseite für Iced Matcha Latte
-- `zimtschnecken.html` - Detailseite für Zimtschnecken
-- `hinzufuegen.html` - Formularseite für neue Rezepte
-- `imprint.html` - Impressum
-
-## JavaScript-Funktion
-
-Die erste JavaScript-Erweiterung befindet sich in:
-
-- `js/app.js`
-
-Sie ist in `index.html` eingebunden und aktiviert:
-
-- freie Suche
-- Filter nach Kategorie
-- Filter nach Schwierigkeit
-- Filter für Favoriten
-- Meldung `Keine Rezepte gefunden`, wenn keine Karte mehr passt
+- Rezepte lokal in `IndexedDB` speichern
+- neue Rezepte mit Link, Bild, Zutaten, Portionen und Notizen anlegen
+- bestehende Rezepte bearbeiten
+- Rezeptübersicht nach Kategorien anzeigen und filtern
+- freie Suche nach Titel, Zutaten, Tags und Notizen
+- Detailseite mit Zutaten-Checkliste und Portionsrechner
 
 ## Projektstruktur
 
 ```text
-.
-â”œâ”€â”€ index.html
-â”œâ”€â”€ rezept.html
-â”œâ”€â”€ hafer-bowl.html
-â”œâ”€â”€ schoko-bananen-kuchen.html
-â”œâ”€â”€ avocado-sandwich.html
-â”œâ”€â”€ gemuesepfanne-mit-reis.html
-â”œâ”€â”€ iced-matcha-latte.html
-â”œâ”€â”€ zimtschnecken.html
-â”œâ”€â”€ hinzufuegen.html
-â”œâ”€â”€ imprint.html
-â”œâ”€â”€ css/
-â”‚   â””â”€â”€ style.css
-â”œâ”€â”€ js/
-â”‚   â””â”€â”€ app.js
-â”œâ”€â”€ data/
-â”‚   â”œâ”€â”€ assets.md
-â”‚   â”œâ”€â”€ Logo_Reel_Recipes.png
-â”‚   â””â”€â”€ Logo_Reel_Recipes_transparent.png
-â”œâ”€â”€ docs/
-â”‚   â”œâ”€â”€ app-concept.md
-â”‚   â”œâ”€â”€ app-concept-kurz.md
-â”‚   â”œâ”€â”€ app-mini-plan.md
-â”‚   â”œâ”€â”€ data.md
-â”‚   â”œâ”€â”€ javascript-vorbereitung.md
-â”‚   â”œâ”€â”€ requirements.md
-â”‚   â”œâ”€â”€ visual-design.md
-â”‚   â””â”€â”€ journal.md
-â””â”€â”€ tutorial/
-    â”œâ”€â”€ html-css-tutorial.md
-    â”œâ”€â”€ javascript-tutorial-vorbereitung.md
-    â””â”€â”€ javascript-tutorial-app.md
+index.html
+rezepte.html
+suche.html
+hinzufuegen.html
+rezept.html
+imprint.html
+css/style.css
+js/
+data/
+docs/
+tutorial/
 ```
 
 ## Lokal öffnen
 
-1. Repository herunterladen oder klonen
-2. Die Datei `index.html` im Browser öffnen
+1. Projektordner in VS Code oder im Dateisystem öffnen.
+2. `index.html` direkt im Browser öffnen oder mit Live Server starten.
 
-Optional für die Präsentation:
+## Technischer Stand
 
-- das Projekt in VS Code öffnen
-- mit Live Server starten
+- HTML mit semantischer Seitenstruktur
+- CSS mit responsive Layout und Mobile-First-Grundlage
+- Vanilla JavaScript
+- lokale Datenspeicherung in `IndexedDB`
+- kein Backend, keine Benutzerkonten
 
-## Aktueller Stand
+## Bedienung
 
-Das Projekt nutzt aktuell:
+- Über `Rezept hinzufügen` kann ein neues Rezept angelegt werden.
+- Über `Rezepte` gelangt man zur vollständigen Übersicht.
+- Über `Suchen` kann nach Begriffen, Kategorien, Schwierigkeit und Favoriten gefiltert werden.
+- Auf der Detailseite lassen sich Zutaten abhaken und Portionen anpassen.
 
-- HTML für Struktur
-- CSS für Gestaltung
-- Vanilla JavaScript für die erste Interaktivität
+## Quellen und Hinweise
 
-Noch nicht umgesetzt sind:
+- Das Logo liegt im Projektordner `data/`.
+- Die verwendeten Rezept-Beispielbilder in `data/recipe-images/` sind KI-generiert.
+- Alle Rezepte werden nur lokal im Browser gespeichert.
 
-- lokale Datenspeicherung
-- Formularverarbeitung für neue Rezepte
-- dynamische Detailseiten
-- Backend oder Benutzerkonten
+## Lizenzhinweis
 
-## Hinweis für die Lehrveranstaltung
-
-Das Repository enthält zusätzlich mehrere Erklärdateien und Tutorials, damit
-der Code bei Präsentationen nachvollziehbar erklärt werden kann.
+Für die Lehrveranstaltung ist aktuell noch keine separate Open-Source-Lizenz ergänzt. Falls das Repository später öffentlich weiterverwendet wird, sollte eine passende Lizenz ergänzt werden.

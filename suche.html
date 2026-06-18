@@ -11,6 +11,8 @@
     <link rel="stylesheet" href="css/style.css" />
   </head>
   <body>
+    <a class="skip-link" href="#main-content">Zum Inhalt springen</a>
+    <!-- Die Navigation bleibt auf jeder Seite gleich, damit die Bedienung konsistent bleibt. -->
     <nav class="top-nav" aria-label="Hauptnavigation">
       <div class="top-nav__inner">
         <a class="top-nav__brand" href="index.html">Reel Recipes</a>
@@ -18,7 +20,7 @@
           <a class="top-nav__link" href="index.html">Startseite</a>
           <a class="top-nav__link" href="rezepte.html">Rezepte</a>
           <a class="top-nav__link" href="hinzufuegen.html">Rezept hinzufügen</a>
-          <a class="top-nav__link top-nav__link--active" href="suche.html">Suchen</a>
+          <a class="top-nav__link top-nav__link--active" href="suche.html" aria-current="page">Suchen</a>
         </div>
         <form class="top-nav__search" action="suche.html" method="get">
           <label class="sr-only" for="nav-search-page">Suchen</label>
@@ -38,13 +40,15 @@
       </div>
     </header>
 
-    <main class="page-content">
+    <!-- Auf der Suchseite sind Suche, Filter und Ergebnisse bewusst kompakt nebeneinander angeordnet. -->
+    <main class="page-content page-content--search" id="main-content">
       <section class="panel search-panel" aria-labelledby="search-title">
         <div class="section-heading">
           <p class="section-label">Suche und Filter</p>
           <h2 id="search-title">Passende Rezepte finden</h2>
         </div>
 
+        <!-- Dieses Formular liefert die Eingabefelder, die später von app.js ausgewertet werden. -->
         <form class="search-form" id="search-form">
           <label class="field" for="search-input">
             <span>Freie Suche</span>
@@ -94,13 +98,17 @@
             <p class="section-label">Ergebnisse</p>
             <h2 id="search-results-title">Gefundene Rezepte</h2>
           </div>
+          <p class="search-results-count" id="search-results-count" aria-live="polite">
+            0 Rezepte
+          </p>
         </div>
 
-        <p id="no-results-message" class="no-results-message" hidden>
+        <p id="no-results-message" class="no-results-message" hidden role="status">
           Keine Rezepte gefunden.
         </p>
 
-        <div class="card-grid" id="recipe-grid"></div>
+        <!-- In dieses Grid setzt JavaScript alle gefundenen Rezeptkarten ein. -->
+        <div class="card-grid card-grid--compact" id="recipe-grid"></div>
       </section>
     </main>
 
@@ -109,8 +117,6 @@
         <p>Reel Recipes, Studienprojekt zur Verwaltung von Social-Media-Rezepten.</p>
         <nav aria-label="Footer-Navigation">
           <a href="index.html">Startseite</a>
-          <a href="rezepte.html">Rezepte</a>
-          <a href="hinzufuegen.html">Rezept hinzufügen</a>
           <a href="imprint.html">Impressum</a>
         </nav>
       </div>

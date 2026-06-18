@@ -11,12 +11,14 @@
     <link rel="stylesheet" href="css/style.css" />
   </head>
   <body>
+    <a class="skip-link" href="#main-content">Zum Inhalt springen</a>
+    <!-- Gemeinsame Hauptnavigation für den Wechsel zwischen Startseite, Übersicht, Formular und Suche. -->
     <nav class="top-nav" aria-label="Hauptnavigation">
       <div class="top-nav__inner">
         <a class="top-nav__brand" href="index.html">Reel Recipes</a>
         <div class="top-nav__links">
           <a class="top-nav__link" href="index.html">Startseite</a>
-          <a class="top-nav__link top-nav__link--active" href="rezepte.html">Rezepte</a>
+          <a class="top-nav__link top-nav__link--active" href="rezepte.html" aria-current="page">Rezepte</a>
           <a class="top-nav__link" href="hinzufuegen.html">Rezept hinzufügen</a>
           <a class="top-nav__link" href="suche.html">Suchen</a>
         </div>
@@ -27,6 +29,7 @@
       </div>
     </nav>
 
+    <!-- Der kompakte Header erklärt kurz, was diese Unterseite zeigt. -->
     <header class="hero hero--compact">
       <div class="hero__content">
         <p class="eyebrow">Gesamtübersicht</p>
@@ -38,7 +41,8 @@
       </div>
     </header>
 
-    <main class="page-content">
+    <!-- In diesem Hauptbereich wird die komplette Rezeptsammlung per JavaScript geordnet nach Kategorien geladen. -->
+    <main class="page-content" id="main-content">
       <section class="panel" aria-labelledby="all-recipes-title">
         <div class="section-heading section-heading--inline">
           <div>
@@ -47,7 +51,34 @@
           </div>
           <a class="text-link" href="suche.html">Zur Detailsuche</a>
         </div>
-        <div class="card-grid" id="all-recipes-grid"></div>
+        <p class="detail-text">
+          Die Rezepte werden nach Kategorien gruppiert und innerhalb jeder Kategorie alphabetisch sortiert.
+        </p>
+        <!-- Mit diesen Buttons kann die Übersicht schnell auf eine Kategorie eingeschränkt werden. -->
+        <div class="category-filter-bar" aria-label="Kategorien filtern" id="category-filter-bar">
+          <button class="category-filter-button category-filter-button--active" type="button" data-category="Alle">
+            Alle
+          </button>
+          <button class="category-filter-button" type="button" data-category="Frühstück">
+            Frühstück
+          </button>
+          <button class="category-filter-button" type="button" data-category="Mittagessen">
+            Mittagessen
+          </button>
+          <button class="category-filter-button" type="button" data-category="Abendessen">
+            Abendessen
+          </button>
+          <button class="category-filter-button" type="button" data-category="Dessert">
+            Dessert
+          </button>
+          <button class="category-filter-button" type="button" data-category="Snack">
+            Snack
+          </button>
+          <button class="category-filter-button" type="button" data-category="Getränke">
+            Getränke
+          </button>
+        </div>
+        <div id="all-recipes-groups"></div>
       </section>
     </main>
 
@@ -56,8 +87,6 @@
         <p>Reel Recipes, Studienprojekt zur Verwaltung von Social-Media-Rezepten.</p>
         <nav aria-label="Footer-Navigation">
           <a href="index.html">Startseite</a>
-          <a href="suche.html">Suchen</a>
-          <a href="hinzufuegen.html">Rezept hinzufügen</a>
           <a href="imprint.html">Impressum</a>
         </nav>
       </div>

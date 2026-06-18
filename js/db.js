@@ -1,10 +1,8 @@
-// Datenbank-Konstanten festlegen
 const DB_NAME = "reelRecipesDB";
 const DB_VERSION = 1;
 const STORE_NAME = "recipes";
 let seedPromise = null;
 
-// Die Datenbank öffnen oder anlegen
 function openDatabase() {
   return new Promise((resolve, reject) => {
     const request = window.indexedDB.open(DB_NAME, DB_VERSION);
@@ -27,12 +25,10 @@ function openDatabase() {
   });
 }
 
-// Eine eindeutige ID für neue Rezepte erzeugen
 function createRecipeId() {
   return `recipe-${Date.now()}`;
 }
 
-// Rezeptdaten in eine feste Struktur bringen
 function normalizeRecipe(recipeData) {
   const timestamp = new Date().toISOString();
 
@@ -42,6 +38,7 @@ function normalizeRecipe(recipeData) {
     sourceUrl: recipeData.sourceUrl || "",
     creator: recipeData.creator || "",
     image: recipeData.image || "",
+    servings: Number(recipeData.servings) > 0 ? Number(recipeData.servings) : 2,
     categories: Array.isArray(recipeData.categories) ? recipeData.categories : [],
     tags: Array.isArray(recipeData.tags) ? recipeData.tags : [],
     difficulty: recipeData.difficulty || "",
@@ -54,7 +51,6 @@ function normalizeRecipe(recipeData) {
   };
 }
 
-// Ein Rezept speichern oder aktualisieren
 function saveRecipe(recipeData) {
   return openDatabase().then((database) => new Promise((resolve, reject) => {
     const transaction = database.transaction(STORE_NAME, "readwrite");
@@ -72,7 +68,6 @@ function saveRecipe(recipeData) {
   }));
 }
 
-// Alle gespeicherten Rezepte laden
 function getAllRecipes() {
   return openDatabase().then((database) => new Promise((resolve, reject) => {
     const transaction = database.transaction(STORE_NAME, "readonly");
@@ -89,7 +84,6 @@ function getAllRecipes() {
   }));
 }
 
-// Ein einzelnes Rezept über seine ID laden
 function getRecipeById(recipeId) {
   return openDatabase().then((database) => new Promise((resolve, reject) => {
     const transaction = database.transaction(STORE_NAME, "readonly");
@@ -106,7 +100,6 @@ function getRecipeById(recipeId) {
   }));
 }
 
-// Vorgegebene Startrezepte einmalig in die Datenbank übernehmen
 function ensureSeedRecipes(seedRecipes = []) {
   if (seedPromise) {
     return seedPromise;
@@ -145,7 +138,6 @@ function ensureSeedRecipes(seedRecipes = []) {
   return seedPromise;
 }
 
-// Die Funktionen für andere Skripte verfügbar machen
 window.ReelRecipesDB = {
   openDatabase,
   saveRecipe,

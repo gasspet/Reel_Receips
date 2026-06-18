@@ -11,6 +11,8 @@
     <link rel="stylesheet" href="css/style.css" />
   </head>
   <body>
+    <a class="skip-link" href="#main-content">Zum Inhalt springen</a>
+    <!-- Das Impressum verwendet dieselbe Grundstruktur wie die übrigen Seiten der Website. -->
     <nav class="top-nav" aria-label="Hauptnavigation">
       <div class="top-nav__inner">
         <a class="top-nav__brand" href="index.html">Reel Recipes</a>
@@ -45,7 +47,8 @@
       </div>
     </header>
 
-    <main class="page-content">
+    <!-- Im main-Bereich stehen die rechtlichen Hinweise und Quellenangaben für die Abgabe. -->
+    <main class="page-content" id="main-content">
       <section class="panel" aria-labelledby="imprint-title">
         <div class="section-heading">
           <p class="section-label">Hinweis</p>
@@ -55,6 +58,10 @@
           Wenn die Website später öffentlich veröffentlicht wird, müssen hier
           die korrekten rechtlichen Angaben eingetragen werden.
         </p>
+        <p class="detail-text">
+          Die auf dieser Website verwendeten Beispielbilder der Rezepte wurden
+          mit KI erstellt.
+        </p>
       </section>
     </main>
 
@@ -63,9 +70,7 @@
         <p>Reel Recipes, Studienprojekt zur Verwaltung von Social-Media-Rezepten.</p>
         <nav aria-label="Footer-Navigation">
           <a href="index.html">Startseite</a>
-          <a href="rezepte.html">Rezepte</a>
-          <a href="suche.html">Suchen</a>
-          <a href="hinzufuegen.html">Rezept hinzufügen</a>
+          <a href="imprint.html" aria-current="page">Impressum</a>
         </nav>
       </div>
     </footer>

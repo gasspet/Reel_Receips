@@ -18,6 +18,79 @@ function formatIngredient(ingredient) {
     .join(" ");
 }
 
+function parseNumericAmount(amountText) {
+  if (!amountText) {
+    return null;
+  }
+
+  const normalizedAmount = String(amountText).trim().replace(",", ".");
+
+  if (!/^\d+(?:\.\d+)?$/.test(normalizedAmount)) {
+    return null;
+  }
+
+  return Number(normalizedAmount);
+}
+
+function formatScaledAmount(value) {
+  if (!Number.isFinite(value)) {
+    return "";
+  }
+
+  const roundedValue = Math.round(value * 100) / 100;
+
+  if (Number.isInteger(roundedValue)) {
+    return String(roundedValue);
+  }
+
+  return String(roundedValue).replace(".", ",");
+}
+
+function scaleIngredient(ingredient, factor) {
+  const numericAmount = parseNumericAmount(ingredient.amount);
+
+  if (numericAmount === null) {
+    return ingredient;
+  }
+
+  return {
+    ...ingredient,
+    amount: formatScaledAmount(numericAmount * factor)
+  };
+}
+
+function createIngredientChecklistItem(ingredient, index) {
+  const item = document.createElement("li");
+  const label = document.createElement("label");
+  const checkbox = document.createElement("input");
+  const text = document.createElement("span");
+
+  item.className = "ingredient-list__item";
+  label.className = "ingredient-check";
+  label.setAttribute("for", `ingredient-check-${index}`);
+
+  checkbox.type = "checkbox";
+  checkbox.id = `ingredient-check-${index}`;
+
+  text.className = "ingredient-check__text";
+  text.textContent = formatIngredient(ingredient);
+
+  label.appendChild(checkbox);
+  label.appendChild(text);
+  item.appendChild(label);
+
+  return item;
+}
+
+function renderIngredientChecklist(ingredients, listElement, servingsFactor) {
+  listElement.innerHTML = "";
+
+  ingredients.forEach((ingredient, index) => {
+    const scaledIngredient = scaleIngredient(ingredient, servingsFactor);
+    listElement.appendChild(createIngredientChecklistItem(scaledIngredient, index));
+  });
+}
+
 function applyDetailRecipe(recipe) {
   const pageTitle = document.getElementById("detail-page-title");
   const pageText = document.getElementById("detail-page-text");
@@ -32,6 +105,18 @@ function applyDetailRecipe(recipe) {
   const detailNotesSection = document.getElementById("detail-notes-section");
   const detailNotes = document.getElementById("detail-notes");
   const detailEditLink = document.getElementById("detail-edit-link");
+  const detailServings = document.getElementById("detail-servings");
+  const detailServingsNote = document.getElementById("detail-servings-note");
+  const servingsDecrease = document.getElementById("servings-decrease");
+  const servingsIncrease = document.getElementById("servings-increase");
+  const baseServings = Number(recipe.servings) > 0 ? Number(recipe.servings) : 2;
+
+  function updateServingsDisplay() {
+    const selectedServings = Math.max(1, Number(detailServings.value) || baseServings);
+    const servingsFactor = selectedServings / baseServings;
+    detailServings.value = String(selectedServings);
+    renderIngredientChecklist(recipe.ingredients || [], detailIngredients, servingsFactor);
+  }
 
   document.title = `Reel Recipes - ${recipe.title}`;
   pageTitle.textContent = recipe.title;
@@ -45,6 +130,14 @@ function applyDetailRecipe(recipe) {
   detailSourceLink.href = recipe.sourceUrl || "#";
   detailSourceLink.textContent = recipe.sourceUrl ? "Zum Originalbeitrag" : "Keine Quelle hinterlegt";
   detailSteps.textContent = recipe.stepsText || "Keine Zubereitung hinterlegt.";
+
+  if (detailServings) {
+    detailServings.value = String(baseServings);
+  }
+
+  if (detailServingsNote) {
+    detailServingsNote.textContent = `Basisrezept für ${baseServings} Personen.`;
+  }
 
   if (recipe.notes && recipe.notes.trim() !== "") {
     detailNotes.textContent = recipe.notes;
@@ -84,17 +177,31 @@ function applyDetailRecipe(recipe) {
   detailEditLink.href = `hinzufuegen.html?edit=${encodeURIComponent(recipe.id)}`;
   detailEditLink.hidden = false;
 
-  detailIngredients.innerHTML = "";
-  recipe.ingredients.forEach((ingredient) => {
-    const item = document.createElement("li");
-    item.textContent = formatIngredient(ingredient);
-    detailIngredients.appendChild(item);
-  });
+  renderIngredientChecklist(recipe.ingredients || [], detailIngredients, 1);
+
+  if (detailServings) {
+    detailServings.oninput = updateServingsDisplay;
+  }
+
+  if (servingsDecrease) {
+    servingsDecrease.onclick = () => {
+      detailServings.value = String(Math.max(1, (Number(detailServings.value) || baseServings) - 1));
+      updateServingsDisplay();
+    };
+  }
+
+  if (servingsIncrease) {
+    servingsIncrease.onclick = () => {
+      detailServings.value = String((Number(detailServings.value) || baseServings) + 1);
+      updateServingsDisplay();
+    };
+  }
 }
 
 function normalizeStoredRecipe(recipe) {
   return {
     ...recipe,
+    servings: Number(recipe.servings) > 0 ? Number(recipe.servings) : 2,
     imageClass: recipe.imageClass || "detail-hero__image--pasta",
     isEditable: true
   };

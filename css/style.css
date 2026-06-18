@@ -4,22 +4,24 @@
   Dadurch müssen Farben, Rundungen und Schatten nicht überall neu geschrieben werden.
 */
 :root {
-  --bg: #f4f7f5;
-  --surface: #f9fcfb;
+  --bg: #fff7ef;
+  --surface: #fffaf4;
   --surface-strong: #fff;
-  --line: #cfe1dc;
-  --text: #1f2e33;
-  --muted: #4f6b6a;
-  --accent: #f17a16;
-  --accent-dark: #d76000;
-  --brand-blue: #0d6b7f;
-  --brand-blue-dark: #0a5564;
-  --brand-green: #7fbe2c;
-  --accent-soft: #ffe2c9;
-  --tag: #e4f0ee;
-  --shadow: 0 18px 40px rgba(18, 74, 78, 0.12);
-  --radius-lg: 30px;
-  --radius-md: 18px;
+  --line: #f0d9c8;
+  --text: #43281d;
+  --muted: #7a5a49;
+  --accent: #f27b35;
+  --accent-dark: #d95a18;
+  --brand-blue: #d85b3e;
+  --brand-blue-dark: #8d3f2f;
+  --brand-green: #88b94c;
+  --accent-soft: #ffe3c7;
+  --tag: #fff0df;
+  --berry: #e96978;
+  --cream: #fff4de;
+  --shadow: 0 18px 40px rgba(135, 70, 37, 0.12);
+  --radius-lg: 34px;
+  --radius-md: 22px;
   --radius-sm: 12px;
 }
 
@@ -42,11 +44,30 @@ html {
 */
 body {
   margin: 0;
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  font-family: "Trebuchet MS", "Segoe UI", Tahoma, sans-serif;
   background:
-    radial-gradient(circle at top left, rgba(255, 255, 255, 0.92), transparent 34%),
-    linear-gradient(180deg, #f7fbfa 0%, #edf6f4 100%);
+    radial-gradient(circle at top left, rgba(255, 255, 255, 0.96), transparent 28%),
+    radial-gradient(circle at right 14%, rgba(255, 221, 196, 0.8), transparent 20%),
+    radial-gradient(circle at 16% 76%, rgba(255, 238, 187, 0.52), transparent 18%),
+    linear-gradient(180deg, #fffaf2 0%, #fff2e8 100%);
   color: var(--text);
+}
+
+.skip-link {
+  position: absolute;
+  left: 1rem;
+  top: -3rem;
+  z-index: 2000;
+  padding: 0.75rem 1rem;
+  border-radius: 999px;
+  background: var(--brand-blue-dark);
+  color: #fff;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.skip-link:focus {
+  top: 1rem;
 }
 
 /* Bilder sollen nie breiter als ihr Container werden. */
@@ -60,7 +81,22 @@ img {
   Die Navigation liegt oben auf jeder Seite und verbindet die HTML-Dateien.
 */
 .top-nav {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
   padding: 1rem 1.5rem 0;
+  backdrop-filter: blur(10px);
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(circle at 12% 18%, rgba(255, 255, 255, 0.36), transparent 22%),
+    radial-gradient(circle at 88% 10%, rgba(255, 228, 204, 0.28), transparent 18%);
+  z-index: -1;
 }
 
 /*
@@ -76,10 +112,11 @@ img {
   justify-content: space-between;
   gap: 0.85rem 1rem;
   padding: 1rem 1.2rem;
-  background: rgba(255, 255, 255, 0.88);
-  border: 1px solid rgba(13, 107, 127, 0.1);
+  background:
+    linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(255, 246, 236, 0.96));
+  border: 1px solid rgba(216, 91, 62, 0.15);
   border-radius: 999px;
-  box-shadow: 0 12px 28px rgba(18, 74, 78, 0.08);
+  box-shadow: 0 14px 28px rgba(167, 86, 49, 0.12);
 }
 
 /* Markenname in der Navigation. */
@@ -87,8 +124,9 @@ img {
   color: var(--brand-blue-dark);
   font-size: 1rem;
   font-weight: 800;
-  letter-spacing: 0.02em;
+  letter-spacing: 0.04em;
   text-decoration: none;
+  text-transform: uppercase;
 }
 
 /* Linkgruppe in der Navigation. flex-wrap erlaubt Umbruch auf kleinen Bildschirmen. */
@@ -107,16 +145,16 @@ img {
   width: 100%;
   min-height: 42px;
   padding: 0.75rem 1rem;
-  border: 1px solid rgba(13, 107, 127, 0.14);
+  border: 1px solid rgba(216, 91, 62, 0.16);
   border-radius: 999px;
-  background: rgba(255, 255, 255, 0.94);
+  background: rgba(255, 252, 248, 0.98);
   color: var(--text);
   font: inherit;
 }
 
 .top-nav__search input:focus {
-  outline: 2px solid rgba(13, 107, 127, 0.16);
-  border-color: rgba(13, 107, 127, 0.32);
+  outline: 2px solid rgba(233, 105, 120, 0.18);
+  border-color: rgba(216, 91, 62, 0.34);
 }
 
 /* Einzelner Navigationslink. */
@@ -129,11 +167,20 @@ img {
   color: var(--brand-blue);
   text-decoration: none;
   font-weight: 700;
+  transition:
+    transform 160ms ease,
+    background-color 160ms ease,
+    color 160ms ease;
+}
+
+.top-nav__link:hover {
+  transform: translateY(-1px);
+  background: rgba(242, 123, 53, 0.08);
 }
 
 /* Markiert die Seite, auf der man sich gerade befindet. */
 .top-nav__link--active {
-  background: rgba(13, 107, 127, 0.1);
+  background: rgba(242, 123, 53, 0.14);
   color: var(--brand-blue-dark);
 }
 
@@ -165,10 +212,10 @@ img {
   position: relative;
   overflow: hidden;
   background:
-    radial-gradient(circle at top right, rgba(127, 190, 44, 0.18), transparent 26%),
-    radial-gradient(circle at left center, rgba(241, 122, 22, 0.14), transparent 30%),
-    linear-gradient(135deg, rgba(255, 255, 255, 0.98), rgba(240, 249, 247, 0.96));
-  border: 1px solid rgba(13, 107, 127, 0.12);
+    radial-gradient(circle at top right, rgba(233, 105, 120, 0.18), transparent 22%),
+    radial-gradient(circle at left center, rgba(255, 206, 119, 0.28), transparent 26%),
+    linear-gradient(135deg, rgba(255, 255, 255, 0.98), rgba(255, 245, 234, 0.98));
+  border: 1px solid rgba(216, 91, 62, 0.14);
   border-radius: var(--radius-lg);
   padding: 2rem;
   box-shadow: var(--shadow);
@@ -182,7 +229,23 @@ img {
   bottom: -80px;
   width: 220px;
   height: 220px;
-  background: radial-gradient(circle, rgba(241, 122, 22, 0.15), transparent 68%);
+  background: radial-gradient(circle, rgba(242, 123, 53, 0.22), transparent 68%);
+  pointer-events: none;
+}
+
+.hero__content::before {
+  content: "";
+  position: absolute;
+  inset: 18px auto auto 18px;
+  width: 96px;
+  height: 96px;
+  border-radius: 50%;
+  background:
+    radial-gradient(circle, rgba(255, 255, 255, 0.95) 0 18%, transparent 19%),
+    radial-gradient(circle, rgba(255, 255, 255, 0.92) 0 10%, transparent 11%);
+  background-size: 34px 34px, 22px 22px;
+  background-position: 0 0, 12px 12px;
+  opacity: 0.34;
   pointer-events: none;
 }
 
@@ -206,7 +269,7 @@ img {
 .eyebrow,
 .section-label {
   margin: 0 0 0.5rem;
-  color: var(--brand-blue);
+  color: var(--berry);
   font-size: 0.85rem;
   font-weight: 700;
   letter-spacing: 0.08em;
@@ -227,6 +290,7 @@ h1 {
   font-size: clamp(1.6rem, 3vw, 2.7rem);
   color: var(--brand-blue-dark);
   line-height: 1.15;
+  text-wrap: balance;
 }
 
 /* Abschnittsüberschriften im Hauptinhalt. */
@@ -247,6 +311,11 @@ h3 {
   color: var(--muted);
   font-size: 1.05rem;
   line-height: 1.6;
+}
+
+.hero__content > *:not(.brand) {
+  position: relative;
+  z-index: 1;
 }
 
 /* Wiederverwendete Flex-Anordnung für Buttons, Tags und Metazeilen. */
@@ -272,12 +341,23 @@ h3 {
 .quick-link-card {
   display: block;
   padding: 1.25rem;
-  border: 1px solid rgba(13, 107, 127, 0.1);
+  border: 1px solid rgba(216, 91, 62, 0.12);
   border-radius: var(--radius-md);
-  background: var(--surface-strong);
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.98), rgba(255, 246, 238, 0.98));
   color: var(--text);
   text-decoration: none;
-  box-shadow: 0 12px 26px rgba(18, 74, 78, 0.06);
+  box-shadow: 0 12px 26px rgba(167, 86, 49, 0.09);
+  transition:
+    transform 180ms ease,
+    box-shadow 180ms ease,
+    border-color 180ms ease;
+}
+
+.quick-link-card:hover {
+  transform: translateY(-4px) rotate(-0.4deg);
+  border-color: rgba(233, 105, 120, 0.28);
+  box-shadow: 0 18px 32px rgba(167, 86, 49, 0.14);
 }
 
 .quick-link-card p:last-child {
@@ -297,6 +377,55 @@ h3 {
   margin-top: 1.75rem;
 }
 
+.recipes-category-group + .recipes-category-group {
+  margin-top: 2rem;
+  padding-top: 1.75rem;
+  border-top: 1px dashed rgba(216, 91, 62, 0.2);
+}
+
+.recipes-category-info {
+  margin: -0.35rem 0 1rem;
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+
+.category-filter-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+  margin: 1.15rem 0 1.5rem;
+}
+
+.category-filter-button {
+  min-height: 40px;
+  padding: 0.65rem 1rem;
+  border: 1px solid rgba(216, 91, 62, 0.16);
+  border-radius: 999px;
+  background: rgba(255, 249, 241, 0.95);
+  color: var(--brand-blue-dark);
+  font: inherit;
+  font-weight: 700;
+  cursor: pointer;
+  transition:
+    transform 160ms ease,
+    background-color 160ms ease,
+    border-color 160ms ease,
+    color 160ms ease;
+}
+
+.category-filter-button:hover {
+  transform: translateY(-2px);
+  border-color: rgba(233, 105, 120, 0.26);
+  background: rgba(255, 239, 226, 0.98);
+}
+
+.category-filter-button--active {
+  background: linear-gradient(135deg, var(--accent), var(--accent-dark));
+  border-color: transparent;
+  color: #fff;
+  box-shadow: 0 10px 20px rgba(217, 90, 24, 0.2);
+}
+
 /* Gemeinsamer Button-Stil. */
 .button {
   display: inline-flex;
@@ -309,20 +438,37 @@ h3 {
   text-decoration: none;
   font-weight: 700;
   cursor: pointer;
+  transition:
+    transform 160ms ease,
+    box-shadow 160ms ease,
+    border-color 160ms ease;
 }
 
 /* Wichtige Aktion, z. B. Rezept hinzufügen. */
 .button--primary {
   background: linear-gradient(135deg, var(--accent), var(--accent-dark));
   color: #fff;
-  box-shadow: 0 10px 24px rgba(241, 122, 22, 0.28);
+  box-shadow: 0 12px 24px rgba(217, 90, 24, 0.28);
 }
 
 /* Nebenaktion, z. B. zurück zur Startseite. */
 .button--secondary {
-  background: rgba(255, 255, 255, 0.82);
-  border-color: rgba(13, 107, 127, 0.16);
+  background: rgba(255, 251, 246, 0.92);
+  border-color: rgba(216, 91, 62, 0.18);
   color: var(--brand-blue-dark);
+}
+
+.button:hover {
+  transform: translateY(-2px);
+}
+
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+  outline: 3px solid rgba(233, 105, 120, 0.38);
+  outline-offset: 3px;
 }
 
 /* Hauptinhalt jeder Seite als vertikales Raster mit Abstand. */
@@ -332,13 +478,22 @@ h3 {
   padding-bottom: 3rem;
 }
 
+.page-content--search {
+  align-items: start;
+}
+
 /* Wiederverwendbare Inhaltsbox für Suche, Kartenbereiche, Formulare und Details. */
 .panel {
-  background: rgba(255, 255, 255, 0.92);
-  border: 1px solid rgba(13, 107, 127, 0.1);
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.96), rgba(255, 248, 241, 0.94));
+  border: 1px solid rgba(216, 91, 62, 0.12);
   border-radius: var(--radius-lg);
   padding: 1.5rem;
   box-shadow: var(--shadow);
+}
+
+.panel > *:last-child {
+  margin-bottom: 0;
 }
 
 /* Abstand unter Überschriftenblöcken. */
@@ -376,7 +531,7 @@ h3 {
   padding: 0.9rem 1rem;
   border: 1px solid var(--line);
   border-radius: var(--radius-sm);
-  background: var(--surface-strong);
+  background: #fffdfb;
   color: var(--text);
   font: inherit;
 }
@@ -385,8 +540,8 @@ h3 {
 .field input:focus,
 .field select:focus,
 .field textarea:focus {
-  outline: 2px solid rgba(13, 107, 127, 0.18);
-  border-color: rgba(13, 107, 127, 0.35);
+  outline: 2px solid rgba(233, 105, 120, 0.16);
+  border-color: rgba(216, 91, 62, 0.35);
 }
 
 /* Textareas dürfen nur vertikal größer gezogen werden. */
@@ -418,9 +573,23 @@ h3 {
 .recipe-card {
   overflow: hidden;
   background: var(--surface-strong);
-  border: 1px solid rgba(13, 107, 127, 0.08);
+  border: 1px solid rgba(216, 91, 62, 0.1);
   border-radius: var(--radius-md);
-  box-shadow: 0 14px 30px rgba(18, 74, 78, 0.08);
+  box-shadow: 0 16px 30px rgba(167, 86, 49, 0.1);
+  transition:
+    transform 180ms ease,
+    box-shadow 180ms ease,
+    border-color 180ms ease;
+}
+
+.recipe-card:hover {
+  transform: translateY(-5px) rotate(-0.35deg);
+  border-color: rgba(233, 105, 120, 0.22);
+  box-shadow: 0 22px 36px rgba(167, 86, 49, 0.16);
+}
+
+.recipe-card > a:first-child {
+  display: block;
 }
 
 .recipe-card--compact .recipe-card__image {
@@ -441,27 +610,39 @@ h3 {
   min-height: 180px;
   background-size: cover;
   background-position: center;
+  position: relative;
+}
+
+.recipe-card__image::after {
+  content: "";
+  position: absolute;
+  inset: auto 16px 14px auto;
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.16);
+  backdrop-filter: blur(2px);
 }
 
 /* Farbvariante für Pasta-Karte. */
 .recipe-card__image--pasta {
   background:
-    linear-gradient(135deg, rgba(241, 122, 22, 0.42), rgba(255, 229, 184, 0.34)),
-    linear-gradient(45deg, #e06718, #ffd083);
+    linear-gradient(135deg, rgba(242, 123, 53, 0.4), rgba(255, 223, 171, 0.34)),
+    linear-gradient(45deg, #dd7240, #ffd48f);
 }
 
 /* Farbvariante für Frühstücks-Bowl. */
 .recipe-card__image--bowl {
   background:
-    linear-gradient(135deg, rgba(127, 190, 44, 0.38), rgba(221, 247, 205, 0.34)),
-    linear-gradient(45deg, #77b62a, #d3f2a3);
+    linear-gradient(135deg, rgba(136, 185, 76, 0.4), rgba(232, 250, 208, 0.34)),
+    linear-gradient(45deg, #7cb243, #dff1ab);
 }
 
 /* Farbvariante für Dessert-Karte. */
 .recipe-card__image--cake {
   background:
-    linear-gradient(135deg, rgba(13, 107, 127, 0.32), rgba(199, 238, 242, 0.3)),
-    linear-gradient(45deg, #0b7187, #8fd2d8);
+    linear-gradient(135deg, rgba(233, 105, 120, 0.34), rgba(255, 220, 210, 0.32)),
+    linear-gradient(45deg, #d66d87, #ffcabf);
 }
 
 /* Innenabstand der Karteninhalte. */
@@ -492,6 +673,10 @@ h3 {
 .recipe-card__text {
   margin-top: 0.9rem;
   line-height: 1.55;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 
 /* Link von der Karte zur Detailseite. */
@@ -521,7 +706,7 @@ h3 {
 
 /* Favorit-Badge hebt ein Rezept hervor. */
 .favorite-badge {
-  background: var(--accent-soft);
+  background: #ffe0bf;
   color: var(--accent-dark);
   font-weight: 700;
 }
@@ -530,7 +715,7 @@ h3 {
 .tag {
   background: var(--tag);
   color: var(--brand-blue-dark);
-  border: 1px solid rgba(13, 107, 127, 0.08);
+  border: 1px solid rgba(216, 91, 62, 0.1);
 }
 
 /* Abstand der Tag-Zeile. */
@@ -562,11 +747,25 @@ h3 {
 .no-results-message {
   margin: 0 0 1rem;
   padding: 1rem 1.2rem;
-  border: 1px dashed rgba(13, 107, 127, 0.24);
+  border: 1px dashed rgba(216, 91, 62, 0.24);
   border-radius: var(--radius-sm);
-  background: rgba(228, 240, 238, 0.45);
+  background: rgba(255, 236, 217, 0.78);
   color: var(--brand-blue-dark);
   font-weight: 700;
+}
+
+.search-results-count {
+  margin: 0;
+  color: var(--brand-blue-dark);
+  font-weight: 700;
+  background: rgba(255, 236, 217, 0.82);
+  padding: 0.45rem 0.8rem;
+  border-radius: 999px;
+  border: 1px solid rgba(216, 91, 62, 0.16);
+}
+
+.search-panel {
+  align-content: start;
 }
 
 /* Detailseite: etwas kompaktere Abstände im Hauptbereich. */
@@ -590,7 +789,7 @@ h3 {
 /* Farbfläche für das Beispielrezept auf der Detailseite. */
 .detail-hero__image--pasta {
   background:
-    linear-gradient(135deg, rgba(241, 122, 22, 0.42), rgba(255, 229, 184, 0.34)),
+    linear-gradient(135deg, rgba(242, 123, 53, 0.42), rgba(255, 229, 184, 0.34)),
     linear-gradient(45deg, #e06718, #ffd083);
 }
 
@@ -629,8 +828,8 @@ h3 {
 /* Einzelne Metadatenbox. */
 .detail-meta div {
   padding: 0.9rem 1rem;
-  background: rgba(228, 240, 238, 0.45);
-  border: 1px solid rgba(13, 107, 127, 0.08);
+  background: rgba(255, 241, 225, 0.78);
+  border: 1px solid rgba(216, 91, 62, 0.1);
   border-radius: var(--radius-sm);
 }
 
@@ -658,16 +857,103 @@ h3 {
   align-content: start;
 }
 
+.detail-section,
+.recipes-category-group,
+.home-category-group {
+  scroll-margin-top: 8rem;
+}
+
+.servings-control {
+  margin-bottom: 1rem;
+}
+
+.servings-control .field {
+  max-width: 240px;
+}
+
+.servings-stepper {
+  display: grid;
+  grid-template-columns: 48px minmax(0, 1fr) 48px;
+  gap: 0.55rem;
+  align-items: center;
+}
+
+.servings-stepper input {
+  text-align: center;
+}
+
+.servings-stepper__button {
+  min-height: 48px;
+  border: 1px solid rgba(216, 91, 62, 0.16);
+  border-radius: 16px;
+  background: rgba(255, 249, 241, 0.95);
+  color: var(--brand-blue-dark);
+  font: inherit;
+  font-size: 1.2rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition:
+    transform 160ms ease,
+    background-color 160ms ease,
+    border-color 160ms ease;
+}
+
+.servings-stepper__button:hover {
+  transform: translateY(-1px);
+  background: rgba(255, 236, 217, 0.98);
+  border-color: rgba(233, 105, 120, 0.24);
+}
+
+.servings-note {
+  margin: 0.65rem 0 0;
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+
 /* Zutatenliste mit angenehmer Zeilenhöhe. */
 .ingredient-list {
   margin: 0;
-  padding-left: 1.2rem;
+  padding-left: 0;
+  list-style: none;
   line-height: 1.8;
   color: var(--muted);
 }
 
+.ingredient-list__item + .ingredient-list__item {
+  margin-top: 0.65rem;
+}
+
+.ingredient-check {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  align-items: start;
+  gap: 0.75rem;
+  padding: 0.85rem 0.95rem;
+  border: 1px solid rgba(216, 91, 62, 0.1);
+  border-radius: 16px;
+  background: rgba(255, 251, 246, 0.88);
+  cursor: pointer;
+}
+
+.ingredient-check input {
+  width: 18px;
+  height: 18px;
+  margin-top: 0.2rem;
+  accent-color: var(--accent);
+}
+
+.ingredient-check__text {
+  color: var(--text);
+}
+
+.ingredient-check input:checked + .ingredient-check__text {
+  color: var(--muted);
+  text-decoration: line-through;
+}
+
 .site-footer {
   padding: 0 1.5rem 2rem;
+  margin-top: 0.5rem;
 }
 
 .site-footer__inner {
@@ -678,11 +964,11 @@ h3 {
   justify-content: space-between;
   gap: 1rem;
   padding: 1.2rem 1.4rem;
-  border: 1px solid rgba(13, 107, 127, 0.1);
+  border: 1px solid rgba(216, 91, 62, 0.12);
   border-radius: var(--radius-md);
-  background: rgba(255, 255, 255, 0.88);
+  background: rgba(255, 249, 241, 0.92);
   color: var(--muted);
-  box-shadow: 0 12px 24px rgba(18, 74, 78, 0.06);
+  box-shadow: 0 12px 24px rgba(167, 86, 49, 0.08);
 }
 
 .site-footer__inner p {
@@ -696,9 +982,48 @@ h3 {
 }
 
 .site-footer__inner a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 40px;
+  padding: 0.55rem 0.9rem;
+  border: 1px solid rgba(216, 91, 62, 0.16);
+  border-radius: 999px;
+  background: rgba(255, 251, 246, 0.92);
   color: var(--brand-blue-dark);
   font-weight: 700;
   text-decoration: none;
+  transition:
+    transform 160ms ease,
+    background-color 160ms ease,
+    border-color 160ms ease;
+}
+
+.site-footer__inner a:hover {
+  transform: translateY(-1px);
+  background: rgba(255, 236, 217, 0.98);
+  border-color: rgba(233, 105, 120, 0.24);
+}
+
+.site-footer__inner a[aria-current="page"] {
+  background: rgba(242, 123, 53, 0.14);
+  border-color: rgba(216, 91, 62, 0.18);
+}
+
+@media (max-width: 699px) {
+  .section-heading--inline {
+    align-items: start;
+    flex-direction: column;
+  }
+
+  .hero__actions,
+  .form-actions {
+    width: 100%;
+  }
+
+  .hero__actions .button,
+  .form-actions .button {
+    width: 100%;
+  }
 }
 
 .sr-only {
@@ -764,6 +1089,15 @@ h3 {
   .detail-hero {
     grid-template-columns: minmax(300px, 0.95fr) minmax(0, 1.2fr);
     align-items: stretch;
+  }
+
+  .page-content--search {
+    grid-template-columns: minmax(280px, 0.82fr) minmax(0, 1.18fr);
+  }
+
+  .page-content--search .search-panel {
+    position: sticky;
+    top: 6.6rem;
   }
 
   .panel,

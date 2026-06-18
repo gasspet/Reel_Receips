@@ -1,109 +1,62 @@
-﻿# Visual Design
+# Visual Design
 
 ## Gestaltungsziel
 
-Die Website soll freundlich, frisch und gut erklärbar wirken. Sie soll wie ein
-moderner Prototyp für eine Rezept-Web-App aussehen, ohne visuell zu komplex zu
-werden.
+Die Website soll wie eine freundliche, verspielte Food-App wirken: warm, einladend, gut lesbar und trotzdem klar strukturiert.
 
-## Visuelle Idee
+## Aktuelle Designrichtung
 
-Reel Recipes verbindet Social Media und Kochen. Deshalb soll die Gestaltung:
+- warmer Hintergrund mit hellen Food-Farben
+- runde Karten, Buttons und Panels
+- weiche Verläufe und leichte Schatten
+- spielerischer, aber nicht chaotischer Gesamteindruck
 
-- warm und einladend wirken
-- klare Bereiche für Navigation und Inhalte zeigen
-- mobilfreundlich aufgebaut sein
-- das Logo farblich aufnehmen
-
-## Experience Direction
-
-Die Seite soll einen flüchtigen Social-Media-Post in eine stabile, persönliche
-Rezeptübersicht übersetzen. Wichtige Qualitäten sind:
-
-- schneller erster Überblick
-- klare Orientierung
-- genügend Struktur für spätere Suche und Filterung
-- einfache Bedienbarkeit auf kleineren Bildschirmen
-
-## Farbkonzept
+## Farbwelt
 
 | Farbe | Rolle |
 |---|---|
-| Orange | wichtige Aktionen, Buttons, warme Akzente |
-| Petrol/Blau | Überschriften, Navigation, Markenwirkung |
-| Grün | frische Akzente |
-| Helle Flächen | Hintergründe, Karten und Formulare |
+| Orange | Hauptaktionen, Buttons, warme Akzente |
+| Rosé | kleine Hervorhebungen und Oberzeilen |
+| Grün | frische Food-Akzente |
+| Creme und Weiß | Flächen, Karten und Formularbereiche |
+| Dunkles Braun | Fließtext und Kontrast |
 
-## Typografie
-
-- kleinere, kontrollierte Hauptüberschrift im Header
-- klar abgestufte Abschnittsüberschriften
-- gut lesbare Standardschrift für alle Fließtexte
-
-## Seitenaufbau
+## Seitenstruktur
 
 ### Startseite
 
-- obere Navigation
-- Hero-Bereich mit Logo und Einführung
-- kleines Suchfeld im Header als direkter Einstieg
-- kompaktere Rezeptvorschau
-- nach Kategorien gegliederte Rezeptbereiche
+- Hero-Bereich mit Logo und Einstieg
+- Schnellzugriff auf Suche, Übersicht und Formular
+- kompakte Vorschau nach Kategorien
 
-### Rezepte-Seite
+### Rezepte
 
-- obere Navigation
-- vollständige Übersicht aller Rezepte
-- Fokus auf Sammlung statt auf Suche
-- Einstieg in einzelne Rezeptdetails über Karten
+- vollständige Sammlung
+- Gruppierung nach Kategorien
+- Filter-Buttons für schnelle Orientierung
 
-### Suchseite
+### Suche
 
-- obere Navigation
-- eigenes Suchfeld im Kopfbereich
-- Filter für Kategorie, Schwierigkeit und Favoriten
-- Ergebnisliste mit Rezeptkarten
-- klarer Fokus auf Suche statt auf Einstieg
+- eigenes Suchlayout
+- kompakte Ergebnisdarstellung
+- sichtbare Trefferzahl
 
-### Rezeptdetailseiten
+### Detailseite
 
-- obere Navigation
-- Hero-Bereich mit Seitentitel
-- Rezeptbereich mit Bildfläche und Metadaten
-- Zutaten, Zubereitung und Notizen
+- großes Bild und Metadaten
+- Zutaten mit Checkliste
+- Portionsrechner
+- Zubereitung und Notizen
 
-### Seite zum Hinzufügen
+## Accessibility-Entscheidungen
 
-- obere Navigation
-- Hero-Bereich
-- großes Formular mit Eingabefeldern
-
-## Gestaltungsentscheidungen
-
-| Entscheidung | Begründung |
-|---|---|
-| mehrere HTML-Seiten statt nur einer langen Startseite | besser erklärbar und näher an echter Web-App-Struktur |
-| gemeinsame Navigation auf allen Seiten | bessere Orientierung |
-| Logo im Header | stärkere Wiedererkennbarkeit |
-| abgerundete Karten und Panels | freundlicher, moderner Eindruck |
-| Farbverlauf im Hintergrund | mehr Tiefe ohne Überladung |
-| Suche auf eigener Seite statt großer Suchsektion auf der Startseite | entlastet die Startseite und gibt der Suche einen klaren eigenen Ort |
-| kleines Suchfeld direkt im Header | schneller Einstieg zur Suchseite |
-| kompaktere Rezeptvorschau auf der Startseite | wirkt ruhiger und weniger überladen |
-| Kategorien schon auf der Startseite sichtbar machen | verbessert Orientierung und Einstieg in die Sammlung |
-
-## Zentrale Ansichten und ihre Aufgabe
-
-| Ansicht | Zweck |
-|---|---|
-| Startseite | Einstieg, Orientierung und kompakter Überblick |
-| Rezepte-Seite | vollständige Übersicht über alle Rezepte |
-| Suchseite | gezielt suchen und filtern |
-| Detailansicht | ein Rezept vollständig lesen |
-| Hinzufügen-Seite | neue Inhalte strukturiert eingeben |
+- sichtbare Fokuszustände für Links, Buttons und Formulare
+- Skip-Link `Zum Inhalt springen`
+- semantische Hauptbereiche mit `header`, `main`, `nav` und `footer`
+- aktive Navigation mit `aria-current="page"`
 
 ## Offene Punkte für später
 
-- echte Bilder für Rezepte statt Farbverläufe
-- eventuell Icons für Kategorien oder Aktionen
-- Feinschliff bei Abständen und Schriftgrößen
+- WAVE-Prüfung im Browser dokumentieren
+- letzte Kontrastkontrolle einzelner Farbkombinationen
+- optional echte lizenzierte Bilder statt KI-Beispielbilder

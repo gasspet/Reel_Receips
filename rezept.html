@@ -11,6 +11,9 @@
     <link rel="stylesheet" href="css/style.css" />
   </head>
   <body>
+    <a class="skip-link" href="#main-content">Zum Inhalt springen</a>
+
+    <!-- Auch die Detailseite nutzt dieselbe Hauptnavigation wie alle anderen Seiten. -->
     <nav class="top-nav" aria-label="Hauptnavigation">
       <div class="top-nav__inner">
         <a class="top-nav__brand" href="index.html">Reel Recipes</a>
@@ -27,6 +30,7 @@
       </div>
     </nav>
 
+    <!-- Dieser Header zeigt die wichtigsten Rezeptdaten sofort an, noch bevor der restliche Inhalt folgt. -->
     <header class="hero hero--compact">
       <div class="hero__content">
         <div class="brand">
@@ -49,8 +53,10 @@
       </div>
     </header>
 
-    <main class="page-content page-content--detail">
-      <section class="panel detail-hero">
+    <!-- Der Hauptbereich enthält die Rezeptdaten, die später per JavaScript in die Platzhalter geladen werden. -->
+    <main class="page-content page-content--detail" id="main-content">
+      <!-- Dieser Bereich verbindet Bild, Metadaten und Kurzinfo zu einem gemeinsamen Einleitungsteil. -->
+      <section class="panel detail-hero" aria-labelledby="detail-subtitle">
         <div class="detail-hero__image detail-hero__image--pasta" id="detail-image"></div>
         <div class="detail-hero__content">
           <p class="section-label">Rezeptinformation</p>
@@ -82,11 +88,37 @@
         </div>
       </section>
 
-      <section class="detail-grid">
+      <!-- Dieses div ist nur ein Layout-Container für die Inhaltsblöcke und deshalb keine eigene Section. -->
+      <div class="detail-grid">
         <section class="panel detail-section" id="zutaten" aria-labelledby="ingredients-title">
           <div class="section-heading">
             <p class="section-label">Inhalt</p>
             <h2 id="ingredients-title">Zutaten</h2>
+          </div>
+          <div class="servings-control">
+            <div class="field">
+              <span>Portionen</span>
+              <div class="servings-stepper">
+                <button class="servings-stepper__button" id="servings-decrease" type="button" aria-label="Portionen verringern">
+                  -
+                </button>
+                <input
+                  id="detail-servings"
+                  type="number"
+                  min="1"
+                  step="1"
+                  value="2"
+                  inputmode="numeric"
+                  aria-describedby="detail-servings-note"
+                />
+                <button class="servings-stepper__button" id="servings-increase" type="button" aria-label="Portionen erhöhen">
+                  +
+                </button>
+              </div>
+            </div>
+            <p class="servings-note" id="detail-servings-note">
+              Basisrezept für 2 Personen.
+            </p>
           </div>
           <ul class="ingredient-list" id="detail-ingredients">
             <li>Rezept wird geladen</li>
@@ -98,7 +130,9 @@
             <p class="section-label">Zubereitung</p>
             <h2 id="steps-title">So wird das Rezept gemacht</h2>
           </div>
-          <p class="detail-text detail-text--formatted" id="detail-steps">Die Zubereitung wird geladen.</p>
+          <p class="detail-text detail-text--formatted" id="detail-steps">
+            Die Zubereitung wird geladen.
+          </p>
         </section>
 
         <section class="panel detail-section" aria-labelledby="notes-title" id="detail-notes-section">
@@ -110,7 +144,7 @@
             Für dieses Rezept gibt es noch keine Notiz.
           </p>
         </section>
-      </section>
+      </div>
     </main>
 
     <footer class="site-footer">
@@ -118,8 +152,6 @@
         <p>Reel Recipes, Studienprojekt zur Verwaltung von Social-Media-Rezepten.</p>
         <nav aria-label="Footer-Navigation">
           <a href="index.html">Startseite</a>
-          <a href="rezepte.html">Rezepte</a>
-          <a href="suche.html">Suchen</a>
           <a href="imprint.html">Impressum</a>
         </nav>
       </div>

@@ -5,6 +5,7 @@ const formEyebrow = document.querySelector(".eyebrow");
 const formHeading = document.querySelector(".hero h1");
 const formIntro = document.querySelector(".hero__text");
 const submitButton = recipeForm ? recipeForm.querySelector('button[type="submit"]') : null;
+const cancelLink = document.getElementById("form-cancel-link");
 const editRecipeId = new URLSearchParams(window.location.search).get("edit");
 let existingRecipe = null;
 
@@ -102,6 +103,7 @@ async function loadRecipeForEditing() {
   document.getElementById("category").value = (existingRecipe.categories && existingRecipe.categories[0]) || "";
   document.getElementById("difficulty").value = existingRecipe.difficulty || "";
   document.getElementById("tags").value = (existingRecipe.tags || []).join(", ");
+  document.getElementById("servings").value = existingRecipe.servings || 2;
   document.getElementById("favorite").checked = existingRecipe.favorite === true;
   document.getElementById("ingredients").value = joinIngredientsForTextarea(existingRecipe.ingredients || []);
   document.getElementById("steps-text").value = existingRecipe.stepsText || "";
@@ -126,6 +128,11 @@ async function loadRecipeForEditing() {
   if (submitButton) {
     submitButton.textContent = "Änderungen speichern";
   }
+
+  if (cancelLink) {
+    cancelLink.textContent = "Zurück";
+    cancelLink.href = `rezept.html?id=${encodeURIComponent(existingRecipe.id)}`;
+  }
 }
 
 async function handleRecipeSubmit(event) {
@@ -137,6 +144,7 @@ async function handleRecipeSubmit(event) {
   const category = document.getElementById("category").value;
   const difficulty = document.getElementById("difficulty").value;
   const tags = parseTags(document.getElementById("tags").value);
+  const servings = Math.max(1, Number(document.getElementById("servings").value) || 2);
   const imageFile = document.getElementById("image").files[0];
   const favorite = document.getElementById("favorite").checked;
   const ingredients = parseIngredients(document.getElementById("ingredients").value);
@@ -157,13 +165,14 @@ async function handleRecipeSubmit(event) {
       ? await readImageAsDataUrl(imageFile)
       : (existingRecipe && existingRecipe.image) || "";
 
-    await window.ReelRecipesDB.saveRecipe({
+    const savedRecipe = await window.ReelRecipesDB.saveRecipe({
       id: existingRecipe ? existingRecipe.id : undefined,
       createdAt: existingRecipe ? existingRecipe.createdAt : undefined,
       sourceUrl,
       title,
       creator,
       image,
+      servings,
       categories: [category],
       tags,
       difficulty,
@@ -175,6 +184,7 @@ async function handleRecipeSubmit(event) {
 
     if (existingRecipe) {
       showFormStatus("Das Rezept wurde erfolgreich aktualisiert.");
+      window.location.href = `rezept.html?id=${encodeURIComponent(savedRecipe.id)}`;
     } else {
       recipeForm.reset();
       showFormStatus("Das Rezept wurde lokal in IndexedDB gespeichert.");

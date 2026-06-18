@@ -5,6 +5,7 @@ const favoritesOnly = document.getElementById("favorites-only");
 const recipeGrid = document.getElementById("recipe-grid");
 const noResultsMessage = document.getElementById("no-results-message");
 const navSearchInput = document.getElementById("nav-search-page");
+const searchResultsCount = document.getElementById("search-results-count");
 
 function getRecipeCards() {
   return Array.from(document.querySelectorAll(".recipe-card"));
@@ -28,7 +29,7 @@ async function renderSearchRecipes() {
   recipeGrid.innerHTML = "";
 
   recipes.forEach((recipe) => {
-    recipeGrid.appendChild(createRecipeCard(recipe));
+    recipeGrid.appendChild(createRecipeCard(recipe, true));
   });
 }
 
@@ -65,6 +66,10 @@ function filterRecipes() {
   });
 
   noResultsMessage.hidden = visibleCards > 0;
+
+  if (searchResultsCount) {
+    searchResultsCount.textContent = `${visibleCards} Rezept${visibleCards === 1 ? "" : "e"}`;
+  }
 }
 
 async function initializeSearchPage() {
