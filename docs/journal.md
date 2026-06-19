@@ -277,3 +277,19 @@ Nächster sinnvoller Schritt:
 
 - die Seiten einmal mit WAVE und dem W3C Validator prüfen
 - danach die finale Browserkontrolle für die Präsentation machen
+
+## 2026-06-19 00:00 - Umsetzung
+
+Die Startseite wurde um ein tägliches Empfehlungsmodul erweitert.
+
+Festgehalten:
+
+- `index.html` enthält jetzt einen neuen Bereich `Rezept des Tages`
+- `js/home.js` wählt anhand des aktuellen Datums automatisch ein Rezept aus der lokalen Sammlung aus
+- die Auswahl funktioniert ohne Backend und wechselt lokal jeden Kalendertag
+- das HTML/CSS-Tutorial wurde um den neuen Startseiten-Bereich ergänzt
+
+Nächster sinnvoller Schritt:
+
+- im Browser prüfen, ob täglich genau ein Rezept angezeigt wird
+- danach entscheiden, ob die Tagesempfehlung später noch visuell stärker hervorgehoben werden soll

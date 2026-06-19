@@ -9,15 +9,15 @@
   --surface-strong: #fff;
   --line: #f0d9c8;
   --text: #43281d;
-  --muted: #7a5a49;
+  --muted: #684737;
   --accent: #f27b35;
   --accent-dark: #d95a18;
-  --brand-blue: #d85b3e;
-  --brand-blue-dark: #8d3f2f;
+  --brand-blue: #a44732;
+  --brand-blue-dark: #7a3326;
   --brand-green: #88b94c;
   --accent-soft: #ffe3c7;
   --tag: #fff0df;
-  --berry: #e96978;
+  --berry: #a73a52;
   --cream: #fff4de;
   --shadow: 0 18px 40px rgba(135, 70, 37, 0.12);
   --radius-lg: 34px;
@@ -145,9 +145,9 @@ body::before {
   width: 100%;
   min-height: 42px;
   padding: 0.75rem 1rem;
-  border: 1px solid rgba(216, 91, 62, 0.16);
+  border: 1px solid rgba(122, 51, 38, 0.24);
   border-radius: 999px;
-  background: rgba(255, 252, 248, 0.98);
+  background: #fffdfb;
   color: var(--text);
   font: inherit;
 }
@@ -308,7 +308,7 @@ h3 {
 .hero__text {
   max-width: 55ch;
   margin: 1.2rem 0 0;
-  color: var(--muted);
+  color: #5b392c;
   font-size: 1.05rem;
   line-height: 1.6;
 }
@@ -362,7 +362,7 @@ h3 {
 
 .quick-link-card p:last-child {
   margin: 0.7rem 0 0;
-  color: var(--muted);
+  color: #5f4032;
   line-height: 1.55;
 }
 
@@ -385,7 +385,7 @@ h3 {
 
 .recipes-category-info {
   margin: -0.35rem 0 1rem;
-  color: var(--muted);
+  color: #5f4032;
   font-size: 0.95rem;
 }
 
@@ -453,9 +453,9 @@ h3 {
 
 /* Nebenaktion, z. B. zurück zur Startseite. */
 .button--secondary {
-  background: rgba(255, 251, 246, 0.92);
-  border-color: rgba(216, 91, 62, 0.18);
-  color: var(--brand-blue-dark);
+  background: #fff8f1;
+  border-color: rgba(122, 51, 38, 0.24);
+  color: #6f2f23;
 }
 
 .button:hover {
@@ -519,7 +519,7 @@ textarea:focus-visible {
 .field {
   display: grid;
   gap: 0.45rem;
-  color: var(--muted);
+  color: #5f4032;
   font-weight: 600;
 }
 
@@ -529,11 +529,18 @@ textarea:focus-visible {
 .field textarea {
   width: 100%;
   padding: 0.9rem 1rem;
-  border: 1px solid var(--line);
+  border: 1px solid #d5b39d;
   border-radius: var(--radius-sm);
   background: #fffdfb;
   color: var(--text);
   font: inherit;
+}
+
+.field input::placeholder,
+.field textarea::placeholder,
+.top-nav__search input::placeholder {
+  color: #7a5a49;
+  opacity: 1;
 }
 
 /* Sichtbarer Fokuszustand für Tastaturbedienung und bessere Orientierung. */
@@ -590,6 +597,18 @@ textarea:focus-visible {
 
 .recipe-card > a:first-child {
   display: block;
+  color: inherit;
+  text-decoration: none;
+}
+
+.recipe-card > a:first-child:hover h3,
+.recipe-card > a:first-child:focus-visible h3 {
+  color: var(--brand-blue-dark);
+}
+
+.recipe-card > a:first-child:hover .text-link,
+.recipe-card > a:first-child:focus-visible .text-link {
+  color: var(--brand-blue-dark);
 }
 
 .recipe-card--compact .recipe-card__image {
@@ -660,7 +679,8 @@ textarea:focus-visible {
 /* Dezente Textfarbe für Nebeninformationen. */
 .recipe-card__creator,
 .recipe-card__meta {
-  color: var(--muted);
+  color: #5b392c;
+  font-weight: 700;
 }
 
 /* Metazeile unter dem Rezepttitel. */
@@ -672,6 +692,7 @@ textarea:focus-visible {
 /* Beschreibungstext in der Karte. */
 .recipe-card__text {
   margin-top: 0.9rem;
+  color: #5f4032;
   line-height: 1.55;
   display: -webkit-box;
   -webkit-line-clamp: 3;
@@ -706,9 +727,10 @@ textarea:focus-visible {
 
 /* Favorit-Badge hebt ein Rezept hervor. */
 .favorite-badge {
-  background: #ffe0bf;
-  color: var(--accent-dark);
+  background: #f8cfa6;
+  color: #7a3326;
   font-weight: 700;
+  border: 1px solid rgba(122, 51, 38, 0.18);
 }
 
 /* Tags zeigen Kategorien oder Eigenschaften eines Rezepts. */
@@ -764,6 +786,12 @@ textarea:focus-visible {
   border: 1px solid rgba(216, 91, 62, 0.16);
 }
 
+.recipe-of-day-note {
+  margin: 0;
+  color: #5f4032;
+  font-weight: 700;
+}
+
 .search-panel {
   align-content: start;
 }
@@ -804,7 +832,7 @@ textarea:focus-visible {
 .detail-text {
   margin: 0;
   line-height: 1.65;
-  color: var(--muted);
+  color: #5b392c;
 }
 
 .detail-text--formatted {
@@ -906,7 +934,7 @@ textarea:focus-visible {
 
 .servings-note {
   margin: 0.65rem 0 0;
-  color: var(--muted);
+  color: #5f4032;
   font-size: 0.95rem;
 }
 
@@ -916,7 +944,7 @@ textarea:focus-visible {
   padding-left: 0;
   list-style: none;
   line-height: 1.8;
-  color: var(--muted);
+  color: #5b392c;
 }
 
 .ingredient-list__item + .ingredient-list__item {
@@ -967,7 +995,7 @@ textarea:focus-visible {
   border: 1px solid rgba(216, 91, 62, 0.12);
   border-radius: var(--radius-md);
   background: rgba(255, 249, 241, 0.92);
-  color: var(--muted);
+  color: #5b392c;
   box-shadow: 0 12px 24px rgba(167, 86, 49, 0.08);
 }
 
@@ -986,10 +1014,10 @@ textarea:focus-visible {
   align-items: center;
   min-height: 40px;
   padding: 0.55rem 0.9rem;
-  border: 1px solid rgba(216, 91, 62, 0.16);
+  border: 1px solid rgba(122, 51, 38, 0.24);
   border-radius: 999px;
-  background: rgba(255, 251, 246, 0.92);
-  color: var(--brand-blue-dark);
+  background: #fff8f1;
+  color: #6f2f23;
   font-weight: 700;
   text-decoration: none;
   transition:
@@ -1000,13 +1028,13 @@ textarea:focus-visible {
 
 .site-footer__inner a:hover {
   transform: translateY(-1px);
-  background: rgba(255, 236, 217, 0.98);
-  border-color: rgba(233, 105, 120, 0.24);
+  background: #ffe9d6;
+  border-color: rgba(122, 51, 38, 0.3);
 }
 
 .site-footer__inner a[aria-current="page"] {
-  background: rgba(242, 123, 53, 0.14);
-  border-color: rgba(216, 91, 62, 0.18);
+  background: #f4d8bb;
+  border-color: rgba(122, 51, 38, 0.26);
 }
 
 @media (max-width: 699px) {

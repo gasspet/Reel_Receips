@@ -1,21 +1,21 @@
 ﻿<!DOCTYPE html>
 <html lang="de">
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta
       name="description"
       content="Auf der Hinzufügen-Seite von Reel Recipes können neue Rezepte mit Kategorien, Zutaten, Tags und Bild lokal gespeichert werden."
-    />
+    >
     <title>Reel Recipes - Rezept hinzufügen</title>
-    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/style.css">
   </head>
   <body>
     <a class="skip-link" href="#main-content">Zum Inhalt springen</a>
     <!-- Die Navigation bleibt identisch, damit auch Unterseiten wie Formulare direkt erreichbar sind. -->
     <nav class="top-nav" aria-label="Hauptnavigation">
       <div class="top-nav__inner">
-        <a class="top-nav__brand" href="index.html">Reel Recipes</a>
+        <span class="top-nav__brand">Reel Recipes</span>
         <div class="top-nav__links">
           <a class="top-nav__link" href="index.html">Startseite</a>
           <a class="top-nav__link" href="rezepte.html">Rezepte</a>
@@ -24,7 +24,7 @@
         </div>
         <form class="top-nav__search" action="suche.html" method="get">
           <label class="sr-only" for="nav-search-add">Suchen</label>
-          <input id="nav-search-add" name="q" type="search" placeholder="Rezepte suchen" />
+          <input id="nav-search-add" name="q" type="search" placeholder="Rezepte suchen">
         </form>
       </div>
     </nav>
@@ -36,7 +36,7 @@
             class="brand__logo"
             src="data/Logo_Reel_Recipes_transparent.png"
             alt="Logo von Reel Recipes"
-          />
+          >
         </div>
         <p class="eyebrow">Neue Eingabe</p>
         <h1>Neues Rezept anlegen</h1>
@@ -66,7 +66,7 @@
               id="source-url"
               type="text"
               placeholder="https://www.instagram.com/... oder leer lassen"
-            />
+            >
           </label>
 
           <div class="form-grid">
@@ -77,12 +77,12 @@
                 type="text"
                 placeholder="z. B. Cremige Tomatenpasta"
                 required
-              />
+              >
             </label>
 
             <label class="field" for="creator">
               <span>Erstellerprofil</span>
-              <input id="creator" type="text" placeholder="@profilname" />
+              <input id="creator" type="text" placeholder="@profilname">
             </label>
 
             <label class="field" for="category">
@@ -116,22 +116,22 @@
                 id="tags"
                 type="text"
                 placeholder="z. B. vegetarisch, schnell, Feierabend"
-              />
+              >
             </label>
 
             <label class="field" for="image">
               <span>Rezeptbild</span>
-              <input id="image" type="file" accept="image/*" />
+              <input id="image" type="file" accept="image/*">
             </label>
 
             <label class="field" for="servings">
               <span>Portionen</span>
-              <input id="servings" type="number" min="1" step="1" value="2" required />
+              <input id="servings" type="number" min="1" step="1" value="2" required>
             </label>
           </div>
 
           <label class="field field--checkbox" for="favorite">
-            <input id="favorite" type="checkbox" />
+            <input id="favorite" type="checkbox">
             <span>Als Favorit speichern</span>
           </label>
 
@@ -169,7 +169,7 @@
           <!-- Hier liegen die beiden wichtigsten Aktionen: speichern oder ohne Änderung zurückgehen. -->
           <div class="form-actions">
             <button class="button button--primary" type="submit">Rezept speichern</button>
-            <a class="button button--secondary" id="form-cancel-link" href="index.html">Abbrechen</a>
+            <a class="button button--secondary" id="form-cancel-link" href="rezepte.html">Abbrechen</a>
           </div>
         </form>
       </section>
@@ -179,7 +179,6 @@
       <div class="site-footer__inner">
         <p>Reel Recipes, Studienprojekt zur Verwaltung von Social-Media-Rezepten.</p>
         <nav aria-label="Footer-Navigation">
-          <a href="index.html">Startseite</a>
           <a href="imprint.html">Impressum</a>
         </nav>
       </div>

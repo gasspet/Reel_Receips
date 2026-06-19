@@ -1,4 +1,4 @@
-﻿function renderHomeCategory(targetId, recipes, limit = 2) {
+function renderHomeCategory(targetId, recipes, limit = 2) {
   const grid = document.getElementById(targetId);
 
   if (!grid) {
@@ -12,9 +12,45 @@
   });
 }
 
+function getRecipeOfDay(recipes) {
+  if (!recipes.length) {
+    return null;
+  }
+
+  const today = new Date();
+  const dayKey = `${today.getFullYear()}-${today.getMonth() + 1}-${today.getDate()}`;
+  let hash = 0;
+
+  for (const character of dayKey) {
+    hash += character.charCodeAt(0);
+  }
+
+  return recipes[hash % recipes.length];
+}
+
+function renderRecipeOfDay(recipes) {
+  const grid = document.getElementById("recipe-of-day-grid");
+
+  if (!grid) {
+    return;
+  }
+
+  grid.innerHTML = "";
+
+  const recipeOfDay = getRecipeOfDay(recipes);
+
+  if (!recipeOfDay) {
+    return;
+  }
+
+  grid.appendChild(createRecipeCard(recipeOfDay));
+}
+
 async function initializeHomePage() {
   try {
     const recipes = await getAllRecipesCombined();
+
+    renderRecipeOfDay(recipes);
 
     renderHomeCategory(
       "home-breakfast-grid",

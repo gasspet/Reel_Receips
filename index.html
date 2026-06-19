@@ -1,21 +1,21 @@
 ﻿<!DOCTYPE html>
 <html lang="de">
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta
       name="description"
       content="Reel Recipes ist eine lokale Rezept-Web-App zum Speichern, Durchsuchen und Organisieren von Social-Media-Rezepten."
-    />
+    >
     <title>Reel Recipes - Startseite</title>
-    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/style.css">
   </head>
   <body>
     <a class="skip-link" href="#main-content">Zum Inhalt springen</a>
     <!-- Die Hauptnavigation steht auf jeder Seite ganz oben und verbindet die wichtigsten HTML-Dateien. -->
     <nav class="top-nav" aria-label="Hauptnavigation">
       <div class="top-nav__inner">
-        <a class="top-nav__brand" href="index.html">Reel Recipes</a>
+        <span class="top-nav__brand">Reel Recipes</span>
         <div class="top-nav__links">
           <a class="top-nav__link top-nav__link--active" href="index.html" aria-current="page">Startseite</a>
           <a class="top-nav__link" href="rezepte.html">Rezepte</a>
@@ -24,7 +24,7 @@
         </div>
         <form class="top-nav__search" action="suche.html" method="get">
           <label class="sr-only" for="nav-search-home">Suchen</label>
-          <input id="nav-search-home" name="q" type="search" placeholder="Rezepte suchen" />
+          <input id="nav-search-home" name="q" type="search" placeholder="Rezepte suchen">
         </form>
       </div>
     </nav>
@@ -37,7 +37,7 @@
             class="brand__logo"
             src="data/Logo_Reel_Recipes_transparent.png"
             alt="Logo von Reel Recipes"
-          />
+          >
         </div>
         <p class="eyebrow">Rezept-Web-App</p>
         <h1>Deine Rezeptsammlung startet hier.</h1>
@@ -54,6 +54,18 @@
 
     <!-- Im main-Bereich liegt der eigentliche Seiteninhalt, also alles außer Navigation und Footer. -->
     <main class="page-content" id="main-content">
+      <section class="panel" aria-labelledby="recipe-of-day-title">
+        <div class="section-heading section-heading--inline">
+          <div>
+            <p class="section-label">Empfehlung</p>
+            <h2 id="recipe-of-day-title">Rezept des Tages</h2>
+          </div>
+        </div>
+
+        <!-- Dieser Bereich zeigt jeden Tag automatisch ein anderes Rezept aus der lokalen Sammlung. -->
+        <div class="card-grid" id="recipe-of-day-grid"></div>
+      </section>
+
       <section class="panel quick-links" aria-labelledby="quick-links-title">
         <div class="section-heading section-heading--inline">
           <div>

@@ -69,7 +69,7 @@ function createTagElements(tags) {
 
 function createRecipeCard(recipe, compact = false) {
   const article = document.createElement("article");
-  const imageLink = document.createElement("a");
+  const cardLink = document.createElement("a");
   const image = document.createElement("div");
   const content = document.createElement("div");
   const topline = document.createElement("div");
@@ -77,15 +77,15 @@ function createRecipeCard(recipe, compact = false) {
   const title = document.createElement("h3");
   const meta = document.createElement("p");
   const text = document.createElement("p");
-  const link = document.createElement("a");
+  const linkText = document.createElement("span");
   const previewText = createPreviewText(recipe);
 
   article.className = compact ? "recipe-card recipe-card--compact" : "recipe-card";
   article.dataset.favorite = String(recipe.favorite === true);
   article.dataset.searchContent = createSearchContent(recipe, previewText);
 
-  imageLink.href = `rezept.html?id=${encodeURIComponent(recipe.id)}`;
-  imageLink.setAttribute("aria-label", `${recipe.title} öffnen`);
+  cardLink.href = `rezept.html?id=${encodeURIComponent(recipe.id)}`;
+  cardLink.setAttribute("aria-label", `${recipe.title} öffnen`);
   image.className = `recipe-card__image ${chooseImageClass(recipe)}`;
 
   if (recipe.image) {
@@ -99,16 +99,15 @@ function createRecipeCard(recipe, compact = false) {
   creator.className = "recipe-card__creator";
   meta.className = "recipe-card__meta";
   text.className = "recipe-card__text";
-  link.className = "text-link";
+  linkText.className = "text-link";
 
   creator.textContent = recipe.creator || "@unbekannt";
   title.textContent = recipe.title;
   meta.textContent = `${(recipe.categories && recipe.categories[0]) || "Ohne Kategorie"} · ${recipe.difficulty || "Ohne Schwierigkeit"}`;
   text.textContent = previewText;
-  link.href = `rezept.html?id=${encodeURIComponent(recipe.id)}`;
-  link.textContent = "Rezept ansehen";
+  linkText.textContent = "Rezept ansehen";
 
-  imageLink.appendChild(image);
+  cardLink.appendChild(image);
   topline.appendChild(creator);
 
   if (recipe.favorite) {
@@ -127,9 +126,9 @@ function createRecipeCard(recipe, compact = false) {
     content.appendChild(createTagElements(recipe.tags));
   }
 
-  content.appendChild(link);
-  article.appendChild(imageLink);
-  article.appendChild(content);
+  content.appendChild(linkText);
+  cardLink.appendChild(content);
+  article.appendChild(cardLink);
 
   return article;
 }

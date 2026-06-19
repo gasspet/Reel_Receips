@@ -398,3 +398,31 @@ Spaeter sollen mit JavaScript vor allem diese Punkte aktiviert werden:
 - Rezeptdaten dynamisch anzeigen
 
 Das HTML und CSS bilden dafuer bereits die sichtbare Grundlage.
+
+## 16. Neuer Startseiten-Bereich: Rezept des Tages
+
+### Code aus `index.html`
+
+```html
+<section class="panel" aria-labelledby="recipe-of-day-title">
+  <div class="section-heading section-heading--inline">
+    <div>
+      <p class="section-label">Empfehlung</p>
+      <h2 id="recipe-of-day-title">Rezept des Tages</h2>
+    </div>
+    <p class="detail-text" id="recipe-of-day-note">
+      Dieses Rezept wechselt automatisch einmal pro Tag.
+    </p>
+  </div>
+
+  <div class="card-grid" id="recipe-of-day-grid"></div>
+</section>
+```
+
+### Erklaerung
+
+- Diese `section` ist ein eigener Inhaltsblock auf der Startseite.
+- `aria-labelledby="recipe-of-day-title"` verbindet den Bereich mit seiner Überschrift.
+- `id="recipe-of-day-grid"` ist der leere Platzhalter, in den JavaScript später die Tageskarte einfügt.
+- `id="recipe-of-day-note"` wird ebenfalls von JavaScript verändert, damit dort das aktuelle Datum oder ein Hinweistext stehen kann.
+- Das vorhandene Kartenlayout wird wiederverwendet, damit die neue Funktion optisch zur restlichen Website passt.
