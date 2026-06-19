@@ -1,3 +1,4 @@
+// Diese Datei steuert die vollständige Rezeptübersicht auf rezepte.html.
 const CATEGORY_ORDER = [
   "Frühstück",
   "Mittagessen",
@@ -13,6 +14,7 @@ function sortRecipesAlphabetically(recipes) {
   );
 }
 
+// Gruppiert alle Rezepte nach ihrer ersten Kategorie.
 function groupRecipesByCategory(recipes) {
   const groupedRecipes = new Map();
 
@@ -37,6 +39,7 @@ function createCategoryId(category) {
   return `category-${category.toLowerCase().replace(/\s+/g, "-")}`;
 }
 
+// Baut einen ganzen Kategorien-Abschnitt samt Kartenraster auf.
 function createCategorySection(category, recipes) {
   const section = document.createElement("section");
   const headingWrapper = document.createElement("div");
@@ -84,6 +87,7 @@ function filterCategorySections(activeCategory) {
   });
 }
 
+// Reagiert auf Klicks auf die Kategorie-Buttons.
 function initializeCategoryButtons() {
   const filterBar = document.getElementById("category-filter-bar");
 

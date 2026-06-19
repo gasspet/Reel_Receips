@@ -1,3 +1,6 @@
+// Diese Datei lädt genau ein Rezept für die Detailseite
+// und steuert zusätzlich Checkliste und Portionsrechner.
+
 function renderTagChip(text) {
   const chip = document.createElement("span");
   chip.className = "tag";
@@ -18,6 +21,7 @@ function formatIngredient(ingredient) {
     .join(" ");
 }
 
+// Prüft, ob eine Zutatenmenge als Zahl skaliert werden kann.
 function parseNumericAmount(amountText) {
   if (!amountText) {
     return null;
@@ -59,6 +63,7 @@ function scaleIngredient(ingredient, factor) {
   };
 }
 
+// Baut einen einzelnen Listenpunkt der Zutaten-Checkliste.
 function createIngredientChecklistItem(ingredient, index) {
   const item = document.createElement("li");
   const label = document.createElement("label");
@@ -91,6 +96,7 @@ function renderIngredientChecklist(ingredients, listElement, servingsFactor) {
   });
 }
 
+// Überträgt alle Rezeptdaten in die sichtbaren Bereiche der Detailseite.
 function applyDetailRecipe(recipe) {
   const pageTitle = document.getElementById("detail-page-title");
   const pageText = document.getElementById("detail-page-text");

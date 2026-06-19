@@ -293,3 +293,36 @@ Nächster sinnvoller Schritt:
 
 - im Browser prüfen, ob täglich genau ein Rezept angezeigt wird
 - danach entscheiden, ob die Tagesempfehlung später noch visuell stärker hervorgehoben werden soll
+
+## 2026-06-19 00:00 - Umsetzung
+
+Die Website wurde als Progressive Web App vorbereitet.
+
+Festgehalten:
+
+- `manifest.webmanifest` beschreibt Name, Farben, Startseite und App-Icons
+- `service-worker.js` speichert zentrale Dateien der Website für eine einfache Offline-Grundlage
+- alle HTML-Seiten binden jetzt Manifest, Theme-Color und die PWA-Registrierung ein
+- aus dem vorhandenen Logo wurden eigene App-Icons in `data/icons/` erzeugt
+- `README.md` erklärt jetzt den Unterschied zwischen normalem Öffnen und echtem PWA-Betrieb über Live Server oder GitHub Pages
+
+Nächster sinnvoller Schritt:
+
+- die PWA über Live Server oder GitHub Pages testen
+- danach prüfen, ob Installation und Offline-Aufruf wie erwartet funktionieren
+
+## 2026-06-19 00:00 - Umsetzung
+
+Die PWA wurde für das direkte Teilen von Links erweitert.
+
+Festgehalten:
+
+- `manifest.webmanifest` enthält jetzt ein `share_target`
+- geteilte Inhalte können auf `hinzufuegen.html` ankommen
+- `js/add-recipe.js` übernimmt geteilte URL-, Titel- und Textdaten direkt ins Formular
+- die Funktion ist vor allem für installierte Android-PWAs gedacht
+
+Nächster sinnvoller Schritt:
+
+- auf einem unterstützten Smartphone testen, ob Instagram-Links im Teilen-Menü an Reel Recipes übergeben werden
+- danach prüfen, ob das Formular sinnvoll genug vorbefüllt wird

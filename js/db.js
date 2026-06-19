@@ -1,8 +1,11 @@
+// Diese Datei kapselt alle Zugriffe auf die lokale IndexedDB.
+// Dadurch müssen andere Dateien nicht selbst mit Datenbank-Details arbeiten.
 const DB_NAME = "reelRecipesDB";
 const DB_VERSION = 1;
 const STORE_NAME = "recipes";
 let seedPromise = null;
 
+// Öffnet die Datenbank und legt den Object Store beim ersten Start an.
 function openDatabase() {
   return new Promise((resolve, reject) => {
     const request = window.indexedDB.open(DB_NAME, DB_VERSION);
@@ -25,10 +28,12 @@ function openDatabase() {
   });
 }
 
+// Erzeugt eine einfache eindeutige ID auf Basis des aktuellen Zeitpunkts.
 function createRecipeId() {
   return `recipe-${Date.now()}`;
 }
 
+// Bringt eingehende Rezeptdaten in eine feste, vollständige Struktur.
 function normalizeRecipe(recipeData) {
   const timestamp = new Date().toISOString();
 
@@ -51,6 +56,7 @@ function normalizeRecipe(recipeData) {
   };
 }
 
+// Speichert ein neues oder bearbeitetes Rezept in der Datenbank.
 function saveRecipe(recipeData) {
   return openDatabase().then((database) => new Promise((resolve, reject) => {
     const transaction = database.transaction(STORE_NAME, "readwrite");
@@ -68,6 +74,7 @@ function saveRecipe(recipeData) {
   }));
 }
 
+// Lädt alle gespeicherten Rezepte aus der Datenbank.
 function getAllRecipes() {
   return openDatabase().then((database) => new Promise((resolve, reject) => {
     const transaction = database.transaction(STORE_NAME, "readonly");
@@ -84,6 +91,7 @@ function getAllRecipes() {
   }));
 }
 
+// Lädt genau ein Rezept über seine ID.
 function getRecipeById(recipeId) {
   return openDatabase().then((database) => new Promise((resolve, reject) => {
     const transaction = database.transaction(STORE_NAME, "readonly");
@@ -100,6 +108,7 @@ function getRecipeById(recipeId) {
   }));
 }
 
+// Fügt die festen Beispielrezepte nur dann ein, wenn sie noch nicht vorhanden sind.
 function ensureSeedRecipes(seedRecipes = []) {
   if (seedPromise) {
     return seedPromise;
@@ -138,6 +147,7 @@ function ensureSeedRecipes(seedRecipes = []) {
   return seedPromise;
 }
 
+// Stellt die Funktionen global bereit, damit andere Skripte darauf zugreifen können.
 window.ReelRecipesDB = {
   openDatabase,
   saveRecipe,

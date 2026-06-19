@@ -1,99 +1,54 @@
-﻿# Requirements
+# Requirements
 
-## Product Goal
+## Projektziel
 
-Enable one person to store and rediscover Instagram recipes in a structured, searchable local recipe library.
+Reel Recipes soll Social-Media-Rezepte in eine übersichtliche, lokale Rezeptsammlung verwandeln. Nutzerinnen und Nutzer sollen Rezepte schnell speichern, wiederfinden, organisieren und auf dem eigenen Gerät weiterverwenden können.
 
-## V1 Scope
+## Muss-Kriterien
 
-### Must-have
+- Die Website besitzt eine Startseite, eine Rezeptübersicht, eine Suchseite, eine Formularseite und eine Detailseite.
+- Neue Rezepte können manuell angelegt werden.
+- Ein Rezept enthält mindestens Titel, Quelle, Erstellerprofil, Bild, Portionen, Kategorie, Schwierigkeit, Zutaten, Zubereitung, Tags, Notizen und Favoritenstatus.
+- Rezepte werden lokal im Browser in `IndexedDB` gespeichert.
+- Gespeicherte Rezepte können bearbeitet werden.
+- Rezepte können über freie Textsuche gefunden werden.
+- Rezepte können nach Kategorie, Schwierigkeit und Favoritenstatus gefiltert werden.
+- Die Detailseite zeigt Zutaten, Zubereitung, Notizen und Metadaten eines einzelnen Rezepts.
+- Auf der Detailseite gibt es eine Zutaten-Checkliste.
+- Auf der Detailseite gibt es einen Portionsrechner.
+- Die Website ist responsiv und auf Mobilgeräten nutzbar.
+- Die Website ist als PWA installierbar.
+- In unterstützten Umgebungen kann ein geteilter Link direkt in die installierte PWA übernommen werden.
 
-- Create a recipe from an Instagram link
-- Edit recipe details manually
-- Upload a local image
-- Store structured ingredients
-- Store preparation as free text
-- Assign one or more categories
-- Assign free tags
-- Set difficulty
-- Mark/unmark favorite
-- Search by free text
-- Filter by category, difficulty, favorite, ingredients/tags where feasible
-- Persist data locally in `IndexedDB`
-- Install as PWA
+## Nice-to-have
 
-### Nice-to-have
+- Ein `Rezept des Tages` auf der Startseite
+- Bilder für alle Beispielrezepte
+- Offline-Grundlage über Service Worker
+- direkter Einstieg über das Suchfeld im Header
+- Teilen eines Links aus Social Media direkt in die App
 
-- Receive shared link directly from mobile share sheet
-- Pre-fill some fields from shared URL context if available
-
-### Out of scope for V1
+## Bewusst nicht Teil von V1
 
 - Backend
-- User accounts
-- Cross-device sync
-- Sharing recipes with others
-- Ratings/reviews
-- Weekly planner
-- Shopping list
-- Instagram content extraction/parser
-- Browser extension
+- Benutzerkonten
+- geräteübergreifende Synchronisierung
+- Teilen von Rezepten
+- Bewertungssystem
+- Wochenplaner
+- Einkaufsliste
+- automatisches Auslesen von Instagram-Inhalten
+- Browser-Extension
 
-## Epics
+## Zielgruppenbezug
 
-### Epic: Recipe Capture
+- Jede Person speichert aktuell ihre eigenen Rezepte lokal im eigenen Browser.
+- Die App ist damit als Prototyp bewusst einfach gehalten, aber technisch später erweiterbar.
 
-**User Story 1**  
-As a home cook, I want to save an Instagram recipe link, so that I do not lose it in social media feeds.
+## Erfolgsmerkmale
 
-**User Story 2**  
-As a home cook, I want to fill in recipe details manually after saving a link, so that I can turn a post into a usable recipe entry.
-
-**User Story 3**  
-As a mobile user, I want the installed app to optionally receive a shared link from my device, so that saving is faster than copy-paste.
-
-### Epic: Recipe Structuring
-
-**User Story 4**  
-As a user, I want ingredients stored as amount, unit, and name, so that recipes are easier to scan and potentially reusable later.
-
-**User Story 5**  
-As a user, I want to assign categories and tags, so that I can organize recipes in more than one way.
-
-**User Story 6**  
-As a user, I want to set a difficulty level, so that I can quickly judge whether a recipe fits the moment.
-
-### Epic: Retrieval
-
-**User Story 7**  
-As a user, I want free-text search across title, ingredients, and notes, so that I can quickly find recipes even if I do not remember the exact title.
-
-**User Story 8**  
-As a user, I want to filter by category, difficulty, and favorites, so that I can narrow down recipes for a specific context.
-
-### Epic: Local Ownership
-
-**User Story 9**  
-As a privacy-conscious user, I want all my recipe data stored locally on the device, so that I can use the app without creating an account.
-
-## Success Criteria
-
-| Area | Criteria |
-|---|---|
-| Capture | A user can create a recipe starting from a link in under 1 minute |
-| Editing | All core fields can be added and updated without page reload |
-| Retrieval | Search and filters return expected recipes from local data |
-| Persistence | Recipes remain available after app restart |
-| Usability | Main flows work on mobile and desktop |
-| Installability | App can be installed as a PWA on supported devices |
-
-## Acceptance Notes
-
-- The app must remain useful even when share-target behavior is unsupported.
-- Link paste is mandatory as the universal fallback flow.
-- Favorite is part of V1 despite earlier uncertainty.
-
-## Open Requirement Risks
-
-- Ingredient filtering can mean exact ingredient matching or text-based matching; exact behavior still needs definition.
-- Share-target support differs by platform; UX must not depend on it.
+- Ein Rezept kann in kurzer Zeit neu angelegt werden.
+- Die Such- und Filterfunktion liefert passende Treffer.
+- Die wichtigsten Seiten funktionieren auf Desktop und Mobilgeräten.
+- Die App bleibt auch ohne Backend sinnvoll nutzbar.
+- Die PWA lässt sich in unterstützten Browsern installieren.

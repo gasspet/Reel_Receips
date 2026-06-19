@@ -1,3 +1,5 @@
+// Diese Datei steuert das Formular zum Anlegen und Bearbeiten von Rezepten.
+// Sie liest alle Felder aus, verarbeitet sie und speichert das Ergebnis in IndexedDB.
 const recipeForm = document.getElementById("recipe-form");
 const formStatus = document.getElementById("form-status");
 const formTitle = document.getElementById("form-title");
@@ -9,12 +11,14 @@ const cancelLink = document.getElementById("form-cancel-link");
 const editRecipeId = new URLSearchParams(window.location.search).get("edit");
 let existingRecipe = null;
 
+// Zeigt eine Rückmeldung direkt im Formular an.
 function showFormStatus(message, isError = false) {
   formStatus.textContent = message;
   formStatus.hidden = false;
   formStatus.classList.toggle("form-status--error", isError);
 }
 
+// Wandelt einen Komma-Text in ein sauberes Tag-Array um.
 function parseTags(tagsText) {
   return tagsText
     .split(",")
@@ -22,6 +26,7 @@ function parseTags(tagsText) {
     .filter((tag) => tag !== "");
 }
 
+// Zerlegt die Zutaten-Textarea in strukturierte Zutatenobjekte.
 function parseIngredients(ingredientsText) {
   return ingredientsText
     .split("\n")
@@ -55,6 +60,7 @@ function parseIngredients(ingredientsText) {
     });
 }
 
+// Baut die Zutaten wieder in eine lesbare Textform für die Bearbeitung zurück.
 function joinIngredientsForTextarea(ingredients) {
   return ingredients
     .map((ingredient) =>
@@ -65,6 +71,7 @@ function joinIngredientsForTextarea(ingredients) {
     .join("\n");
 }
 
+// Liest ein hochgeladenes Bild als Data-URL ein, damit es lokal gespeichert werden kann.
 function readImageAsDataUrl(file) {
   if (!file) {
     return Promise.resolve("");
@@ -85,6 +92,38 @@ function readImageAsDataUrl(file) {
   });
 }
 
+// Übernimmt geteilte Inhalte aus der PWA in das Formular.
+function applySharedContentToForm() {
+  if (!recipeForm || editRecipeId) {
+    return;
+  }
+
+  const params = new URLSearchParams(window.location.search);
+  const sharedUrl = params.get("shared-url") || "";
+  const sharedTitle = params.get("shared-title") || "";
+  const sharedText = params.get("shared-text") || "";
+  const sourceUrlInput = document.getElementById("source-url");
+  const titleInput = document.getElementById("title");
+  const notesInput = document.getElementById("notes");
+
+  if (sharedUrl && sourceUrlInput && !sourceUrlInput.value.trim()) {
+    sourceUrlInput.value = sharedUrl;
+  }
+
+  if (sharedTitle && titleInput && !titleInput.value.trim()) {
+    titleInput.value = sharedTitle;
+  }
+
+  if (sharedText && notesInput && !notesInput.value.trim()) {
+    notesInput.value = sharedText;
+  }
+
+  if ((sharedUrl || sharedTitle || sharedText) && formIntro) {
+    formIntro.textContent = "Ein geteilter Inhalt wurde übernommen. Ergänze jetzt die restlichen Rezeptdaten.";
+  }
+}
+
+// Wenn eine Rezept-ID in der URL steht, wird das Formular in den Bearbeiten-Modus versetzt.
 async function loadRecipeForEditing() {
   if (!editRecipeId) {
     return;
@@ -135,6 +174,7 @@ async function loadRecipeForEditing() {
   }
 }
 
+// Liest beim Absenden alle Formularwerte aus und speichert sie als Rezept.
 async function handleRecipeSubmit(event) {
   event.preventDefault();
 
@@ -195,8 +235,11 @@ async function handleRecipeSubmit(event) {
 }
 
 if (recipeForm) {
+  applySharedContentToForm();
+
   loadRecipeForEditing().catch((error) => {
     showFormStatus(error.message, true);
   });
+
   recipeForm.addEventListener("submit", handleRecipeSubmit);
 }

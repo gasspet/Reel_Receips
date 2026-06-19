@@ -1,4 +1,5 @@
-﻿const searchInput = document.getElementById("search-input");
+// Diese Datei steuert die Suche und Filterung auf suche.html.
+const searchInput = document.getElementById("search-input");
 const categoryFilter = document.getElementById("category-filter");
 const difficultyFilter = document.getElementById("difficulty-filter");
 const favoritesOnly = document.getElementById("favorites-only");
@@ -11,6 +12,7 @@ function getRecipeCards() {
   return Array.from(document.querySelectorAll(".recipe-card"));
 }
 
+// Übernimmt einen vorhandenen Suchbegriff aus der URL in die sichtbaren Suchfelder.
 function applyInitialQuery() {
   const params = new URLSearchParams(window.location.search);
   const query = params.get("q") || "";
@@ -24,6 +26,7 @@ function applyInitialQuery() {
   }
 }
 
+// Rendert zunächst alle verfügbaren Rezepte auf die Suchseite.
 async function renderSearchRecipes() {
   const recipes = await getAllRecipesCombined();
   recipeGrid.innerHTML = "";
@@ -33,6 +36,7 @@ async function renderSearchRecipes() {
   });
 }
 
+// Prüft jede Rezeptkarte gegen Suchbegriff und Filter.
 function filterRecipes() {
   const searchTerm = searchInput.value.trim().toLowerCase();
   const selectedCategory = categoryFilter.value.toLowerCase();

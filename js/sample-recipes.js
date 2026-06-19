@@ -1,3 +1,4 @@
+// Diese Datei enthält feste Beispielrezepte, damit die App direkt mit Inhalt startet.
 window.ReelRecipesSamples = [
   {
     id: "sample-tomatenpasta",

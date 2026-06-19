@@ -2,16 +2,17 @@
 
 ## Aktueller Stand
 
-Reel Recipes arbeitet aktuell komplett lokal im Browser. Es gibt kein Backend und keine externe Datenbank. Alle Rezepte werden in `IndexedDB` gespeichert.
+Reel Recipes arbeitet aktuell vollständig lokal. Es gibt kein Backend und keine externe Datenbank. Alle selbst angelegten Rezepte werden im Browser in `IndexedDB` gespeichert.
 
 ## Vorhandene Materialien
 
 | Material | Format | Zweck |
 |---|---|---|
-| `data/Logo_Reel_Recipes.png` | PNG | Logo für das Projekt |
-| `data/Logo_Reel_Recipes_transparent.png` | PNG | freigestelltes Logo |
-| `data/recipe-images/` | SVG | lokale Beispielbilder für Rezepte |
-| `js/sample-recipes.js` | JavaScript-Daten | Startrezepte für die App |
+| `data/Logo_Reel_Recipes.png` | PNG | Hauptlogo der Website |
+| `data/Logo_Reel_Recipes_transparent.png` | PNG | freigestellte Logo-Version für den Hero-Bereich |
+| `data/icons/` | PNG | PWA-Icons |
+| `data/recipe-images/` | PNG | lokale Beispielbilder für Rezepte |
+| `js/sample-recipes.js` | JavaScript-Daten | feste Beispielrezepte für den ersten Start |
 
 ## Rezeptdatenmodell
 
@@ -23,7 +24,7 @@ Jedes Rezept wird als Objekt gespeichert.
   title: "Cremige Tomatenpasta",
   sourceUrl: "https://instagram.com/...",
   creator: "@pasta_daily",
-  image: "data/recipe-images/tomatenpasta.svg",
+  image: "data/recipe-images/tomatenpasta.png",
   servings: 2,
   categories: ["Abendessen"],
   tags: ["vegetarisch", "schnell"],
@@ -39,29 +40,33 @@ Jedes Rezept wird als Objekt gespeichert.
 }
 ```
 
-## Wichtige Felder
+## Bedeutung der wichtigsten Felder
 
 | Feld | Zweck |
 |---|---|
-| `id` | eindeutige Zuordnung eines Rezepts |
-| `title` | Rezepttitel |
-| `sourceUrl` | Link zum Social-Media-Post |
-| `image` | Bildpfad oder Bilddaten |
+| `id` | eindeutige Kennung für ein Rezept |
+| `title` | sichtbarer Rezepttitel |
+| `sourceUrl` | Link zum ursprünglichen Social-Media-Beitrag |
+| `image` | Bildpfad oder lokal gespeicherte Bilddaten |
 | `servings` | Basis-Portionenzahl |
-| `categories` | grobe Einordnung |
-| `ingredients` | strukturierte Zutaten |
-| `stepsText` | Zubereitung als Text |
+| `categories` | grobe Einordnung wie Frühstück oder Dessert |
+| `tags` | zusätzliche freie Schlagwörter |
+| `ingredients` | strukturierte Zutatenliste |
+| `stepsText` | Zubereitung als zusammenhängender Text |
 | `notes` | persönliche Hinweise |
 | `favorite` | Favoritenstatus |
 
 ## Datenfluss in der Website
 
 - `hinzufuegen.html` erzeugt neue Rezeptobjekte.
+- `js/add-recipe.js` liest das Formular aus.
 - `js/db.js` speichert und lädt Rezepte aus `IndexedDB`.
-- `js/sample-recipes.js` liefert Startrezepte für den ersten App-Start.
-- `rezept.html` zeigt genau ein Rezept über seine ID in der URL.
+- `js/sample-recipes.js` liefert die Startrezepte.
+- `rezepte.html`, `suche.html` und `index.html` zeigen Sammlungen an.
+- `rezept.html` lädt genau ein Rezept über die ID in der URL.
 
-## Hinweise
+## Wichtige Hinweise
 
-- Alle bisherigen Beispielrezepte gelten standardmäßig als Rezepte für `2 Personen`.
-- Die Beispielbilder sind lokal im Projekt gespeichert und KI-generiert.
+- Beispielrezepte liegen fest im Projekt und werden mit auf GitHub hochgeladen.
+- Selbst angelegte Rezepte liegen nur lokal im Browser.
+- Beim Löschen der Browserdaten können diese lokalen Rezepte verloren gehen.

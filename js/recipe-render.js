@@ -1,8 +1,12 @@
+// Diese Datei erzeugt wiederverwendbare Rezeptkarten für Startseite, Suche und Übersicht.
+
+// Lädt Beispielrezepte und lokal gespeicherte Rezepte gemeinsam.
 async function getAllRecipesCombined() {
   await window.ReelRecipesDB.ensureSeedRecipes(window.ReelRecipesSamples || []);
   return window.ReelRecipesDB.getAllRecipes();
 }
 
+// Wählt eine Bildklasse, wenn kein echtes Bild hinterlegt ist.
 function chooseImageClass(recipe) {
   if (recipe.imageClass) {
     return recipe.imageClass;
@@ -21,6 +25,7 @@ function chooseImageClass(recipe) {
   return "recipe-card__image--pasta";
 }
 
+// Erstellt einen kurzen Vorschautext für die Kartenansicht.
 function createPreviewText(recipe) {
   if (recipe.notes) {
     return recipe.notes;
@@ -33,6 +38,7 @@ function createPreviewText(recipe) {
   return "Neues Rezept aus deiner lokalen Sammlung.";
 }
 
+// Baut einen unsichtbaren Suchtext, damit Suche und Filter mehr als nur den Titel prüfen können.
 function createSearchContent(recipe, previewText) {
   const ingredientNames = (recipe.ingredients || [])
     .map((ingredient) => ingredient.name)
@@ -67,6 +73,7 @@ function createTagElements(tags) {
   return tagRow;
 }
 
+// Baut eine vollständige Rezeptkarte als DOM-Element.
 function createRecipeCard(recipe, compact = false) {
   const article = document.createElement("article");
   const cardLink = document.createElement("a");

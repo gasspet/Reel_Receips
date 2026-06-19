@@ -2,11 +2,14 @@
 <html lang="de">
   <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <meta
       name="description"
       content="Die Suchseite von Reel Recipes bietet Freitextsuche sowie Filter nach Kategorie, Schwierigkeit und Favoriten."
     >
+    <meta name="theme-color" content="#f27b35">
+    <link rel="manifest" href="manifest.webmanifest">
+    <link rel="apple-touch-icon" href="data/icons/apple-touch-icon.png">
     <title>Reel Recipes - Suche</title>
     <link rel="stylesheet" href="css/style.css">
   </head>
@@ -20,7 +23,6 @@
           <a class="top-nav__link" href="index.html">Startseite</a>
           <a class="top-nav__link" href="rezepte.html">Rezepte</a>
           <a class="top-nav__link" href="hinzufuegen.html">Rezept hinzufügen</a>
-          <a class="top-nav__link top-nav__link--active" href="suche.html" aria-current="page">Suchen</a>
         </div>
         <form class="top-nav__search" action="suche.html" method="get">
           <label class="sr-only" for="nav-search-page">Suchen</label>
@@ -116,6 +118,7 @@
       <div class="site-footer__inner">
         <p>Reel Recipes, Studienprojekt zur Verwaltung von Social-Media-Rezepten.</p>
         <nav aria-label="Footer-Navigation">
+          <button class="footer-app-button" id="install-app-button" type="button" hidden>GET THE APP</button>
           <a href="imprint.html">Impressum</a>
         </nav>
       </div>
@@ -125,5 +128,6 @@
     <script src="js/sample-recipes.js"></script>
     <script src="js/recipe-render.js"></script>
     <script src="js/app.js"></script>
+    <script src="js/pwa.js"></script>
   </body>
 </html>

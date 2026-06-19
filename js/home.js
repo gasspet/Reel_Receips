@@ -1,3 +1,6 @@
+// Diese Datei steuert die dynamischen Bereiche der Startseite.
+
+// Rendert eine kleine Vorschau für eine bestimmte Kategorie.
 function renderHomeCategory(targetId, recipes, limit = 2) {
   const grid = document.getElementById(targetId);
 
@@ -12,6 +15,7 @@ function renderHomeCategory(targetId, recipes, limit = 2) {
   });
 }
 
+// Wählt anhand des aktuellen Datums ein Rezept des Tages aus.
 function getRecipeOfDay(recipes) {
   if (!recipes.length) {
     return null;
