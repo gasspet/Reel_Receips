@@ -92,6 +92,12 @@ function readImageAsDataUrl(file) {
   });
 }
 
+// Sucht in einem Text nach der ersten URL, falls eine App den Link nur als Freitext teilt.
+function extractFirstUrl(text) {
+  const match = text.match(/https?:\/\/[^\s]+/i);
+  return match ? match[0] : "";
+}
+
 // Übernimmt geteilte Inhalte aus der PWA in das Formular.
 function applySharedContentToForm() {
   if (!recipeForm || editRecipeId) {
@@ -102,23 +108,28 @@ function applySharedContentToForm() {
   const sharedUrl = params.get("shared-url") || "";
   const sharedTitle = params.get("shared-title") || "";
   const sharedText = params.get("shared-text") || "";
+  const extractedUrl = extractFirstUrl(sharedText);
+  const sourceUrl = sharedUrl || extractedUrl;
+  const cleanedSharedText = extractedUrl
+    ? sharedText.replace(extractedUrl, "").trim()
+    : sharedText;
   const sourceUrlInput = document.getElementById("source-url");
   const titleInput = document.getElementById("title");
   const notesInput = document.getElementById("notes");
 
-  if (sharedUrl && sourceUrlInput && !sourceUrlInput.value.trim()) {
-    sourceUrlInput.value = sharedUrl;
+  if (sourceUrl && sourceUrlInput && !sourceUrlInput.value.trim()) {
+    sourceUrlInput.value = sourceUrl;
   }
 
   if (sharedTitle && titleInput && !titleInput.value.trim()) {
     titleInput.value = sharedTitle;
   }
 
-  if (sharedText && notesInput && !notesInput.value.trim()) {
-    notesInput.value = sharedText;
+  if (cleanedSharedText && notesInput && !notesInput.value.trim()) {
+    notesInput.value = cleanedSharedText;
   }
 
-  if ((sharedUrl || sharedTitle || sharedText) && formIntro) {
+  if ((sourceUrl || sharedTitle || cleanedSharedText) && formIntro) {
     formIntro.textContent = "Ein geteilter Inhalt wurde übernommen. Ergänze jetzt die restlichen Rezeptdaten.";
   }
 }
