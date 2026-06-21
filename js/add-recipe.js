@@ -98,6 +98,36 @@ function extractFirstUrl(text) {
   return match ? match[0] : "";
 }
 
+function applySharedValues(sharedUrl, sharedTitle, sharedText) {
+  const extractedUrl = extractFirstUrl(sharedText);
+  const sourceUrl = sharedUrl || extractedUrl;
+  const sourceUrlInput = document.getElementById("source-url");
+  const titleInput = document.getElementById("title");
+  const notesInput = document.getElementById("notes");
+
+  if (sourceUrl && sourceUrlInput) {
+    sourceUrlInput.value = sourceUrl;
+  }
+
+  if (sharedTitle && titleInput && !titleInput.value.trim()) {
+    titleInput.value = sharedTitle;
+  }
+
+  // Falls ein Browser oder ein alter PWA-Stand den Link doch ins Notizfeld schreibt,
+  // wird genau dieser Link dort wieder entfernt.
+  if (notesInput && sourceUrl) {
+    const noteValue = notesInput.value.trim();
+
+    if (noteValue === sourceUrl || noteValue === sharedText.trim()) {
+      notesInput.value = "";
+    }
+  }
+
+  if ((sourceUrl || sharedTitle || sharedText) && formIntro) {
+    formIntro.textContent = "Ein geteilter Inhalt wurde übernommen. Ergänze jetzt die restlichen Rezeptdaten.";
+  }
+}
+
 // Übernimmt geteilte Inhalte aus der PWA in das Formular.
 function applySharedContentToForm() {
   if (!recipeForm || editRecipeId) {
@@ -108,22 +138,13 @@ function applySharedContentToForm() {
   const sharedUrl = params.get("shared-url") || "";
   const sharedTitle = params.get("shared-title") || "";
   const sharedText = params.get("shared-text") || "";
-  const extractedUrl = extractFirstUrl(sharedText);
-  const sourceUrl = sharedUrl || extractedUrl;
-  const sourceUrlInput = document.getElementById("source-url");
-  const titleInput = document.getElementById("title");
 
-  if (sourceUrl && sourceUrlInput && !sourceUrlInput.value.trim()) {
-    sourceUrlInput.value = sourceUrl;
-  }
+  applySharedValues(sharedUrl, sharedTitle, sharedText);
 
-  if (sharedTitle && titleInput && !titleInput.value.trim()) {
-    titleInput.value = sharedTitle;
-  }
-
-  if ((sourceUrl || sharedTitle || sharedText) && formIntro) {
-    formIntro.textContent = "Ein geteilter Inhalt wurde übernommen. Ergänze jetzt die restlichen Rezeptdaten.";
-  }
+  // Manche Share-Target-Umgebungen setzen Inhalte leicht verzögert.
+  window.setTimeout(() => {
+    applySharedValues(sharedUrl, sharedTitle, sharedText);
+  }, 250);
 }
 
 // Wenn eine Rezept-ID in der URL steht, wird das Formular in den Bearbeiten-Modus versetzt.
