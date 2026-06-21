@@ -1,6 +1,6 @@
 // Der Service Worker speichert zentrale Dateien im Cache,
 // damit die App auch offline eine Grundfunktion behält.
-const CACHE_NAME = "reel-recipes-v7";
+const CACHE_NAME = "reel-recipes-v8";
 const APP_SHELL = [
   "./",
   "./index.html",

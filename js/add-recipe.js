@@ -110,12 +110,8 @@ function applySharedContentToForm() {
   const sharedText = params.get("shared-text") || "";
   const extractedUrl = extractFirstUrl(sharedText);
   const sourceUrl = sharedUrl || extractedUrl;
-  const cleanedSharedText = extractedUrl
-    ? sharedText.replace(extractedUrl, "").trim()
-    : sharedText;
   const sourceUrlInput = document.getElementById("source-url");
   const titleInput = document.getElementById("title");
-  const notesInput = document.getElementById("notes");
 
   if (sourceUrl && sourceUrlInput && !sourceUrlInput.value.trim()) {
     sourceUrlInput.value = sourceUrl;
@@ -125,11 +121,7 @@ function applySharedContentToForm() {
     titleInput.value = sharedTitle;
   }
 
-  if (cleanedSharedText && notesInput && !notesInput.value.trim()) {
-    notesInput.value = cleanedSharedText;
-  }
-
-  if ((sourceUrl || sharedTitle || cleanedSharedText) && formIntro) {
+  if ((sourceUrl || sharedTitle || sharedText) && formIntro) {
     formIntro.textContent = "Ein geteilter Inhalt wurde übernommen. Ergänze jetzt die restlichen Rezeptdaten.";
   }
 }
